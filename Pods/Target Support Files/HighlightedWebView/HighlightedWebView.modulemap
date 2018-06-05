@@ -1,0 +1,6 @@
+framework module HighlightedWebView {
+  umbrella header "HighlightedWebView-umbrella.h"
+
+  export *
+  module * { export * }
+}

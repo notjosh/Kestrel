@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14269.12"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="14269.12"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="14269.12"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -731,17 +731,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ovt-05-kC5">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="220"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                                <connections>
-                                    <outlet property="UIDelegate" destination="Aln-Pr-Mkk" id="otH-j0-9XY"/>
-                                    <outlet property="navigationDelegate" destination="Aln-Pr-Mkk" id="NhR-37-hdZ"/>
-                                </connections>
-                            </wkWebView>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D35-bm-Mtk">
                                 <rect key="frame" x="-2" y="246" width="485" height="26"/>
                                 <popUpButtonCell key="cell" type="push" title="Google" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="WcN-XF-QGB" id="TcF-5J-vx0">
@@ -773,24 +762,29 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
+                            <webView translatesAutoresizingMaskIntoConstraints="NO" id="jyJ-be-vEi" customClass="HighlightedWebView">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="220"/>
+                                <webPreferences key="preferences" defaultFontSize="16" defaultFixedFontSize="13" minimumFontSize="0">
+                                    <nil key="identifier"/>
+                                </webPreferences>
+                            </webView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="UUg-zP-iKj" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" id="B8q-hy-yhn"/>
                             <constraint firstItem="UUg-zP-iKj" firstAttribute="top" secondItem="D35-bm-Mtk" secondAttribute="bottom" constant="4" id="FUd-dO-VXL"/>
+                            <constraint firstItem="jyJ-be-vEi" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" id="JoI-rb-tEa"/>
                             <constraint firstItem="D35-bm-Mtk" firstAttribute="top" secondItem="0wk-HE-ntR" secondAttribute="top" id="Nuy-Mo-fAX"/>
-                            <constraint firstItem="Ovt-05-kC5" firstAttribute="top" secondItem="UUg-zP-iKj" secondAttribute="bottom" constant="4" id="Qal-J3-5bR"/>
-                            <constraint firstAttribute="bottom" secondItem="Ovt-05-kC5" secondAttribute="bottom" id="Qwk-BB-bao"/>
+                            <constraint firstAttribute="bottom" secondItem="jyJ-be-vEi" secondAttribute="bottom" id="Wml-Cu-brc"/>
+                            <constraint firstAttribute="trailing" secondItem="jyJ-be-vEi" secondAttribute="trailing" id="YRI-iT-dyg"/>
                             <constraint firstAttribute="trailing" secondItem="D35-bm-Mtk" secondAttribute="trailing" id="e6W-JK-l0u"/>
-                            <constraint firstItem="Ovt-05-kC5" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" id="h4j-bz-bfX"/>
+                            <constraint firstItem="jyJ-be-vEi" firstAttribute="top" secondItem="UUg-zP-iKj" secondAttribute="bottom" constant="4" id="hFb-9M-uWe"/>
                             <constraint firstItem="D35-bm-Mtk" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" id="hnx-k8-6HP"/>
-                            <constraint firstAttribute="trailing" secondItem="Ovt-05-kC5" secondAttribute="trailing" id="p54-Hc-GUn"/>
                             <constraint firstAttribute="trailing" secondItem="UUg-zP-iKj" secondAttribute="trailing" id="qoo-oc-5zB"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="searchEnginesPopUpButton" destination="D35-bm-Mtk" id="B4G-fI-bOZ"/>
                         <outlet property="searchResultsPopUpButton" destination="UUg-zP-iKj" id="axf-eL-pH7"/>
-                        <outlet property="webView" destination="Ovt-05-kC5" id="K21-Xb-7hT"/>
                     </connections>
                 </viewController>
                 <customObject id="53s-Ll-2LU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

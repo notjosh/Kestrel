@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import WebKit
+import HighlightedWebView
 
 class SearchWindowController: NSWindowController, SearchViewControllerDataSource {
     var searchViewController: SearchViewController? {
@@ -59,7 +59,7 @@ protocol SearchViewControllerDataSource {
 class SearchViewController: NSViewController {
     @IBOutlet var searchEnginesPopUpButton: NSPopUpButton!
     @IBOutlet var searchResultsPopUpButton: NSPopUpButton!
-    @IBOutlet var webView: WKWebView!
+    @IBOutlet var webView: HighlightedWebView!
 
     var dataSource: SearchViewControllerDataSource?
 
@@ -87,8 +87,10 @@ class SearchViewController: NSViewController {
                 return
         }
 
-        let request = URLRequest(url: url)
-        webView.load(request)
+//        webview
+
+//        let request = URLRequest(url: url)
+//        webView.load(request)
     }
 
     func URLForSearchTerm(searchTerm: String) -> URL? {
@@ -110,16 +112,16 @@ class SearchViewController: NSViewController {
     }
 }
 
-extension SearchViewController: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-    }
-
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-    }
-
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-    }
-}
-
-extension SearchViewController: WKUIDelegate {
-}
+//extension SearchViewController: WKNavigationDelegate {
+//    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+//    }
+//
+//    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+//    }
+//
+//    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+//    }
+//}
+//
+//extension SearchViewController: WKUIDelegate {
+//}
