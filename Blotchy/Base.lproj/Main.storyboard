@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14269.12"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="14269.12"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,7 +675,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Blotchy" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -683,7 +685,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Drop Target" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -700,14 +702,139 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
+        <!--Window Controller-->
+        <scene sceneID="5pZ-Mk-JiZ">
+            <objects>
+                <windowController id="ZCa-oD-uy4" customClass="SearchWindowController" customModule="Blotchy" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Search" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="AJ2-ME-Kn4">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="249" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+                        <connections>
+                            <outlet property="delegate" destination="ZCa-oD-uy4" id="Mos-Mb-Xvh"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="Aln-Pr-Mkk" kind="relationship" relationship="window.shadowedContentViewController" id="fNx-uQ-9f3"/>
+                    </connections>
+                </windowController>
+                <customObject id="OWS-Ug-k6H" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="686" y="250"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="4gW-nr-g2g">
+            <objects>
+                <viewController id="Aln-Pr-Mkk" customClass="SearchViewController" customModule="Blotchy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="0wk-HE-ntR">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ovt-05-kC5">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="220"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                                <connections>
+                                    <outlet property="UIDelegate" destination="Aln-Pr-Mkk" id="otH-j0-9XY"/>
+                                    <outlet property="navigationDelegate" destination="Aln-Pr-Mkk" id="NhR-37-hdZ"/>
+                                </connections>
+                            </wkWebView>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D35-bm-Mtk">
+                                <rect key="frame" x="-2" y="246" width="485" height="26"/>
+                                <popUpButtonCell key="cell" type="push" title="Google" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="WcN-XF-QGB" id="TcF-5J-vx0">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="6vI-na-PKu">
+                                        <items>
+                                            <menuItem title="Google" state="on" id="WcN-XF-QGB"/>
+                                            <menuItem title="DuckDuckGo" id="lyc-Xp-e7f"/>
+                                            <menuItem title="StackOverflow" id="cM3-RR-ujM"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="handleSearchEngineChangeWithSender:" target="Aln-Pr-Mkk" id="yb0-b3-6g2"/>
+                                </connections>
+                            </popUpButton>
+                            <popUpButton hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UUg-zP-iKj">
+                                <rect key="frame" x="-2" y="221" width="485" height="26"/>
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="fM5-RT-1rN" id="B2p-lQ-sT5">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="Hm8-nv-FqH">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" id="fM5-RT-1rN"/>
+                                            <menuItem title="Item 2" id="cAu-qo-2dM"/>
+                                            <menuItem title="Item 3" id="shQ-bf-qry"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="UUg-zP-iKj" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" id="B8q-hy-yhn"/>
+                            <constraint firstItem="UUg-zP-iKj" firstAttribute="top" secondItem="D35-bm-Mtk" secondAttribute="bottom" constant="4" id="FUd-dO-VXL"/>
+                            <constraint firstItem="D35-bm-Mtk" firstAttribute="top" secondItem="0wk-HE-ntR" secondAttribute="top" id="Nuy-Mo-fAX"/>
+                            <constraint firstItem="Ovt-05-kC5" firstAttribute="top" secondItem="UUg-zP-iKj" secondAttribute="bottom" constant="4" id="Qal-J3-5bR"/>
+                            <constraint firstAttribute="bottom" secondItem="Ovt-05-kC5" secondAttribute="bottom" id="Qwk-BB-bao"/>
+                            <constraint firstAttribute="trailing" secondItem="D35-bm-Mtk" secondAttribute="trailing" id="e6W-JK-l0u"/>
+                            <constraint firstItem="Ovt-05-kC5" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" id="h4j-bz-bfX"/>
+                            <constraint firstItem="D35-bm-Mtk" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" id="hnx-k8-6HP"/>
+                            <constraint firstAttribute="trailing" secondItem="Ovt-05-kC5" secondAttribute="trailing" id="p54-Hc-GUn"/>
+                            <constraint firstAttribute="trailing" secondItem="UUg-zP-iKj" secondAttribute="trailing" id="qoo-oc-5zB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchEnginesPopUpButton" destination="D35-bm-Mtk" id="B4G-fI-bOZ"/>
+                        <outlet property="searchResultsPopUpButton" destination="UUg-zP-iKj" id="axf-eL-pH7"/>
+                        <outlet property="webView" destination="Ovt-05-kC5" id="K21-Xb-7hT"/>
+                    </connections>
+                </viewController>
+                <customObject id="53s-Ll-2LU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="686" y="655"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Blotchy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uY-wA-oha" customClass="DroppableView" customModule="Blotchy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="234"/>
+                            </customView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xxe-b9-XF1">
+                                <rect key="frame" x="-2" y="242" width="484" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="uUl-OI-H7F"/>
+                                </constraints>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="Bfm-X6-ZxM">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4uY-wA-oha" secondAttribute="trailing" id="3mP-TB-xff"/>
+                            <constraint firstItem="Xxe-b9-XF1" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="CKH-fg-SRS"/>
+                            <constraint firstAttribute="trailing" secondItem="Xxe-b9-XF1" secondAttribute="trailing" id="Q2A-X4-INp"/>
+                            <constraint firstItem="Xxe-b9-XF1" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="8" id="RVK-hP-gjc"/>
+                            <constraint firstItem="4uY-wA-oha" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="bAz-7V-gUW"/>
+                            <constraint firstItem="4uY-wA-oha" firstAttribute="top" secondItem="Xxe-b9-XF1" secondAttribute="bottom" constant="8" id="dra-77-l6L"/>
+                            <constraint firstAttribute="bottom" secondItem="4uY-wA-oha" secondAttribute="bottom" id="fCl-rR-0Sk"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dropTarget" destination="4uY-wA-oha" id="wSF-CF-Rt2"/>
+                        <outlet property="statusLabel" destination="Xxe-b9-XF1" id="xje-TI-uii"/>
+                        <segue destination="ZCa-oD-uy4" kind="show" identifier="PerformSearch" id="r1h-W6-BEA"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

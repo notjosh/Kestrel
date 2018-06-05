@@ -11,6 +11,8 @@
 		4272AF0A20C686BB00F15834 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272AF0920C686BB00F15834 /* ViewController.swift */; };
 		4272AF0C20C686BD00F15834 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4272AF0B20C686BD00F15834 /* Assets.xcassets */; };
 		4272AF0F20C686BD00F15834 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4272AF0D20C686BD00F15834 /* Main.storyboard */; };
+		4272AF1820C690C900F15834 /* DroppableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272AF1720C690C900F15834 /* DroppableView.swift */; };
+		4272AF1A20C6A4DD00F15834 /* SearchWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272AF1920C6A4DD00F15834 /* SearchWindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		4272AF0E20C686BD00F15834 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4272AF1020C686BD00F15834 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4272AF1120C686BD00F15834 /* Blotchy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Blotchy.entitlements; sourceTree = "<group>"; };
+		4272AF1720C690C900F15834 /* DroppableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroppableView.swift; sourceTree = "<group>"; };
+		4272AF1920C6A4DD00F15834 /* SearchWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 			children = (
 				4272AF0720C686BB00F15834 /* AppDelegate.swift */,
 				4272AF0920C686BB00F15834 /* ViewController.swift */,
+				4272AF1720C690C900F15834 /* DroppableView.swift */,
+				4272AF1920C6A4DD00F15834 /* SearchWindowController.swift */,
 				4272AF0B20C686BD00F15834 /* Assets.xcassets */,
 				4272AF0D20C686BD00F15834 /* Main.storyboard */,
 				4272AF1020C686BD00F15834 /* Info.plist */,
@@ -95,6 +101,11 @@
 				TargetAttributes = {
 					4272AF0320C686BB00F15834 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -133,6 +144,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4272AF1820C690C900F15834 /* DroppableView.swift in Sources */,
+				4272AF1A20C6A4DD00F15834 /* SearchWindowController.swift in Sources */,
 				4272AF0A20C686BB00F15834 /* ViewController.swift in Sources */,
 				4272AF0820C686BB00F15834 /* AppDelegate.swift in Sources */,
 			);
