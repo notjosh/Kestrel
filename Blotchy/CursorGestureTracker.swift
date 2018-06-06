@@ -25,7 +25,8 @@ class CursorGestureTracker {
     let MinimumDistance: CGFloat = 250 // ¯\_(ツ)_/¯ magic value, from some trial and error on what feels right
     let MaximumTime: TimeInterval = 0.3 // seconds
 
-    var monitor: Any?
+    var monitorGlobal: Any?
+    var monitorLocal: Any?
 
     var startingX: CGFloat?
     var startingTimestamp: TimeInterval = 0
@@ -33,24 +34,31 @@ class CursorGestureTracker {
     var direction: Direction?
 
     func start() {
-        guard monitor == nil else {
-            return
+        if monitorGlobal == nil {
+            monitorGlobal = NSEvent.addGlobalMonitorForEvents(matching: [.mouseMoved]) { [weak self] event in
+                self?.handleMouseMove(event: event)
+            }
         }
 
-        monitor = NSEvent.addGlobalMonitorForEvents(matching: [.mouseMoved]) { [weak self] event in
-            self?.handleMouseMove(event: event)
+        if monitorLocal == nil {
+            monitorLocal = NSEvent.addLocalMonitorForEvents(matching: [.mouseMoved]) { [weak self] event in
+                self?.handleMouseMove(event: event)
+                return event
+            }
         }
     }
 
     func stop() {
-        guard let monitor = monitor else {
-            return
+        if let monitorGlobal = monitorGlobal {
+            NSEvent.removeMonitor(monitorGlobal)
+        }
+
+        if let monitorLocal = monitorLocal {
+            NSEvent.removeMonitor(monitorLocal)
         }
 
         startingX = nil
         direction = nil
-
-        NSEvent.removeMonitor(monitor)
     }
 
     // MARK: Events
