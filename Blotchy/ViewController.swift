@@ -20,8 +20,8 @@ class ViewController: NSViewController {
     var string: String?
 
     var monitor: Any?
-	
-	
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,6 +52,20 @@ class ViewController: NSViewController {
                 wc.searchTerm = string
             }
         }
+    }
+
+    // MARK: - Actions
+    @IBAction func handleViaAccessibilityPressed(sender: Any) {
+        let grabber = AccessibilitySelectedTextGrabber()
+
+        guard let string = grabber.selectedTextInActiveApp() else {
+            return
+        }
+
+        self.string = string
+        updateState()
+
+        maybeLaunchBrowser()
     }
 
     // MARK: - mouse listening
@@ -91,6 +105,13 @@ class ViewController: NSViewController {
         }
     }
 
+    func maybeLaunchBrowser() {
+        if string != nil {
+            // TODO: only present one window at a time, doofus
+            performSegue(withIdentifier: PerformSearchSegue, sender: self)
+        }
+    }
+
     func statusForDropTarget() -> String {
         switch (dragging, hovering) {
         case (_, true):
@@ -126,9 +147,7 @@ extension ViewController: DroppableViewDelegate {
         hovering = false
         updateState()
 
-        if string != nil {
-            performSegue(withIdentifier: PerformSearchSegue, sender: self)
-        }
+        maybeLaunchBrowser()
     }
 
     func draggingExited(with string: String?) {
