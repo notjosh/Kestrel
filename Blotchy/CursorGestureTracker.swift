@@ -29,7 +29,7 @@ class CursorGestureTracker {
 
     var startingX: CGFloat?
     var startingTimestamp: TimeInterval = 0
-    var previousX: CGFloat?
+//    var previousX: CGFloat?
     var direction: Direction?
 
     func start() {
@@ -48,7 +48,6 @@ class CursorGestureTracker {
         }
 
         startingX = nil
-        previousX = nil
         direction = nil
 
         NSEvent.removeMonitor(monitor)
@@ -61,7 +60,7 @@ class CursorGestureTracker {
             return
         }
 
-//        print(NSEvent.mouseLocation.x)
+//        print(NSEvent.mouseLocation.x, event.deltaX)
 
         // lots to probably check here, that I'll naively ignore for now
         // I assume this breaks a lot for multi-screen setups?
@@ -70,43 +69,43 @@ class CursorGestureTracker {
 
         // initialise to sensible starting values
         guard
-            let startingX = startingX,
-            let previousX = previousX
+            let startingX = startingX
             else {
                 self.startingX = NSEvent.mouseLocation.x
-                self.previousX = NSEvent.mouseLocation.x
+//                self.previousX = NSEvent.mouseLocation.x
                 return
         }
 
         let currentX = NSEvent.mouseLocation.x
+        let deltaX = event.deltaX
+
         let currentDirectionMaybe: Direction? = {
-            if currentX < previousX {
+            if deltaX < -0.1 {
                 return .left
             }
 
-            if currentX > previousX {
+            if deltaX > 0.1 {
                 return .right
             }
 
-            // we haven't moved horizontally
+            // we haven't moved horizontally (at least, not significantly)
             return nil
         }()
 
-        // if the mouse event if just vertical, then we don't care here, so bail
-        guard let currentDirection = currentDirectionMaybe else {
-            return
-        }
 
-        if direction == currentDirection {
-            // continue in same direction
-            self.previousX = currentX
-        } else {
-            // reset, because we changed direction
-            print("changing direction!")
-            self.direction = currentDirection
-            self.previousX = currentX
+        if direction != currentDirectionMaybe ||
+            fabs(deltaX) < 0.1 {
+            // reset, because we changed direction or stopped
+//            print("changing direction (\(String(describing: currentDirectionMaybe)), or idle (\(fabs(deltaX) < 0.1))!")
+            self.direction = currentDirectionMaybe
+//            self.previousX = currentX
             self.startingX = currentX
             self.startingTimestamp = Date().timeIntervalSince1970
+        }
+
+        // if the mouse event if just vertical, then we don't care here, so bail
+        guard let _ = currentDirectionMaybe else {
+            return
         }
 
         // try to find the screen the cursor is on:
