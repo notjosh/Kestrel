@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import CoreFoundation
 import HighlightedWebView
 
 class SearchWindowController: NSWindowController, SearchViewControllerDataSource {
@@ -39,9 +40,12 @@ class SearchWindowController: NSWindowController, SearchViewControllerDataSource
         window?.makeKeyAndOrderFront(self)
 
         if let screen = window?.screen {
-            let fraction: CGFloat = 2
-            let width = screen.visibleFrame.width / fraction
-            let frame = NSRect(x: width * (fraction - 1),
+            //let fraction: CGFloat = 2
+            //let width = screen.visibleFrame.width / fraction
+			let screenWidth: CGFloat = screen.visibleFrame.width
+			let width: CGFloat = 1024 // smallest responsive size
+			
+            let frame = NSRect(x: screenWidth - width,
                                y: screen.visibleFrame.minY,
                                width: width,
                                height: screen.visibleFrame.height)

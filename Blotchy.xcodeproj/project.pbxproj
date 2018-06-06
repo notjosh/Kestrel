@@ -351,12 +351,13 @@
 				CODE_SIGN_ENTITLEMENTS = Blotchy/Blotchy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2XN7W4EZ34;
+				DEVELOPMENT_TEAM = BGLZ7XL6X4;
 				INFOPLIST_FILE = Blotchy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.notjosh.Blotchy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -371,12 +372,13 @@
 				CODE_SIGN_ENTITLEMENTS = Blotchy/Blotchy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2XN7W4EZ34;
+				DEVELOPMENT_TEAM = BGLZ7XL6X4;
 				INFOPLIST_FILE = Blotchy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.notjosh.Blotchy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
