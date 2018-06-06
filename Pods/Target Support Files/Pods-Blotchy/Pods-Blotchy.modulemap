@@ -1,6 +1,0 @@
-framework module Pods_Blotchy {
-  umbrella header "Pods-Blotchy-umbrella.h"
-
-  export *
-  module * { export * }
-}
