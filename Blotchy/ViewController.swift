@@ -34,8 +34,6 @@ class ViewController: NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
 
-        view.window?.level = .floating //floating window
-
         subscribe()
     }
 
