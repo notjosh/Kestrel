@@ -59,7 +59,7 @@ protocol SearchViewControllerDataSource {
 class SearchViewController: NSViewController {
     @IBOutlet var searchEnginesPopUpButton: NSPopUpButton!
     @IBOutlet var searchResultsPopUpButton: NSPopUpButton!
-    @IBOutlet var webView: HighlightedWebView!
+    @IBOutlet var webView: DHWebView!
 
     var dataSource: SearchViewControllerDataSource?
 
@@ -87,10 +87,8 @@ class SearchViewController: NSViewController {
                 return
         }
 
-//        webview
-
-//        let request = URLRequest(url: url)
-//        webView.load(request)
+        let request = URLRequest(url: url)
+        webView.mainFrame.load(request)
     }
 
     func URLForSearchTerm(searchTerm: String) -> URL? {
@@ -109,6 +107,16 @@ class SearchViewController: NSViewController {
         default:
             return nil;
         }
+    }
+}
+
+extension SearchViewController: WebResourceLoadDelegate {
+    func webView(_ sender: WebView!, resource identifier: Any!, didFinishLoadingFrom dataSource: WebDataSource!) {
+        print("didFinishLoadingFrom")
+    }
+
+    func webView(_ sender: WebView!, resource identifier: Any!, didFailLoadingWithError error: Error!, from dataSource: WebDataSource!) {
+        print("didFailLoadingWithError")
     }
 }
 

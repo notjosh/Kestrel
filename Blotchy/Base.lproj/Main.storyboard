@@ -762,11 +762,14 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
-                            <webView translatesAutoresizingMaskIntoConstraints="NO" id="jyJ-be-vEi" customClass="HighlightedWebView">
+                            <webView translatesAutoresizingMaskIntoConstraints="NO" id="jyJ-be-vEi" customClass="DHWebView">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="220"/>
                                 <webPreferences key="preferences" defaultFontSize="16" defaultFixedFontSize="13" minimumFontSize="0">
                                     <nil key="identifier"/>
                                 </webPreferences>
+                                <connections>
+                                    <outlet property="frameLoadDelegate" destination="Aln-Pr-Mkk" id="Rze-U3-0gz"/>
+                                </connections>
                             </webView>
                         </subviews>
                         <constraints>
@@ -785,6 +788,7 @@
                     <connections>
                         <outlet property="searchEnginesPopUpButton" destination="D35-bm-Mtk" id="B4G-fI-bOZ"/>
                         <outlet property="searchResultsPopUpButton" destination="UUg-zP-iKj" id="axf-eL-pH7"/>
+                        <outlet property="webView" destination="jyJ-be-vEi" id="k3C-fA-OUG"/>
                     </connections>
                 </viewController>
                 <customObject id="53s-Ll-2LU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
