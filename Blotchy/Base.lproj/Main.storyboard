@@ -687,10 +687,12 @@
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="Drop Target" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="480" height="270"/>
+                        <value key="maxSize" type="size" width="480" height="270"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
@@ -802,14 +804,17 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Blotchy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="467" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uY-wA-oha" customClass="DroppableView" customModule="Blotchy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="234"/>
+                                <rect key="frame" x="0.0" y="0.0" width="467" height="234"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="467" id="I6n-Qx-oea"/>
+                                </constraints>
                             </customView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xxe-b9-XF1">
-                                <rect key="frame" x="-2" y="242" width="484" height="20"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Xxe-b9-XF1">
+                                <rect key="frame" x="-2" y="242" width="404" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="uUl-OI-H7F"/>
                                 </constraints>
@@ -819,15 +824,24 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button horizontalHuggingPriority="1000" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bde-6h-fjh">
+                                <rect key="frame" x="394" y="235" width="79" height="32"/>
+                                <buttonCell key="cell" type="push" title="via AX" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="O3o-VU-QfN">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="4uY-wA-oha" secondAttribute="trailing" id="3mP-TB-xff"/>
                             <constraint firstItem="Xxe-b9-XF1" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="CKH-fg-SRS"/>
-                            <constraint firstAttribute="trailing" secondItem="Xxe-b9-XF1" secondAttribute="trailing" id="Q2A-X4-INp"/>
+                            <constraint firstItem="Bde-6h-fjh" firstAttribute="leading" secondItem="Xxe-b9-XF1" secondAttribute="trailing" id="OSM-PI-vxZ"/>
                             <constraint firstItem="Xxe-b9-XF1" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="8" id="RVK-hP-gjc"/>
                             <constraint firstItem="4uY-wA-oha" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="bAz-7V-gUW"/>
+                            <constraint firstItem="Bde-6h-fjh" firstAttribute="centerY" secondItem="Xxe-b9-XF1" secondAttribute="centerY" id="bcL-yp-lm2"/>
                             <constraint firstItem="4uY-wA-oha" firstAttribute="top" secondItem="Xxe-b9-XF1" secondAttribute="bottom" constant="8" id="dra-77-l6L"/>
                             <constraint firstAttribute="bottom" secondItem="4uY-wA-oha" secondAttribute="bottom" id="fCl-rR-0Sk"/>
+                            <constraint firstAttribute="trailing" secondItem="Bde-6h-fjh" secondAttribute="trailing" id="m8m-ec-axU"/>
                         </constraints>
                     </view>
                     <connections>
