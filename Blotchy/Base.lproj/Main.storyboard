@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="14109"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14269.12"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="14269.12"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -707,7 +708,7 @@
         <!--Window Controller-->
         <scene sceneID="5pZ-Mk-JiZ">
             <objects>
-                <windowController id="ZCa-oD-uy4" customClass="SearchWindowController" customModule="Blotchy" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="SearchWindowController" id="ZCa-oD-uy4" customClass="SearchWindowController" customModule="Blotchy" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Search" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="AJ2-ME-Kn4">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -803,28 +804,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Blotchy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="467" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="137" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uY-wA-oha" customClass="DroppableView" customModule="Blotchy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="467" height="234"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="467" id="I6n-Qx-oea"/>
-                                </constraints>
-                            </customView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Xxe-b9-XF1">
-                                <rect key="frame" x="-2" y="242" width="404" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="uUl-OI-H7F"/>
-                                </constraints>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="Bfm-X6-ZxM">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <button horizontalHuggingPriority="1000" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bde-6h-fjh">
-                                <rect key="frame" x="394" y="235" width="79" height="32"/>
+                                <rect key="frame" x="29" y="11" width="79" height="32"/>
                                 <buttonCell key="cell" type="push" title="via AX" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="O3o-VU-QfN">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -835,26 +819,17 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="4uY-wA-oha" secondAttribute="trailing" id="3mP-TB-xff"/>
-                            <constraint firstItem="Xxe-b9-XF1" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="CKH-fg-SRS"/>
-                            <constraint firstItem="Bde-6h-fjh" firstAttribute="leading" secondItem="Xxe-b9-XF1" secondAttribute="trailing" id="OSM-PI-vxZ"/>
-                            <constraint firstItem="Xxe-b9-XF1" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="8" id="RVK-hP-gjc"/>
-                            <constraint firstItem="4uY-wA-oha" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="bAz-7V-gUW"/>
-                            <constraint firstItem="Bde-6h-fjh" firstAttribute="centerY" secondItem="Xxe-b9-XF1" secondAttribute="centerY" id="bcL-yp-lm2"/>
-                            <constraint firstItem="4uY-wA-oha" firstAttribute="top" secondItem="Xxe-b9-XF1" secondAttribute="bottom" constant="8" id="dra-77-l6L"/>
-                            <constraint firstAttribute="bottom" secondItem="4uY-wA-oha" secondAttribute="bottom" id="fCl-rR-0Sk"/>
-                            <constraint firstAttribute="trailing" secondItem="Bde-6h-fjh" secondAttribute="trailing" id="m8m-ec-axU"/>
+                            <constraint firstItem="Bde-6h-fjh" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="Ckr-qj-xyh"/>
+                            <constraint firstItem="Bde-6h-fjh" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="tXe-fR-UTI"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="dropTarget" destination="4uY-wA-oha" id="wSF-CF-Rt2"/>
-                        <outlet property="statusLabel" destination="Xxe-b9-XF1" id="xje-TI-uii"/>
                         <segue destination="ZCa-oD-uy4" kind="show" identifier="PerformSearch" id="r1h-W6-BEA"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="-90.5" y="548"/>
         </scene>
     </scenes>
 </document>

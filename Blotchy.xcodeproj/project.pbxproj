@@ -8,17 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		422676B320C7EF710007C006 /* SelectedTextGrabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422676B220C7EF710007C006 /* SelectedTextGrabber.swift */; };
+		422676B520C804AF0007C006 /* CursorGestureTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422676B420C804AF0007C006 /* CursorGestureTracker.swift */; };
 		4272AF0820C686BB00F15834 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272AF0720C686BB00F15834 /* AppDelegate.swift */; };
 		4272AF0A20C686BB00F15834 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272AF0920C686BB00F15834 /* ViewController.swift */; };
 		4272AF0C20C686BD00F15834 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4272AF0B20C686BD00F15834 /* Assets.xcassets */; };
 		4272AF0F20C686BD00F15834 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4272AF0D20C686BD00F15834 /* Main.storyboard */; };
-		4272AF1820C690C900F15834 /* DroppableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272AF1720C690C900F15834 /* DroppableView.swift */; };
 		4272AF1A20C6A4DD00F15834 /* SearchWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272AF1920C6A4DD00F15834 /* SearchWindowController.swift */; };
 		F6FFA44A73269B80ACFA3681 /* Pods_Blotchy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 960BBAF11BD45921ED9D044A /* Pods_Blotchy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		422676B220C7EF710007C006 /* SelectedTextGrabber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTextGrabber.swift; sourceTree = "<group>"; };
+		422676B420C804AF0007C006 /* CursorGestureTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorGestureTracker.swift; sourceTree = "<group>"; };
 		4272AF0420C686BB00F15834 /* Blotchy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blotchy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4272AF0720C686BB00F15834 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4272AF0920C686BB00F15834 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,7 +27,6 @@
 		4272AF0E20C686BD00F15834 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4272AF1020C686BD00F15834 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4272AF1120C686BD00F15834 /* Blotchy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Blotchy.entitlements; sourceTree = "<group>"; };
-		4272AF1720C690C900F15834 /* DroppableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroppableView.swift; sourceTree = "<group>"; };
 		4272AF1920C6A4DD00F15834 /* SearchWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWindowController.swift; sourceTree = "<group>"; };
 		5604E62ADCECD31F55BE08B3 /* Pods-Blotchy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blotchy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blotchy/Pods-Blotchy.release.xcconfig"; sourceTree = "<group>"; };
 		696E8E9F6CF3A28CA09A1744 /* Pods-Blotchy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blotchy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blotchy/Pods-Blotchy.debug.xcconfig"; sourceTree = "<group>"; };
@@ -76,9 +76,9 @@
 			children = (
 				4272AF0720C686BB00F15834 /* AppDelegate.swift */,
 				4272AF0920C686BB00F15834 /* ViewController.swift */,
-				4272AF1720C690C900F15834 /* DroppableView.swift */,
 				4272AF1920C6A4DD00F15834 /* SearchWindowController.swift */,
 				422676B220C7EF710007C006 /* SelectedTextGrabber.swift */,
+				422676B420C804AF0007C006 /* CursorGestureTracker.swift */,
 				4272AF0B20C686BD00F15834 /* Assets.xcassets */,
 				4272AF0D20C686BD00F15834 /* Main.storyboard */,
 				4272AF1020C686BD00F15834 /* Info.plist */,
@@ -214,7 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4272AF1820C690C900F15834 /* DroppableView.swift in Sources */,
+				422676B520C804AF0007C006 /* CursorGestureTracker.swift in Sources */,
 				4272AF1A20C6A4DD00F15834 /* SearchWindowController.swift in Sources */,
 				4272AF0A20C686BB00F15834 /* ViewController.swift in Sources */,
 				4272AF0820C686BB00F15834 /* AppDelegate.swift in Sources */,
