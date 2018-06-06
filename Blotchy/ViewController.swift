@@ -20,7 +20,8 @@ class ViewController: NSViewController {
     var string: String?
 
     var monitor: Any?
-
+	
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,7 +34,7 @@ class ViewController: NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
 
-        view.window?.level = .floating
+        view.window?.level = .floating //floating window
 
         subscribe()
     }
