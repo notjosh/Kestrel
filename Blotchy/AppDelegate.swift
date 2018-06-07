@@ -8,12 +8,17 @@
 
 import Cocoa
 
-let SearchWindowControllerIdentifier = "SearchWindowController"
+enum Identifier: NSStoryboard.SceneIdentifier {
+    case searchWindowController = "SearchWindowController"
+}
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    @IBOutlet var statusItemMenu: NSMenu!
+
     var cursorGestureTracker: CursorGestureTracker = CursorGestureTracker()
     let grabber = ClipboardSelectedTextGrabber()
+    var statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
 
     var searchWindowController: SearchWindowController? {
         get {
@@ -33,6 +38,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         cursorGestureTracker.delegate = self
         cursorGestureTracker.start()
+
+        // menu bar
+        // Warm by Pham Duy Phuong Hung from the Noun Project
+        // https://thenounproject.com/search/?q=warm&i=1554494
+        statusItem.button?.image = NSImage(named: "menu-icon")
+        statusItem.menu = statusItemMenu
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -73,7 +84,7 @@ extension AppDelegate: CursorGestureTrackerDelegate {
             return
         }
 
-        let wc = storyboard.instantiateController(withIdentifier: SearchWindowControllerIdentifier)
+        let wc = storyboard.instantiateController(withIdentifier: Identifier.searchWindowController.rawValue)
 
         guard let swc = wc as? SearchWindowController else {
             return

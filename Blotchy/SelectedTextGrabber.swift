@@ -20,6 +20,12 @@ protocol SelectedTextGrabber {
 
 class ClipboardSelectedTextGrabber: SelectedTextGrabber {
     func selectedTextInActiveApp(then callback: @escaping SelectedTextGrabberCallback) {
+        guard UIElement.isProcessTrusted(withPrompt: true) else {
+            print("UIElement.isProcessTrusted fails")
+            callback(nil)
+            return
+        }
+
         let top = topOfClipboard()
 
         self.performGlobalCopyShortcut()
