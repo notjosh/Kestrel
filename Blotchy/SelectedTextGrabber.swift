@@ -9,31 +9,86 @@
 import Cocoa
 import AXSwift
 
+// yay:
+import Carbon.HIToolbox
+
+typealias SelectedTextGrabberCallback = (String?) -> ()
+
 protocol SelectedTextGrabber {
-    func selectedTextInActiveApp() -> String?
+    func selectedTextInActiveApp(then callback: @escaping SelectedTextGrabberCallback)
+}
+
+class ClipboardSelectedTextGrabber: SelectedTextGrabber {
+    func selectedTextInActiveApp(then callback: @escaping SelectedTextGrabberCallback) {
+        // TODO: this won't let us open the same thing twice in a row. can we get metadata on the pasteboard, to check the same item twice?
+        let top = topOfClipboard()
+
+        self.performGlobalCopyShortcut()
+
+        // wait for copy. super arbitrary timeout.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+            guard let newTop = self?.topOfClipboard(),
+                top != newTop else {
+                    print("nothing found on clipboard")
+                    callback(nil)
+                    return
+            }
+
+            print("clipboard text:", newTop)
+            callback(newTop)
+        }
+    }
+
+    // MARK: Helper
+    func topOfClipboard() -> String? {
+        return NSPasteboard
+            .general
+            .readObjects(forClasses: [NSString.self], options: nil)?.first as? String
+    }
+
+    func performGlobalCopyShortcut() {
+        let eventSource = CGEventSource(stateID: .hidSystemState)
+
+        func keyEvents(forPressAndReleaseVirtualKey virtualKey: Int) -> [CGEvent] {
+            return [
+                CGEvent(keyboardEventSource: eventSource, virtualKey: CGKeyCode(virtualKey), keyDown: true)!,
+                CGEvent(keyboardEventSource: eventSource, virtualKey: CGKeyCode(virtualKey), keyDown: false)!,
+            ]
+        }
+
+        keyEvents(forPressAndReleaseVirtualKey: kVK_ANSI_C)
+            .forEach {
+                $0.flags = .maskCommand
+                $0.post(tap: .cghidEventTap)
+        }
+    }
 }
 
 class AccessibilitySelectedTextGrabber: SelectedTextGrabber {
-    func selectedTextInActiveApp() -> String? {
+    func selectedTextInActiveApp(then callback: @escaping SelectedTextGrabberCallback) {
         guard UIElement.isProcessTrusted(withPrompt: true) else {
             print("UIElement.isProcessTrusted fails")
-            return nil
+            callback(nil)
+            return
         }
 
         guard let frontmostApplication = NSWorkspace.shared.frontmostApplication else {
             print("can't fint application at front, bailing")
-            return nil
+            callback(nil)
+            return
         }
 
         guard let application = Application(frontmostApplication) else {
             print("AX can't find application for frontmost application '\(frontmostApplication)'")
-            return nil
+            callback(nil)
+            return
         }
 
         guard let maybeTitle = try? application.attribute(.title) as String?,
             let title = maybeTitle else {
                 print("AX can't find window title, probably bad. bailing.")
-                return nil
+                callback(nil)
+                return
         }
 
         print("looking in window: \(title)")
@@ -41,7 +96,8 @@ class AccessibilitySelectedTextGrabber: SelectedTextGrabber {
         guard let maybeElement = try? application.attribute(.focusedUIElement) as UIElement?,
             let element = maybeElement else {
                 print("can't find focused element, bailing")
-                return nil
+                callback(nil)
+                return
         }
 
         print("found focused element: \(element)")
@@ -49,16 +105,18 @@ class AccessibilitySelectedTextGrabber: SelectedTextGrabber {
         guard let maybeSelectedText = try? element.attribute(.selectedText) as String?,
             let selectedText = maybeSelectedText else {
                 print("can't find selected text, bailing")
-                return nil
+                callback(nil)
+                return
         }
 
         guard selectedText != "" else {
             print("selected text is an empty string, bailing")
-            return nil
+            callback(nil)
+            return
         }
 
         print("found selected text: '\(selectedText)'")
 
-        return selectedText
+        return callback(selectedText)
     }
 }

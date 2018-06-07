@@ -13,6 +13,7 @@ let SearchWindowControllerIdentifier = "SearchWindowController"
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     var cursorGestureTracker: CursorGestureTracker = CursorGestureTracker()
+    let grabber = ClipboardSelectedTextGrabber()
 
     var searchWindowController: SearchWindowController? {
         get {
@@ -55,16 +56,20 @@ extension AppDelegate: CursorGestureTrackerDelegate {
     func didFlingRight() {
         print("made it right")
 
-        let grabber = AccessibilitySelectedTextGrabber()
+        grabber.selectedTextInActiveApp() { [weak self] string in
+            guard let string = string else {
+                print("can't find any selected text, dammit")
+                return
+            }
 
-        guard let selectedText = grabber.selectedTextInActiveApp() else {
-            print("can't find any selected text, dammit")
-            return
+            self?.showSearchWindow(with: string)
         }
+    }
 
+    func showSearchWindow(with searchTerm: String) {
         // we should only have one of these windows, okay
         if let searchWindowController = searchWindowController {
-            searchWindowController.searchTerm = selectedText
+            searchWindowController.searchTerm = searchTerm
             return
         }
 
@@ -74,7 +79,7 @@ extension AppDelegate: CursorGestureTrackerDelegate {
             return
         }
 
-        swc.searchTerm = selectedText
+        swc.searchTerm = searchTerm
 
         swc.window?.level = .floating
         swc.window?.isReleasedWhenClosed = true

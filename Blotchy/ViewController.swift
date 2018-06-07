@@ -26,13 +26,15 @@ class ViewController: NSViewController {
     @IBAction func handleViaAccessibilityPressed(sender: Any) {
         let grabber = AccessibilitySelectedTextGrabber()
 
-        guard let string = grabber.selectedTextInActiveApp() else {
-            return
+        grabber.selectedTextInActiveApp() { [weak self] string in
+            guard let string = string else {
+                return
+            }
+
+            self?.string = string
+
+            self?.maybeLaunchBrowser()
         }
-
-        self.string = string
-
-        maybeLaunchBrowser()
     }
 
     // MARK: - helper
