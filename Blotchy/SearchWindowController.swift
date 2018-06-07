@@ -73,6 +73,8 @@ class SearchViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Safari/605.1.15"
+
         go()
     }
 
