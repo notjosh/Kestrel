@@ -20,30 +20,30 @@ protocol SelectedTextGrabber {
 
 class ClipboardSelectedTextGrabber: SelectedTextGrabber {
     func selectedTextInActiveApp(then callback: @escaping SelectedTextGrabberCallback) {
-        // TODO: this won't let us open the same thing twice in a row. can we get metadata on the pasteboard, to check the same item twice?
         let top = topOfClipboard()
 
         self.performGlobalCopyShortcut()
 
         // wait for copy. super arbitrary timeout.
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-            guard let newTop = self?.topOfClipboard(),
-                top != newTop else {
+            guard let top = top,
+                let newTop = self?.topOfClipboard(),
+                top !== newTop,
+                let string = newTop.string(forType: .string)
+                else {
                     print("nothing found on clipboard")
                     callback(nil)
                     return
             }
 
-            print("clipboard text:", newTop)
-            callback(newTop)
+            print("clipboard text:", string)
+            callback(string)
         }
     }
 
     // MARK: Helper
-    func topOfClipboard() -> String? {
-        return NSPasteboard
-            .general
-            .readObjects(forClasses: [NSString.self], options: nil)?.first as? String
+    func topOfClipboard() -> NSPasteboardItem? {
+        return NSPasteboard.general.pasteboardItems?.first
     }
 
     func performGlobalCopyShortcut() {
