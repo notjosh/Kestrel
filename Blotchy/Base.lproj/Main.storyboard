@@ -685,6 +685,12 @@
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <menu id="grI-75-PEA">
                     <items>
+                        <menuItem title="About" id="Qam-TH-tK5">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="orderFrontStandardAboutPanelWithSender:" target="Voe-Tx-rLC" id="c9i-ar-BBA"/>
+                            </connections>
+                        </menuItem>
                         <menuItem title="Quit" id="sBv-oy-ajT">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>

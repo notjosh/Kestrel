@@ -14,6 +14,7 @@
 		4272AF0C20C686BD00F15834 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4272AF0B20C686BD00F15834 /* Assets.xcassets */; };
 		4272AF0F20C686BD00F15834 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4272AF0D20C686BD00F15834 /* Main.storyboard */; };
 		4272AF1A20C6A4DD00F15834 /* SearchWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272AF1920C6A4DD00F15834 /* SearchWindowController.swift */; };
+		42F82E2F20C95EF300385465 /* Credits.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 42F82E2E20C95EF300385465 /* Credits.rtfd */; };
 		F6FFA44A73269B80ACFA3681 /* Pods_Blotchy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 960BBAF11BD45921ED9D044A /* Pods_Blotchy.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		4272AF0E20C686BD00F15834 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4272AF1020C686BD00F15834 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4272AF1920C6A4DD00F15834 /* SearchWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWindowController.swift; sourceTree = "<group>"; };
+		42F82E2E20C95EF300385465 /* Credits.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = Credits.rtfd; sourceTree = "<group>"; };
 		5604E62ADCECD31F55BE08B3 /* Pods-Blotchy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blotchy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blotchy/Pods-Blotchy.release.xcconfig"; sourceTree = "<group>"; };
 		696E8E9F6CF3A28CA09A1744 /* Pods-Blotchy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blotchy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blotchy/Pods-Blotchy.debug.xcconfig"; sourceTree = "<group>"; };
 		960BBAF11BD45921ED9D044A /* Pods_Blotchy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blotchy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +83,7 @@
 				4272AF0B20C686BD00F15834 /* Assets.xcassets */,
 				4272AF0D20C686BD00F15834 /* Main.storyboard */,
 				4272AF1020C686BD00F15834 /* Info.plist */,
+				42F82E2E20C95EF300385465 /* Credits.rtfd */,
 			);
 			path = Blotchy;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42F82E2F20C95EF300385465 /* Credits.rtfd in Resources */,
 				4272AF0C20C686BD00F15834 /* Assets.xcassets in Resources */,
 				4272AF0F20C686BD00F15834 /* Main.storyboard in Resources */,
 			);

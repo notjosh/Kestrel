@@ -55,6 +55,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return NSStoryboard.main!
         }
     }
+
+    // MARK: Actions
+    @IBAction func orderFrontStandardAboutPanel(sender: Any) {
+        let options: [NSApplication.AboutPanelOptionKey: Any] = [
+            // avoid showing standard copyright line, since it's wrong
+            NSApplication.AboutPanelOptionKey(rawValue: "Copyright"): ""
+        ]
+
+        NSApp.orderFrontStandardAboutPanel(options: options)
+    }
 }
 
 extension AppDelegate: CursorGestureTrackerDelegate {
