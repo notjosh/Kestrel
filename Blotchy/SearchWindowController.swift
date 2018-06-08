@@ -67,8 +67,9 @@ class SearchViewController: NSViewController {
     @IBOutlet var searchEnginesPopUpButton: NSPopUpButton!
     @IBOutlet var searchResultsPopUpButton: NSPopUpButton!
     @IBOutlet var webView: DHWebView!
-
-    var dataSource: SearchViewControllerDataSource?
+	@IBOutlet var contextField: NSTextField!
+	
+	var dataSource: SearchViewControllerDataSource?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +84,11 @@ class SearchViewController: NSViewController {
         go()
     }
 
+	@IBAction func handleContextTerm(sender: Any) {
+		go()
+	}
+
+	
     func reload() {
         go()
     }
@@ -103,17 +109,19 @@ class SearchViewController: NSViewController {
     func URLForSearchTerm(searchTerm: String) -> URL? {
         guard let encoded = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return nil
-        }
-
-        switch searchEnginesPopUpButton.indexOfSelectedItem {
-        case 0: // google
-            return URL(string: "https://www.google.com/search?hl=en&q=\(encoded)")
-        case 1: // ddg
-            return URL(string: "https://duckduckgo.com/?q=\(encoded)")
-        case 2: // so
-            return URL(string: "https://stackoverflow.com/search?q=\(encoded)")
+		}
+		let escapedString:String = (contextField.stringValue.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed))!
+		
+		
+		switch searchEnginesPopUpButton.indexOfSelectedItem {
+		case 0: // google
+			return URL(string: "https://www.google.com/search?hl=en&q=\(encoded)" + "%20" + escapedString)
+		case 1: // ddg
+			return URL(string: "https://duckduckgo.com/?q=\(encoded)" + "%20" + escapedString)
+		case 2: // so
+			return URL(string: "https://stackoverflow.com/search?q=\(encoded)" + "%20" + escapedString)
 		case 3: // google I feel lucky
-			let iFeelLuckyString : String = ("https://www.google.com/search?hl=en&q=\(encoded)" + "%20&btnI")
+			let iFeelLuckyString : String = ("https://www.google.com/search?hl=en&q=\(encoded)" + "%20" + escapedString + "%20&btnI")
 			// the '&btnI' is the 'I feel lucky' button. Apparently it won't always work. Works for me.
 			return URL(string: iFeelLuckyString)
         default:

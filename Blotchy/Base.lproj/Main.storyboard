@@ -779,11 +779,14 @@
                             </webView>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E30-5o-Etm">
                                 <rect key="frame" x="10" y="243" width="356" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" title="Context terms" drawsBackground="YES" id="c9M-JR-KMm">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" title="Context terms" placeholderString="Cocoa Mac" drawsBackground="YES" id="c9M-JR-KMm">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <action selector="handleContextTermWithSender:" target="Aln-Pr-Mkk" id="wba-aq-zju"/>
+                                </connections>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D35-bm-Mtk">
                                 <rect key="frame" x="372" y="241" width="125" height="26"/>
@@ -815,13 +818,14 @@
                             <constraint firstItem="E30-5o-Etm" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" constant="10" id="ThD-P8-L0b"/>
                             <constraint firstAttribute="bottom" secondItem="jyJ-be-vEi" secondAttribute="bottom" id="Wml-Cu-brc"/>
                             <constraint firstAttribute="trailing" secondItem="jyJ-be-vEi" secondAttribute="trailing" id="YRI-iT-dyg"/>
-                            <constraint firstAttribute="trailing" secondItem="D35-bm-Mtk" secondAttribute="trailing" id="e6W-JK-l0u"/>
+                            <constraint firstAttribute="trailing" secondItem="D35-bm-Mtk" secondAttribute="trailing" constant="10" id="e6W-JK-l0u"/>
                             <constraint firstItem="jyJ-be-vEi" firstAttribute="top" secondItem="UUg-zP-iKj" secondAttribute="bottom" constant="4" id="hFb-9M-uWe"/>
                             <constraint firstItem="D35-bm-Mtk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0wk-HE-ntR" secondAttribute="leading" constant="350" id="hnx-k8-6HP"/>
                             <constraint firstAttribute="trailing" secondItem="UUg-zP-iKj" secondAttribute="trailing" id="qoo-oc-5zB"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="contextField" destination="E30-5o-Etm" id="4zd-iQ-nFP"/>
                         <outlet property="searchEnginesPopUpButton" destination="D35-bm-Mtk" id="B4G-fI-bOZ"/>
                         <outlet property="searchResultsPopUpButton" destination="UUg-zP-iKj" id="axf-eL-pH7"/>
                         <outlet property="webView" destination="jyJ-be-vEi" id="k3C-fA-OUG"/>

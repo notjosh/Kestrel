@@ -15,6 +15,7 @@ enum Identifier: NSStoryboard.SceneIdentifier {
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var statusItemMenu: NSMenu!
+	
 
     var cursorGestureTracker: CursorGestureTracker = CursorGestureTracker()
     let grabber = ClipboardSelectedTextGrabber()
