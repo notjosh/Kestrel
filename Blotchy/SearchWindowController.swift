@@ -111,7 +111,6 @@ class SearchViewController: NSViewController {
 	}
 	
 	
-	
     func reload() {
         go()
     }
