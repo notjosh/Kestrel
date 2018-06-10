@@ -133,9 +133,16 @@ class CursorGestureTracker {
         }
 
         let width = screen.frame.width
-        let fraction: CGFloat = 0.5/100 // 0.5% of screen, to account for rounding
-        let leftXThreshold = width * fraction
-        let rightXThreshold = width - (width * fraction)
+        //let fraction: CGFloat = 0.5/100 // 0.5% of screen, to account for rounding
+		
+		let magicThreshold: CGFloat = 8.0
+		// Sketch insets its inspector sidebar textfields by 9 points :)
+		
+		let leftXThreshold = magicThreshold
+		let rightXThreshold = width - (magicThreshold)
+		
+		//let leftXThreshold = width * fraction
+        //let rightXThreshold = width - (width * fraction)
 
         let thresholdHit: Direction? = {
             if currentX < leftXThreshold {

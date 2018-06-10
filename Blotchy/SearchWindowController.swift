@@ -98,7 +98,6 @@ class SearchViewController: NSViewController {
     }
 
 	@IBAction func handleContextTerm(sender: Any) {
-//		let stringToSave:String = contextField.stringValue
 		UserDefaults.standard.set(contextField.stringValue, forKey: "context")
 		go()
 	}
