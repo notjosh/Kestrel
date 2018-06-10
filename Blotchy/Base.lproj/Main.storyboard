@@ -835,10 +835,10 @@
             </objects>
             <point key="canvasLocation" x="686" y="655"/>
         </scene>
-        <!--View Controller-->
+        <!--Drop Target View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Blotchy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="DropTargetViewController" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="137" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -851,6 +851,7 @@
                                 </buttonCell>
                                 <connections>
                                     <action selector="handleViaAccessibilityPressedWithSender:" target="XfG-lQ-9wD" id="MxN-cf-BGR"/>
+                                    <segue destination="osR-md-kkf" kind="show" id="JtN-Lh-29I"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -867,5 +868,52 @@
             </objects>
             <point key="canvasLocation" x="-90.5" y="548"/>
         </scene>
+        <!--Window Controller-->
+        <scene sceneID="i6b-Bd-udf">
+            <objects>
+                <windowController id="osR-md-kkf" sceneMemberID="viewController">
+                    <window key="window" title="FloatingSearchButton" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="j2z-iZ-dkw" customClass="NSPanel">
+                        <windowStyleMask key="styleMask" nonactivatingPanel="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="425" y="461" width="297" height="276"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+                        <connections>
+                            <outlet property="delegate" destination="osR-md-kkf" id="6Xa-W6-LMc"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="52q-m8-HTK" kind="relationship" relationship="window.shadowedContentViewController" id="78v-lr-skj"/>
+                    </connections>
+                </windowController>
+                <customObject id="K72-Vy-9LY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-135.5" y="1136"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="GNK-9W-XGw">
+            <objects>
+                <viewController id="52q-m8-HTK" sceneMemberID="viewController">
+                    <view key="view" id="Dt5-au-ZED">
+                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FrX-2Z-eKr">
+                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="buttonSearchFloating" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="r3a-Q7-hGK">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="rqw-xY-Wr9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="447" y="997"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="buttonSearchFloating" width="64" height="64"/>
+    </resources>
 </document>

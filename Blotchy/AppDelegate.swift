@@ -81,13 +81,16 @@ extension AppDelegate: CursorGestureTrackerDelegate {
         grabber.selectedTextInActiveApp() { [weak self] string in
             guard let string = string else {
                 print("can't find any selected text, dammit")
-                return
+				
+				return
             }
 
             self?.showSearchWindow(with: string)
         }
     }
 
+	
+	
     func showSearchWindow(with searchTerm: String) {
         // we should only have one of these windows, okay
         if let searchWindowController = searchWindowController {
@@ -107,4 +110,9 @@ extension AppDelegate: CursorGestureTrackerDelegate {
         swc.window?.isReleasedWhenClosed = true
         swc.window?.makeKeyAndOrderFront(self)
     }
+	
+//	func showFloatingSearchButton() {
+//		// todo show the floating search button
+//	}
+
 }
