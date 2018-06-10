@@ -76,6 +76,19 @@ class SearchViewController: NSViewController {
 
         webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Safari/605.1.15"
 
+		
+		
+		if UserDefaults.standard.string(forKey: "context") == "" {
+			//key never existed
+			UserDefaults.standard.set("Cocoa Mac", forKey: "context")
+			
+		} else {
+			
+			contextField.stringValue =  UserDefaults.standard.string(forKey: "context")!
+			
+		}
+		
+		
         go()
     }
 
@@ -85,6 +98,8 @@ class SearchViewController: NSViewController {
     }
 
 	@IBAction func handleContextTerm(sender: Any) {
+//		let stringToSave:String = contextField.stringValue
+		UserDefaults.standard.set(contextField.stringValue, forKey: "context")
 		go()
 	}
 
