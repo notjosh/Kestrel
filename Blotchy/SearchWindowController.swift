@@ -68,6 +68,8 @@ class SearchViewController: NSViewController {
     @IBOutlet var searchResultsPopUpButton: NSPopUpButton!
     @IBOutlet var webView: DHWebView!
 	@IBOutlet var contextField: NSTextField!
+	@IBOutlet var searchTermField: NSTextField!
+	
 	
 	var dataSource: SearchViewControllerDataSource?
 
@@ -104,6 +106,11 @@ class SearchViewController: NSViewController {
 		go()
 	}
 
+	@IBAction func handleSearchTermChange(_ sender: Any) {
+		go()
+	}
+	
+	
 	
     func reload() {
         go()
@@ -113,11 +120,11 @@ class SearchViewController: NSViewController {
     func go() {
         guard
             let searchTerm = dataSource?.searchTerm,
-            let url = URLForSearchTerm(searchTerm: searchTerm)
+			let url = URLForSearchTerm(searchTerm: searchTerm)
             else {
                 return
         }
-
+		searchTermField.stringValue = searchTerm
         let request = URLRequest(url: url)
         webView.mainFrame.load(request)
     }

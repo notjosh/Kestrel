@@ -735,8 +735,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="506" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <popUpButton hidden="YES" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UUg-zP-iKj">
-                                <rect key="frame" x="-2" y="218" width="485" height="26"/>
+                            <popUpButton hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UUg-zP-iKj">
+                                <rect key="frame" x="18" y="179" width="471" height="26"/>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="fM5-RT-1rN" id="B2p-lQ-sT5">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -750,7 +750,7 @@
                                 </popUpButtonCell>
                             </popUpButton>
                             <webView translatesAutoresizingMaskIntoConstraints="NO" id="jyJ-be-vEi" customClass="DHWebView">
-                                <rect key="frame" x="0.0" y="0.0" width="506" height="215"/>
+                                <rect key="frame" x="0.0" y="0.0" width="506" height="174"/>
                                 <webPreferences key="preferences" defaultFontSize="16" defaultFixedFontSize="13" minimumFontSize="0">
                                     <nil key="identifier"/>
                                 </webPreferences>
@@ -759,7 +759,7 @@
                                 </connections>
                             </webView>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E30-5o-Etm">
-                                <rect key="frame" x="10" y="243" width="356" height="22"/>
+                                <rect key="frame" x="20" y="211" width="338" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" title="Cocoa Swift" placeholderString="Cocoa Mac" drawsBackground="YES" id="c9M-JR-KMm">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -769,8 +769,11 @@
                                     <action selector="handleContextTermWithSender:" target="Aln-Pr-Mkk" id="wba-aq-zju"/>
                                 </connections>
                             </textField>
-                            <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D35-bm-Mtk">
-                                <rect key="frame" x="372" y="241" width="125" height="26"/>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D35-bm-Mtk">
+                                <rect key="frame" x="364" y="209" width="125" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="nPF-xE-F2w"/>
+                                </constraints>
                                 <popUpButtonCell key="cell" type="push" title="Google" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="WcN-XF-QGB" id="TcF-5J-vx0">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -787,28 +790,41 @@
                                     <action selector="handleSearchEngineChangeWithSender:" target="Aln-Pr-Mkk" id="yb0-b3-6g2"/>
                                 </connections>
                             </popUpButton>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZwP-63-ulU">
+                                <rect key="frame" x="20" y="243" width="466" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="SearchTerm" drawsBackground="YES" id="Tsf-Ro-BsK">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <action selector="handleSearchTermChange:" target="Aln-Pr-Mkk" id="isO-QN-Vbt"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="E30-5o-Etm" firstAttribute="top" secondItem="D35-bm-Mtk" secondAttribute="top" id="5AC-mA-z4e"/>
-                            <constraint firstItem="UUg-zP-iKj" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" id="B8q-hy-yhn"/>
-                            <constraint firstAttribute="trailing" secondItem="E30-5o-Etm" secondAttribute="trailing" constant="140" id="D38-BN-OO1"/>
-                            <constraint firstItem="UUg-zP-iKj" firstAttribute="top" secondItem="D35-bm-Mtk" secondAttribute="bottom" constant="4" id="FUd-dO-VXL"/>
-                            <constraint firstItem="D35-bm-Mtk" firstAttribute="leading" secondItem="E30-5o-Etm" secondAttribute="trailing" constant="8" symbolic="YES" id="HJa-Q9-vdf"/>
-                            <constraint firstItem="jyJ-be-vEi" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" id="JoI-rb-tEa"/>
-                            <constraint firstItem="D35-bm-Mtk" firstAttribute="top" secondItem="0wk-HE-ntR" secondAttribute="top" constant="5" id="Nuy-Mo-fAX"/>
-                            <constraint firstItem="E30-5o-Etm" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" constant="10" id="ThD-P8-L0b"/>
-                            <constraint firstAttribute="bottom" secondItem="jyJ-be-vEi" secondAttribute="bottom" id="Wml-Cu-brc"/>
-                            <constraint firstAttribute="trailing" secondItem="jyJ-be-vEi" secondAttribute="trailing" id="YRI-iT-dyg"/>
-                            <constraint firstAttribute="trailing" secondItem="D35-bm-Mtk" secondAttribute="trailing" constant="10" id="e6W-JK-l0u"/>
-                            <constraint firstItem="jyJ-be-vEi" firstAttribute="top" secondItem="UUg-zP-iKj" secondAttribute="bottom" constant="4" id="hFb-9M-uWe"/>
-                            <constraint firstItem="D35-bm-Mtk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0wk-HE-ntR" secondAttribute="leading" constant="350" id="hnx-k8-6HP"/>
-                            <constraint firstAttribute="trailing" secondItem="UUg-zP-iKj" secondAttribute="trailing" id="qoo-oc-5zB"/>
+                            <constraint firstAttribute="bottom" secondItem="jyJ-be-vEi" secondAttribute="bottom" id="0Qe-WO-uhV"/>
+                            <constraint firstItem="ZwP-63-ulU" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" constant="20" symbolic="YES" id="7QI-Fd-yQr"/>
+                            <constraint firstItem="ZwP-63-ulU" firstAttribute="top" secondItem="0wk-HE-ntR" secondAttribute="top" constant="5" id="DIt-H4-2I0"/>
+                            <constraint firstItem="E30-5o-Etm" firstAttribute="top" secondItem="ZwP-63-ulU" secondAttribute="bottom" constant="10" symbolic="YES" id="KPf-Rr-j62"/>
+                            <constraint firstItem="ZwP-63-ulU" firstAttribute="leading" secondItem="UUg-zP-iKj" secondAttribute="leading" id="XZI-VR-lJH"/>
+                            <constraint firstItem="E30-5o-Etm" firstAttribute="top" secondItem="D35-bm-Mtk" secondAttribute="top" id="e9V-KU-WEU"/>
+                            <constraint firstItem="UUg-zP-iKj" firstAttribute="top" secondItem="E30-5o-Etm" secondAttribute="bottom" constant="8" id="eLJ-8H-lm8"/>
+                            <constraint firstAttribute="trailing" secondItem="ZwP-63-ulU" secondAttribute="trailing" constant="20" symbolic="YES" id="hLt-1Z-Hpa"/>
+                            <constraint firstItem="jyJ-be-vEi" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" id="iib-0R-Fxo"/>
+                            <constraint firstItem="ZwP-63-ulU" firstAttribute="centerX" secondItem="jyJ-be-vEi" secondAttribute="centerX" id="jot-RM-Ug0"/>
+                            <constraint firstItem="ZwP-63-ulU" firstAttribute="leading" secondItem="E30-5o-Etm" secondAttribute="leading" id="mPU-t4-Pkb"/>
+                            <constraint firstItem="jyJ-be-vEi" firstAttribute="top" secondItem="UUg-zP-iKj" secondAttribute="bottom" constant="8" id="r05-Qz-SRy"/>
+                            <constraint firstItem="D35-bm-Mtk" firstAttribute="leading" secondItem="E30-5o-Etm" secondAttribute="trailing" constant="8" symbolic="YES" id="r8K-tp-axf"/>
+                            <constraint firstItem="ZwP-63-ulU" firstAttribute="trailing" secondItem="UUg-zP-iKj" secondAttribute="trailing" id="t9W-wh-ANT"/>
+                            <constraint firstItem="ZwP-63-ulU" firstAttribute="trailing" secondItem="D35-bm-Mtk" secondAttribute="trailing" id="yik-Qb-OGg"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="contextField" destination="E30-5o-Etm" id="4zd-iQ-nFP"/>
                         <outlet property="searchEnginesPopUpButton" destination="D35-bm-Mtk" id="B4G-fI-bOZ"/>
                         <outlet property="searchResultsPopUpButton" destination="UUg-zP-iKj" id="axf-eL-pH7"/>
+                        <outlet property="searchTermField" destination="ZwP-63-ulU" id="wYI-SV-Mc7"/>
                         <outlet property="webView" destination="jyJ-be-vEi" id="k3C-fA-OUG"/>
                     </connections>
                 </viewController>
