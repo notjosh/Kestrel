@@ -798,7 +798,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <action selector="handleSearchTermChange:" target="Aln-Pr-Mkk" id="isO-QN-Vbt"/>
+                                    <action selector="handleSearchTermChangeWithSender:" target="Aln-Pr-Mkk" id="G27-jU-qMj"/>
                                 </connections>
                             </textField>
                         </subviews>

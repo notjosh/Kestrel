@@ -70,7 +70,7 @@ class SearchViewController: NSViewController {
 	@IBOutlet var contextField: NSTextField!
 	@IBOutlet var searchTermField: NSTextField!
 	
-	
+	var userEditedSearchField: Bool = false
 	var dataSource: SearchViewControllerDataSource?
 
     override func viewDidLoad() {
@@ -79,18 +79,15 @@ class SearchViewController: NSViewController {
         webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Safari/605.1.15"
 
 		
-		
 		if UserDefaults.standard.string(forKey: "context") == "" {
 			//key never existed
 			UserDefaults.standard.set("Cocoa Mac", forKey: "context")
-			
 		} else {
 			
 			contextField.stringValue =  UserDefaults.standard.string(forKey: "context")!
 			
 		}
-		
-		
+		userEditedSearchField = false
         go()
     }
 
@@ -106,7 +103,9 @@ class SearchViewController: NSViewController {
 		go()
 	}
 
-	@IBAction func handleSearchTermChange(_ sender: Any) {
+	@IBAction func handleSearchTermChange(sender: Any) {
+		userEditedSearchField = true
+		print("handleSearchTermChange")
 		go()
 	}
 	
@@ -116,14 +115,23 @@ class SearchViewController: NSViewController {
     }
 
     // MARK: Helper
-    func go() {
+	func go() {
         guard
             let searchTerm = dataSource?.searchTerm,
-			let url = URLForSearchTerm(searchTerm: searchTerm)
+			var url = URLForSearchTerm(searchTerm: searchTerm)
             else {
                 return
         }
-		searchTermField.stringValue = searchTerm
+
+		// ok this is not good but it works
+		if userEditedSearchField == true {
+			print("userEditedSearchField true")
+			url = URLForSearchTerm(searchTerm: searchTermField.stringValue)!
+		} else {
+			searchTermField.stringValue = searchTerm
+		}
+		
+		userEditedSearchField = false
         let request = URLRequest(url: url)
         webView.mainFrame.load(request)
     }
