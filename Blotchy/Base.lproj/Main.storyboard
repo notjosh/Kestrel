@@ -64,6 +64,7 @@
                                         <menuItem title="New" keyEquivalent="n" id="Was-JA-tGl">
                                             <connections>
                                                 <action selector="newDocument:" target="Ady-hI-5gd" id="4Si-XN-c54"/>
+                                                <segue destination="ZCa-oD-uy4" kind="show" id="WH6-o5-Jut"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
@@ -676,31 +677,11 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Blotchy" customModuleProvider="target">
-                    <connections>
-                        <outlet property="statusItemMenu" destination="grI-75-PEA" id="rT7-gU-qUB"/>
-                    </connections>
-                </customObject>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Blotchy" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <menu id="grI-75-PEA">
-                    <items>
-                        <menuItem title="About" id="Qam-TH-tK5">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="orderFrontStandardAboutPanelWithSender:" target="Voe-Tx-rLC" id="c9i-ar-BBA"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="Quit" id="sBv-oy-ajT">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="terminate:" target="Ady-hI-5gd" id="g2I-yp-fqK"/>
-                            </connections>
-                        </menuItem>
-                    </items>
-                </menu>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="111" y="-260"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -909,6 +890,16 @@
                     </view>
                 </viewController>
                 <customObject id="rqw-xY-Wr9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu id="hmI-TW-330">
+                    <items>
+                        <menuItem title="New Search" id="0E5-jg-Z2A">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem title="Quit" id="Ne7-yb-hQo">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                    </items>
+                </menu>
             </objects>
             <point key="canvasLocation" x="447" y="997"/>
         </scene>
@@ -916,4 +907,7 @@
     <resources>
         <image name="buttonSearchFloating" width="64" height="64"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="WH6-o5-Jut"/>
+    </inferredMetricsTieBreakers>
 </document>
