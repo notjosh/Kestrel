@@ -18,8 +18,14 @@ enum Direction {
     case right
 }
 
+
+class modifierKeyTracker {
+		func addGlobalMonitorForEvents(matching mask: NSEvent.EventTypeMask, handler block: @escaping (NSEvent) -> Void) -> Any? {
+			return()
+		}
+	}
 class CursorGestureTracker {
-    weak var delegate: CursorGestureTrackerDelegate?
+	weak var delegate: CursorGestureTrackerDelegate?
 
     // we need to travel at least `MinimumDistance` points within `MaximumTime` per direction
     let MinimumDistance: CGFloat = 250 // ¯\_(ツ)_/¯ magic value, from some trial and error on what feels right
@@ -62,6 +68,8 @@ class CursorGestureTracker {
     }
 
     // MARK: Events
+
+	
     func handleMouseMove(event: NSEvent) {
         guard event.type == .mouseMoved else {
             print("event is not .mouseMoved: \(event)")

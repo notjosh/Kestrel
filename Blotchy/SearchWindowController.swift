@@ -134,7 +134,8 @@ class SearchViewController: NSViewController {
 		userEditedSearchField = false
         let request = URLRequest(url: url)
         webView.mainFrame.load(request)
-    }
+
+	}
 
     func URLForSearchTerm(searchTerm: String) -> URL? {
         guard let encoded = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {

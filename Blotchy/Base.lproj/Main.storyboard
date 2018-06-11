@@ -749,7 +749,7 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
-                            <webView translatesAutoresizingMaskIntoConstraints="NO" id="jyJ-be-vEi" customClass="DHWebView">
+                            <webView canDrawConcurrently="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jyJ-be-vEi" customClass="DHWebView">
                                 <rect key="frame" x="0.0" y="0.0" width="506" height="174"/>
                                 <webPreferences key="preferences" defaultFontSize="16" defaultFixedFontSize="13" minimumFontSize="0">
                                     <nil key="identifier"/>

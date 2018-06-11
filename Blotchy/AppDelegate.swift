@@ -13,8 +13,15 @@ enum Identifier: NSStoryboard.SceneIdentifier {
 }
 
 @NSApplicationMain
+
+
 class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var statusItemMenu: NSMenu!
+	
+	// I apologize 🙏
+	struct terribleGlobalVariables {
+		static var shiftKeyIsPressed: Bool = false
+	}
 	
 
     var cursorGestureTracker: CursorGestureTracker = CursorGestureTracker()
@@ -45,7 +52,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // https://thenounproject.com/search/?q=warm&i=1554494
         statusItem.button?.image = NSImage(named: "menu-icon")
         statusItem.menu = statusItemMenu
-    }
+		
+		
+		NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged) {
+			switch $0.modifierFlags.intersection(.deviceIndependentFlagsMask) {
+			case [.shift]:
+				print("shift key is pressed")
+				terribleGlobalVariables.shiftKeyIsPressed = true
+			
+				
+			default:
+				print("no modifier keys are pressed")
+				terribleGlobalVariables.shiftKeyIsPressed = false
+			}
+		}
+	}
 
     func applicationWillTerminate(_ aNotification: Notification) {
         cursorGestureTracker.stop()
@@ -77,21 +98,28 @@ extension AppDelegate: CursorGestureTrackerDelegate {
 
     func didFlingRight() {
         print("made it right")
-
         grabber.selectedTextInActiveApp() { [weak self] string in
             guard let string = string else {
-                print("can't find any selected text, dammit")
-				
-				return
-            }
+				if terribleGlobalVariables.shiftKeyIsPressed == true {
+					print("hey shift was down")
+					self?.showSearchWindow(with: "", focusOnTextField: true)
+					terribleGlobalVariables.shiftKeyIsPressed = false
+				}
 
-            self?.showSearchWindow(with: string)
+					print("can't find any selected text, dammit")
+				
+					return
+				
+            } 
+
+			self?.showSearchWindow(with: string, focusOnTextField : false)
+			terribleGlobalVariables.shiftKeyIsPressed = false
         }
     }
 
 	
 	
-    func showSearchWindow(with searchTerm: String) {
+	func showSearchWindow(with searchTerm: String, focusOnTextField shouldFocus: Bool) {
         // we should only have one of these windows, okay
         if let searchWindowController = searchWindowController {
             searchWindowController.searchTerm = searchTerm
@@ -109,10 +137,18 @@ extension AppDelegate: CursorGestureTrackerDelegate {
         swc.window?.level = .floating
         swc.window?.isReleasedWhenClosed = true
         swc.window?.makeKeyAndOrderFront(self)
+		if shouldFocus == true {
+			print("should focus field")
+			//self.searchWindowController?.window?.makeFirstResponder(searchTermField?)
+		}
     }
 	
 //	func showFloatingSearchButton() {
 //		// todo show the floating search button
 //	}
 
+
+
+
+	
 }
