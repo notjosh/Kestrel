@@ -104,7 +104,7 @@ extension AppDelegate: CursorGestureTrackerDelegate {
         print("made it right")
         grabber.selectedTextInActiveApp() { [weak self] string in
 			let fallbackString = UserDefaults.standard.string(forKey: "recentSearch") ?? ""
-			print("the preferences I found was ", UserDefaults.standard.string(forKey: "recentSearch")!)
+			print("the preferences I found was ", fallbackString)
 			let searchString = string ?? fallbackString
 
 			
