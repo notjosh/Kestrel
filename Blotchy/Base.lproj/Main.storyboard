@@ -767,6 +767,7 @@
                                 </textFieldCell>
                                 <connections>
                                     <action selector="handleContextTermWithSender:" target="Aln-Pr-Mkk" id="wba-aq-zju"/>
+                                    <outlet property="nextKeyView" destination="jyJ-be-vEi" id="QHM-Rb-Ec1"/>
                                 </connections>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D35-bm-Mtk">
@@ -799,6 +800,7 @@
                                 </textFieldCell>
                                 <connections>
                                     <action selector="handleSearchTermChangeWithSender:" target="Aln-Pr-Mkk" id="G27-jU-qMj"/>
+                                    <outlet property="nextKeyView" destination="jyJ-be-vEi" id="B1B-Wg-Myf"/>
                                 </connections>
                             </textField>
                         </subviews>

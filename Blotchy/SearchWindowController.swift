@@ -116,7 +116,8 @@ class SearchViewController: NSViewController {
 
     // MARK: Helper
 	func go() {
-        guard
+//		SearchViewController?.
+		guard
             let searchTerm = dataSource?.searchTerm,
 			var url = URLForSearchTerm(searchTerm: searchTerm)
             else {

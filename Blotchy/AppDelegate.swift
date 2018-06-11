@@ -18,7 +18,7 @@ enum Identifier: NSStoryboard.SceneIdentifier {
 class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var statusItemMenu: NSMenu!
 	
-	// I apologize 🙏
+	// I apologize for this 🙏
 	struct terribleGlobalVariables {
 		static var shiftKeyIsPressed: Bool = false
 	}
@@ -66,6 +66,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 				terribleGlobalVariables.shiftKeyIsPressed = false
 			}
 		}
+		
+		// todo add local event monitor here
+		
+		
 	}
 
     func applicationWillTerminate(_ aNotification: Notification) {
