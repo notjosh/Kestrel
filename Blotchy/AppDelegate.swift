@@ -103,24 +103,18 @@ extension AppDelegate: CursorGestureTrackerDelegate {
     func didFlingRight() {
         print("made it right")
         grabber.selectedTextInActiveApp() { [weak self] string in
-            guard let string = string else {
-				if terribleGlobalVariables.shiftKeyIsPressed == true {
-					print("hey shift was down")
-					self?.showSearchWindow(with: "", focusOnTextField: true)
-					terribleGlobalVariables.shiftKeyIsPressed = false
-				}
+			let fallbackString = UserDefaults.standard.string(forKey: "recentSearch") ?? ""
+			print("the preferences I found was ", UserDefaults.standard.string(forKey: "recentSearch")!)
+			let searchString = string ?? fallbackString
 
-					print("can't find any selected text, dammit")
-				
-					return
-				
-            } 
-
-			self?.showSearchWindow(with: string, focusOnTextField : false)
-			terribleGlobalVariables.shiftKeyIsPressed = false
+			
+			if terribleGlobalVariables.shiftKeyIsPressed == true || (searchString == string) {
+				self?.showSearchWindow(with: searchString, focusOnTextField : false)
+			}
         }
     }
 
+	
 	
 	
 	func showSearchWindow(with searchTerm: String, focusOnTextField shouldFocus: Bool) {

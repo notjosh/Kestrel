@@ -79,14 +79,23 @@ class SearchViewController: NSViewController {
         webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Safari/605.1.15"
 
 		
+		//todo fix this, I don't know how it actually is working!
 		if UserDefaults.standard.string(forKey: "context") == "" {
 			//key never existed
 			UserDefaults.standard.set("Cocoa Mac", forKey: "context")
 		} else {
-			
 			contextField.stringValue =  UserDefaults.standard.string(forKey: "context")!
-			
 		}
+		
+		
+		if let stringToUseInSearchField =  UserDefaults.standard.string(forKey: "recentSearch") {
+			 self.searchTermField.stringValue = stringToUseInSearchField
+			print("String to use is coming from userdefaults!")
+		} else {
+				 searchTermField.stringValue = ""
+			}
+		
+		
 		userEditedSearchField = false
         go()
     }
@@ -105,7 +114,8 @@ class SearchViewController: NSViewController {
 
 	@IBAction func handleSearchTermChange(sender: Any) {
 		userEditedSearchField = true
-		print("handleSearchTermChange")
+		UserDefaults.standard.set(self.searchTermField.stringValue, forKey: "recentSearch")
+		print("searchTermField: ", searchTermField.stringValue)
 		go()
 	}
 	
@@ -127,12 +137,15 @@ class SearchViewController: NSViewController {
 		// ok this is not good but it works
 		if userEditedSearchField == true {
 			print("userEditedSearchField true")
-			url = URLForSearchTerm(searchTerm: searchTermField.stringValue)!
+			url = URLForSearchTerm(searchTerm: self.searchTermField.stringValue)!
 		} else {
 			searchTermField.stringValue = searchTerm
 		}
 		
+		UserDefaults.standard.set(searchTermField.stringValue, forKey: "recentSearch")
 		userEditedSearchField = false
+		
+		
         let request = URLRequest(url: url)
         webView.mainFrame.load(request)
 
