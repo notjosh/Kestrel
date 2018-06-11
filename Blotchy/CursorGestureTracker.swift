@@ -52,7 +52,22 @@ class CursorGestureTracker {
                 return event
             }
         }
+		
+		
+//		if monitorLocal == nil {
+//			monitorLocal = NSEvent.addLocalMonitorForEvents(matching: [.flagsChanged]) { [weak self] event in
+//				switch $0.modifierFlags.intersection(.deviceIndependentFlagsMask) {
+//					case [.shift]:
+//						print("shift key is pressed")
+//						self?.handleShiftKey(event: event)
+//						return event
+//					}
+//			}
+		
+		
     }
+	
+	
 
     func stop() {
         if let monitorGlobal = monitorGlobal {
