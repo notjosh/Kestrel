@@ -13,16 +13,8 @@ enum Identifier: NSStoryboard.SceneIdentifier {
 }
 
 @NSApplicationMain
-
-
 class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var statusItemMenu: NSMenu!
-	
-	// I apologize for this 🙏
-	struct terribleGlobalVariables {
-		static var shiftKeyIsPressed: Bool = false
-	}
-	
 
     var cursorGestureTracker: CursorGestureTracker = CursorGestureTracker()
     let grabber = ClipboardSelectedTextGrabber()
@@ -52,24 +44,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // https://thenounproject.com/search/?q=warm&i=1554494
         statusItem.button?.image = NSImage(named: "menu-icon")
         statusItem.menu = statusItemMenu
-		
-		
-		NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged) {
-			switch $0.modifierFlags.intersection(.deviceIndependentFlagsMask) {
-			case [.shift]:
-				print("shift key is pressed")
-				terribleGlobalVariables.shiftKeyIsPressed = true
-			
-				
-			default:
-				print("no modifier keys are pressed")
-				terribleGlobalVariables.shiftKeyIsPressed = false
-			}
-		}
-		
-		// todo add local event monitor here
-		
-		
 	}
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -103,22 +77,31 @@ extension AppDelegate: CursorGestureTrackerDelegate {
 
     func didFlingRight() {
         print("made it right")
-        grabber.selectedTextInActiveApp() { [weak self] string in
-			let fallbackString = UserDefaults.standard.string(forKey: "recentSearch") ?? ""
-			print("the preferences I found was ", fallbackString)
-			let searchString = string ?? fallbackString
 
-			
-			if terribleGlobalVariables.shiftKeyIsPressed == true || (searchString == string) {
-				self?.showSearchWindow(with: searchString, focusOnTextField : false)
-			}
+        let shiftKeyIsPressed = NSEvent.modifierFlags.contains(.shift)
+
+        // show window, without copying, in "search" mode
+        if shiftKeyIsPressed {
+            let recentSearch = UserDefaults.standard.string(forKey: "recentSearch") ?? ""
+            print("the preferences I found was \(recentSearch)")
+
+            self.showSearchWindow(with: recentSearch)
+
+            return
+        }
+
+        // otherwise, show window by copying what's selected on screen
+        grabber.selectedTextInActiveApp() { [weak self] string in
+            guard let string = string else {
+                print("couldn't find any new text on the clipboard :(")
+                return
+            }
+
+			self?.showSearchWindow(with: string)
         }
     }
 
-	
-	
-	
-	func showSearchWindow(with searchTerm: String, focusOnTextField shouldFocus: Bool) {
+	func showSearchWindow(with searchTerm: String) {
         // we should only have one of these windows, okay
         if let searchWindowController = searchWindowController {
             searchWindowController.searchTerm = searchTerm
@@ -136,18 +119,9 @@ extension AppDelegate: CursorGestureTrackerDelegate {
         swc.window?.level = .floating
         swc.window?.isReleasedWhenClosed = true
         swc.window?.makeKeyAndOrderFront(self)
-		if shouldFocus == true {
-			print("should focus field")
-			//self.searchWindowController?.window?.makeFirstResponder(searchTermField?)
-		}
     }
 	
 //	func showFloatingSearchButton() {
 //		// todo show the floating search button
 //	}
-
-
-
-
-	
 }

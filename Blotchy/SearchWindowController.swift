@@ -56,7 +56,6 @@ class SearchWindowController: NSWindowController, SearchViewControllerDataSource
             window?.setFrame(frame, display: true)
         }
     }
-
 }
 
 protocol SearchViewControllerDataSource {
@@ -111,7 +110,6 @@ class SearchViewController: NSViewController {
         print("searchTermField: ", searchTermField.stringValue)
         go()
     }
-
 
     func reload() {
         go()
