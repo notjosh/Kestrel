@@ -98,6 +98,7 @@ extension AppDelegate: CursorGestureTrackerDelegate {
         print("made it left")
 
         searchWindowController?.close()
+        NSApp.hide(self)
     }
 
     func didFlingRight() {
