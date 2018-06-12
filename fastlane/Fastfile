@@ -1,0 +1,262 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version '2.5.0'.freeze
+
+BUILD_PATH = '../build'.freeze
+SIGNING_IDENTITY = 'Developer ID Application: Joshua May (J8GZ9347Y3)'.freeze
+
+default_platform :mac
+
+platform :mac do
+  before_all do
+    cocoapods
+  end
+
+  desc 'Runs all the tests'
+  lane :test do
+    scan
+  end
+
+  desc 'Publishes a new build'
+  lane :release do
+    raise "versioned_build_path #{versioned_build_path} exists. Are you overwriting a previous build? :(" if Dir.exist?(versioned_build_path)
+
+    increment_build_number
+
+    version_number = get_version_number
+    build_number = get_build_number
+
+    build
+    dmg
+    sparkle
+    verify
+    dist
+
+    # commit build bump, push
+    git_commit(
+      path: [
+        'CHANGELOG.md',
+        'Blotchy.xcodeproj/project.pbxproj',
+        'Blotchy/Info.plist',
+        'sparkle/appcast.xml'
+      ],
+      message: "Release version #{version_number} (build #{build_number})"
+    )
+  end
+
+  desc 'Makes a build'
+  lane :build do
+    raise "#{BUILD_PATH}/Blotchy.app exists, build will probably fail" if File.exist?("#{BUILD_PATH}/Blotchy.app")
+
+    xcode_select '/Applications/Xcode.app'
+
+    gym(
+      scheme: 'Blotchy'
+    )
+  end
+
+  desc 'Assembles a new .dmg'
+  lane :dmg do
+    version = get_version_number
+    output_path = versioned_build_path
+
+    dmg_assets_path = "#{output_path}-dmg-assets"
+    dmg_output_path = "#{output_path}/Blotchy-#{version}.dmg"
+
+    FileUtils.rm_rf(dmg_assets_path) if Dir.exist?(dmg_assets_path)
+    FileUtils.rm(dmg_output_path) if Dir.exist?(dmg_output_path)
+
+    FileUtils.mkdir_p(dmg_assets_path)
+    FileUtils.mkdir_p(output_path)
+
+    # collect assets
+    FileUtils.cp_r(
+      "#{BUILD_PATH}/Blotchy.app",
+      "#{dmg_assets_path}/Blotchy.app"
+    )
+
+    # build dmg
+        # --volicon 'application_icon.icns' \
+        # --background 'installer_background.png' \
+    sh("
+      ../Submodules/create-dmg/create-dmg \
+        --volname 'Blotchy' \
+        --window-pos 200 120 \
+        --window-size 800 400 \
+        --icon-size 100 \
+        --icon Application.app 200 190 \
+        --hide-extension Blotchy.app \
+        --app-drop-link 600 185 \
+        #{dmg_output_path} \
+        #{dmg_assets_path}/
+    ")
+
+    # sign dmg
+    sh("
+      codesign \
+        -vvv \
+        -f \
+        -s '#{SIGNING_IDENTITY}' \
+        #{dmg_output_path}
+    ")
+
+    # clean up
+    FileUtils.rm_rf(dmg_assets_path)
+  end
+
+  desc 'Assembles a new Sparkle build'
+  lane :sparkle do
+    version = get_version_number
+    output_path = versioned_build_path
+    versioned_app_filename = "Blotchy-#{version}.zip"
+
+    output_app_path = "#{output_path}/#{versioned_app_filename}"
+    output_dsym_path = "#{output_path}/Blotchy-#{version}.app.dSYM.zip"
+    output_release_notes_path = "#{output_path}/release_notes.html"
+
+    app_download_url = "https://blotchy.notjo.sh/updates/releases/#{version}/#{versioned_app_filename}"
+    release_notes_url = "https://blotchy.notjo.sh/updates/releases/#{version}/release_notes.html"
+
+    dsa_priv_path = File.expand_path(ENV['SPARKLE_PRIVATE_KEY_PATH'])
+
+    raise "Can't find DSA private key at #{dsa_priv_path}" unless File.exist?(dsa_priv_path)
+
+    FileUtils.rm(output_app_path) if File.exist?(output_app_path)
+    FileUtils.rm(output_dsym_path) if File.exist?(output_dsym_path)
+    FileUtils.rm(output_release_notes_path) if File.exist?(output_release_notes_path)
+
+    # assets destination
+    FileUtils.mkdir_p(output_path)
+
+#    raise "output_path #{output_path} can't be created! :(" unless Dir.exist?(output_path)
+
+    # archive
+    sh("
+      ditto -c -k --sequesterRsrc --keepParent #{BUILD_PATH}/Blotchy.app #{output_app_path}
+    ")
+
+    FileUtils.cp(
+      "#{BUILD_PATH}/Blotchy.app.dSYM.zip",
+      output_dsym_path
+    )
+
+    # sign for Sparkle
+    signature = sh("
+      ../Vendor/Sparkle/sign_update #{output_app_path} #{dsa_priv_path}
+    ")
+
+    # generate changelog from .md
+    stamp_changelog(
+      section_identifier: version
+    )
+
+    # appcast
+    #  - generate appcast.xml line from changelog.md
+    changelog = read_changelog(
+      section_identifier: "[#{version}]"
+    )
+
+    #  - convert release notes to html
+    changelog_html = render_github_markdown(
+      context_repository: 'notjosh/blotchy',
+      api_token: ENV['GITHUB_TOKEN'],
+      markdown_contents: changelog
+    )
+
+    #  - write release notes to release notes
+    File.open(output_release_notes_path, 'w') do |f|
+      f.write(changelog_html)
+    end
+
+    sparkle_add_update(
+      feed_file: './sparkle/appcast.xml',
+      app_download_url: app_download_url,
+      app_size: File.size(output_app_path).to_s,
+      dsa_signature: signature,
+      machine_version: get_build_number,
+      human_version: version,
+      title: 'Hark! An update!',
+      release_notes_link: release_notes_url,
+      deployment_target: '10.12'
+    )
+  end
+
+  desc 'Verify signing, etc'
+  lane :verify do
+    version = get_version_number
+    output_path = versioned_build_path
+    versioned_dmg_filename = "Blotchy-#{version}.dmg"
+
+    output_dmg_path = "#{output_path}/#{versioned_dmg_filename}"
+
+    FileUtils.mkdir_p(output_path) unless Dir.exist?(output_path)
+
+    # note: we're verifying the build product, not the contents of the zip
+
+    # codesign .app
+    sh("codesign --verify -vvvv #{output_path}/../Blotchy.app")
+    # spctl .app
+    sh("spctl --verbose=4 --assess #{output_path}/../Blotchy.app")
+
+    # spctl .dmg
+    sh("spctl -a -t open --context context:primary-signature -v #{output_dmg_path}")
+  end
+
+  desc 'Distributes build (to S3)'
+  lane :dist do
+    version = get_version_number
+    output_path = versioned_build_path
+
+    versioned_app_filename = "Blotchy-#{version}.zip"
+    versioned_dmg_filename = "Blotchy-#{version}.dmg"
+    versioned_dsym_filename = "Blotchy-#{version}.app.dSYM.zip"
+
+    appcast_path = "#{output_path}/../../sparkle/appcast.xml"
+    output_app_path = "#{output_path}/#{versioned_app_filename}"
+    output_dmg_path = "#{output_path}/#{versioned_dmg_filename}"
+    output_dsym_path = "#{output_path}/#{versioned_dsym_filename}"
+    output_release_notes_path = "#{output_path}/release_notes.html"
+
+    # upload:
+    # versioned
+    # - .zip
+    # - .dsym
+    # - .dmg
+    # - .release notes
+    # latest dmg
+    # appcast
+
+    {
+      "updates/releases/#{version}/#{versioned_app_filename}" => output_app_path,
+      "updates/releases/#{version}/#{versioned_dmg_filename}" => output_dmg_path,
+      "updates/releases/#{version}/#{versioned_dsym_filename}" => output_dsym_path,
+      "updates/releases/#{version}/release_notes.html" => output_release_notes_path,
+      'updates/releases/latest/Blotchy.dmg' => output_dmg_path,
+      'updates/appcast.xml' => appcast_path
+    }
+      .each { |_, file| raise "Can't upload '#{file}', it doesn't exist" unless File.exist?(file) }
+      .each do |key, file|
+        upload_to_s3(
+          acl: 'public-read',
+          file: file,
+          key: key
+        )
+      end
+  end
+
+  def versioned_build_path
+    version = get_version_number
+    File.join(Dir.pwd, "#{BUILD_PATH}/#{version}")
+  end
+end
