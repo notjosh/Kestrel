@@ -1,6 +1,12 @@
+source 'https://rubygems.org'
 
-# Added at 2018-06-05 17:09:12 +0200 by joshua:
-gem "cocoapods", "~> 1.5"
+gem 'cocoapods', '~> 1.5'
 
-# Added at 2018-06-07 15:39:38 +0200 by joshua:
-gem "fastlane", "~> 2.97"
+group :development do
+  gem 'aws-sdk', '~> 3'
+  gem 'fastlane'
+end
+
+plugins_path = File.join(File.dirname(__FILE__), 'fastlane', 'Pluginfile')
+eval(File.read(plugins_path), binding) if File.exist?(plugins_path)
+
