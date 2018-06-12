@@ -26,8 +26,8 @@ module Fastlane
         channel = doc.elements['/rss/channel']
 
         # Verify that the new version is strictly greater than the last one in the list
-        items = channel.elements.select { |e| e.name == 'item' }.last.get_elements('enclosure')
-        last_version = items.first.attributes['version'] if items.first
+        items = channel.elements.select { |e| e.name == 'item' }
+        last_version = items.last.get_elements('enclosure').first.attributes['version'] if items.last
         raise "You must update the machine version to be above #{last_version}!" unless last_version == nil || params[:machine_version].to_i > last_version.to_i
 
         # Add a new item to the Appcast feed
