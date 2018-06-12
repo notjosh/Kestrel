@@ -1,3 +1,5 @@
+fastlane/.env
+sparkle/dsa_priv.pem
 
 # Created by https://www.gitignore.io/api/ruby,xcode,swift,macos,objective-c,swiftpackagemanager,cocoapods
 
