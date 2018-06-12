@@ -5,5 +5,5 @@ target 'Blotchy' do
 
   pod 'AXSwift', '~> 0.2'
   pod 'HighlightedWebView', '~> 0.0.1'
-
+  pod 'Sparkle'
 end
