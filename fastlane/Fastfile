@@ -1,20 +1,9 @@
-# Customise this file, documentation can be found here:
-# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
-# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
-# can also be listed using the `fastlane actions` command
-
-# Change the syntax highlighting to Ruby
-# All lines starting with a # are ignored when running `fastlane`
-
-# If you want to automatically update fastlane if a new version is available:
-# update_fastlane
-
-# This is the minimum version number required.
-# Update this, if you use features of a newer version
-fastlane_version '2.5.0'.freeze
+fastlane_version '2.97.0'.freeze
 
 BUILD_PATH = '../build'.freeze
-SIGNING_IDENTITY = 'Developer ID Application: Joshua May (J8GZ9347Y3)'.freeze
+SIGNING_IDENTITY = 'Developer ID Application: Joshua May (FR4Z9GU3K2)'.freeze
+
+DRY_RUN = false
 
 default_platform :mac
 
@@ -41,7 +30,7 @@ platform :mac do
     dmg
     sparkle
     verify
-    dist
+    dist unless DRY_RUN
 
     # commit build bump, push
     git_commit(
@@ -52,14 +41,14 @@ platform :mac do
         'sparkle/appcast.xml'
       ],
       message: "Release version #{version_number} (build #{build_number})"
-    )
+    ) unless DRY_RUN
   end
 
   desc 'Makes a build'
   lane :build do
     raise "#{BUILD_PATH}/Blotchy.app exists, build will probably fail" if File.exist?("#{BUILD_PATH}/Blotchy.app")
 
-    xcode_select '/Applications/Xcode.app'
+    xcode_select '/Applications/Xcode-beta.app'
 
     gym(
       scheme: 'Blotchy'
@@ -153,7 +142,7 @@ platform :mac do
 
     # sign for Sparkle
     signature = sh("
-      ../Vendor/Sparkle/sign_update #{output_app_path} #{dsa_priv_path}
+      ../Pods/Sparkle/bin/sign_update #{output_app_path} #{dsa_priv_path}
     ")
 
     # generate changelog from .md
@@ -188,7 +177,7 @@ platform :mac do
       human_version: version,
       title: 'Hark! An update!',
       release_notes_link: release_notes_url,
-      deployment_target: '10.12'
+      deployment_target: '10.13'
     )
   end
 
