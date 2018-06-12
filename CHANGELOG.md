@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.0.1] - 2018-06-12
+
 It's probably an initial release. Probably.
 
  - Select text, swipe right to open
