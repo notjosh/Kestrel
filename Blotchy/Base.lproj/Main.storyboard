@@ -677,9 +677,36 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Blotchy" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Blotchy" customModuleProvider="target">
+                    <connections>
+                        <outlet property="statusItemMenu" destination="v3T-JD-Ph1" id="aqw-4w-3wR"/>
+                    </connections>
+                </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+                <customObject id="RnW-ve-mRT" customClass="SUUpdater"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu id="v3T-JD-Ph1">
+                    <items>
+                        <menuItem title="Check for Updates..." id="hYb-eI-vOa">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="checkForUpdates:" target="RnW-ve-mRT" id="qqv-xO-UQW"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="About" id="XoQ-UF-wAD">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="orderFrontStandardAboutPanelWithSender:" target="Ady-hI-5gd" id="wiR-BC-oUK"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Quit" id="cjg-EV-dwp">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="terminate:" target="Ady-hI-5gd" id="NLJ-Kw-Z1i"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                </menu>
             </objects>
             <point key="canvasLocation" x="111" y="-260"/>
         </scene>
