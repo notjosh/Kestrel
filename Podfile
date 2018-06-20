@@ -7,4 +7,5 @@ target 'Blotchy' do
   pod 'HighlightedWebView', '~> 0.0.1'
   pod 'MASPreferences'
   pod 'Sparkle'
+  pod 'SWXMLHash', '~> 4.0.0'
 end
