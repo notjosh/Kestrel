@@ -7,14 +7,27 @@
 //
 
 import Cocoa
+import MASPreferences
 
 enum Identifier: NSStoryboard.SceneIdentifier {
     case searchWindowController = "SearchWindowController"
+
+    case contextPreferencesViewController = "ContextPreferencesViewController"
+    case searchEnginePreferencesViewController = "SearchEnginePreferencesViewController"
 }
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var statusItemMenu: NSMenu!
+    @IBOutlet lazy var preferencesWindowController: NSWindowController! = {
+        let vcs: [NSViewController] = [
+            storyboard.instantiateController(withIdentifier: Identifier.searchEnginePreferencesViewController.rawValue) as! NSViewController,
+            storyboard.instantiateController(withIdentifier: Identifier.contextPreferencesViewController.rawValue) as! NSViewController,
+        ]
+
+        let title = NSLocalizedString("Preferences", comment: "Preferences window title")
+        return MASPreferencesWindowController(viewControllers: vcs, title: title)
+    }()
 
     var cursorGestureTracker: CursorGestureTracker = CursorGestureTracker()
     let grabber = ClipboardSelectedTextGrabber()
@@ -64,6 +77,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ]
 
         NSApp.orderFrontStandardAboutPanel(options: options)
+    }
+
+    @IBAction func openPreferences(sender: Any) {
+        preferencesWindowController.showWindow(sender)
     }
 }
 

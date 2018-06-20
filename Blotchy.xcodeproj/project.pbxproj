@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		422676B320C7EF710007C006 /* SelectedTextGrabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422676B220C7EF710007C006 /* SelectedTextGrabber.swift */; };
 		422676B520C804AF0007C006 /* CursorGestureTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422676B420C804AF0007C006 /* CursorGestureTracker.swift */; };
+		423C627320DAA30D00BADB1D /* SearchEnginePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423C627220DAA30D00BADB1D /* SearchEnginePreferencesViewController.swift */; };
+		423C627620DAA31C00BADB1D /* ContextPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423C627420DAA31C00BADB1D /* ContextPreferencesViewController.swift */; };
 		426BC34120D0512D004AA062 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 426BC34020D0512D004AA062 /* dsa_pub.pem */; };
 		4272AF0820C686BB00F15834 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272AF0720C686BB00F15834 /* AppDelegate.swift */; };
 		4272AF0A20C686BB00F15834 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272AF0920C686BB00F15834 /* ViewController.swift */; };
@@ -22,6 +24,8 @@
 /* Begin PBXFileReference section */
 		422676B220C7EF710007C006 /* SelectedTextGrabber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTextGrabber.swift; sourceTree = "<group>"; };
 		422676B420C804AF0007C006 /* CursorGestureTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorGestureTracker.swift; sourceTree = "<group>"; };
+		423C627220DAA30D00BADB1D /* SearchEnginePreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEnginePreferencesViewController.swift; sourceTree = "<group>"; };
+		423C627420DAA31C00BADB1D /* ContextPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextPreferencesViewController.swift; sourceTree = "<group>"; };
 		426BC34020D0512D004AA062 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = sparkle/dsa_pub.pem; sourceTree = SOURCE_ROOT; };
 		4272AF0420C686BB00F15834 /* Blotchy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blotchy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4272AF0720C686BB00F15834 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +60,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		423C627120DA870B00BADB1D /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				423C627220DAA30D00BADB1D /* SearchEnginePreferencesViewController.swift */,
+				423C627420DAA31C00BADB1D /* ContextPreferencesViewController.swift */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
 		4272AEFB20C686BB00F15834 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +90,7 @@
 		4272AF0620C686BB00F15834 /* Blotchy */ = {
 			isa = PBXGroup;
 			children = (
+				423C627120DA870B00BADB1D /* Preferences */,
 				4272AF0720C686BB00F15834 /* AppDelegate.swift */,
 				4272AF0920C686BB00F15834 /* ViewController.swift */,
 				4272AF1920C6A4DD00F15834 /* SearchWindowController.swift */,
@@ -202,6 +216,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Blotchy/Pods-Blotchy-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AXSwift/AXSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/HighlightedWebView/HighlightedWebView.framework",
+				"${BUILT_PRODUCTS_DIR}/MASPreferences/MASPreferences.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
 			);
@@ -209,6 +224,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AXSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HighlightedWebView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MASPreferences.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
 			);
@@ -228,6 +244,8 @@
 				4272AF1A20C6A4DD00F15834 /* SearchWindowController.swift in Sources */,
 				4272AF0A20C686BB00F15834 /* ViewController.swift in Sources */,
 				4272AF0820C686BB00F15834 /* AppDelegate.swift in Sources */,
+				423C627320DAA30D00BADB1D /* SearchEnginePreferencesViewController.swift in Sources */,
+				423C627620DAA31C00BADB1D /* ContextPreferencesViewController.swift in Sources */,
 				422676B320C7EF710007C006 /* SelectedTextGrabber.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

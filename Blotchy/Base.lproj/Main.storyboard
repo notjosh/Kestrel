@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14269.12"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="14269.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14269.14"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="14269.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -687,10 +687,16 @@
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <menu id="v3T-JD-Ph1">
                     <items>
-                        <menuItem title="Check for Updates..." id="hYb-eI-vOa">
+                        <menuItem title="Check for Updates…" id="hYb-eI-vOa">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="checkForUpdates:" target="RnW-ve-mRT" id="qqv-xO-UQW"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Preferences…" id="R12-hz-g4l">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="openPreferencesWithSender:" target="Voe-Tx-rLC" id="ebt-kV-b52"/>
                             </connections>
                         </menuItem>
                         <menuItem title="About" id="XoQ-UF-wAD">
@@ -947,6 +953,60 @@
                 </menu>
             </objects>
             <point key="canvasLocation" x="447" y="997"/>
+        </scene>
+        <!--Search Engine Preferences View Controller-->
+        <scene sceneID="kTZ-Mm-KlS">
+            <objects>
+                <viewController storyboardIdentifier="SearchEnginePreferencesViewController" id="qU2-fT-FHy" customClass="SearchEnginePreferencesViewController" customModule="Blotchy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="OML-E0-chh">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TUR-3w-QmQ">
+                                <rect key="frame" x="191" y="127" width="98" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Search Engines" id="UuQ-VR-ZmM">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="TUR-3w-QmQ" firstAttribute="centerX" secondItem="OML-E0-chh" secondAttribute="centerX" id="WOH-jN-29O"/>
+                            <constraint firstItem="TUR-3w-QmQ" firstAttribute="centerY" secondItem="OML-E0-chh" secondAttribute="centerY" id="wOW-uD-SnL"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="7WJ-Jb-mrf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1202" y="202"/>
+        </scene>
+        <!--Context Preferences View Controller-->
+        <scene sceneID="Ltn-St-IuX">
+            <objects>
+                <viewController storyboardIdentifier="ContextPreferencesViewController" id="9Xr-1a-ksW" customClass="ContextPreferencesViewController" customModule="Blotchy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="ROd-tM-y40">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qvu-HG-zm4">
+                                <rect key="frame" x="211" y="127" width="58" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Contexts" id="X2V-yC-Aqo">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Qvu-HG-zm4" firstAttribute="centerX" secondItem="ROd-tM-y40" secondAttribute="centerX" id="88w-Ye-PHr"/>
+                            <constraint firstItem="Qvu-HG-zm4" firstAttribute="centerY" secondItem="ROd-tM-y40" secondAttribute="centerY" id="KOB-gg-HjU"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="Hwe-2B-CfE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1799" y="202"/>
         </scene>
     </scenes>
     <resources>
