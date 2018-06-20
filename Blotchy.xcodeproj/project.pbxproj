@@ -9,6 +9,19 @@
 /* Begin PBXBuildFile section */
 		422676B320C7EF710007C006 /* SelectedTextGrabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422676B220C7EF710007C006 /* SelectedTextGrabber.swift */; };
 		422676B520C804AF0007C006 /* CursorGestureTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422676B420C804AF0007C006 /* CursorGestureTracker.swift */; };
+		423C627320DAA30D00BADB1D /* SearchEnginePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423C627220DAA30D00BADB1D /* SearchEnginePreferencesViewController.swift */; };
+		423C627620DAA31C00BADB1D /* ContextPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423C627420DAA31C00BADB1D /* ContextPreferencesViewController.swift */; };
+		4243C3DD20DB071200925FE7 /* stackoverflow.com.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4243C3DA20DB071200925FE7 /* stackoverflow.com.xml */; };
+		4243C3DE20DB071200925FE7 /* duckduckgo.com.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4243C3DB20DB071200925FE7 /* duckduckgo.com.xml */; };
+		4243C3DF20DB071200925FE7 /* google.com.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4243C3DC20DB071200925FE7 /* google.com.xml */; };
+		4243C3E120DB071D00925FE7 /* OpenSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4243C3E020DB071D00925FE7 /* OpenSearch.swift */; };
+		4243C3F220DB078E00925FE7 /* OpenSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4243C3F120DB078E00925FE7 /* OpenSearchTests.swift */; };
+		4243C3F720DB07D700925FE7 /* sample.detailed.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4243C3F520DB07D700925FE7 /* sample.detailed.xml */; };
+		4243C3F820DB07D700925FE7 /* sample.simple.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4243C3F620DB07D700925FE7 /* sample.simple.xml */; };
+		4243C3FB20DB088B00925FE7 /* SearchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4243C3FA20DB088B00925FE7 /* SearchEngine.swift */; };
+		4243C3FE20DB0A0E00925FE7 /* SearchEngineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4243C3FD20DB0A0E00925FE7 /* SearchEngineService.swift */; };
+		4243C40020DB0E6300925FE7 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4243C3FF20DB0E6300925FE7 /* Context.swift */; };
+		4243C40220DB0EDF00925FE7 /* ContextService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4243C40120DB0EDF00925FE7 /* ContextService.swift */; };
 		426BC34120D0512D004AA062 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 426BC34020D0512D004AA062 /* dsa_pub.pem */; };
 		4272AF0820C686BB00F15834 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272AF0720C686BB00F15834 /* AppDelegate.swift */; };
 		4272AF0A20C686BB00F15834 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272AF0920C686BB00F15834 /* ViewController.swift */; };
@@ -19,9 +32,35 @@
 		F6FFA44A73269B80ACFA3681 /* Pods_Blotchy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 960BBAF11BD45921ED9D044A /* Pods_Blotchy.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4243C3EB20DB077100925FE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4272AEFC20C686BB00F15834 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4272AF0320C686BB00F15834;
+			remoteInfo = Blotchy;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		422676B220C7EF710007C006 /* SelectedTextGrabber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTextGrabber.swift; sourceTree = "<group>"; };
 		422676B420C804AF0007C006 /* CursorGestureTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorGestureTracker.swift; sourceTree = "<group>"; };
+		423C627220DAA30D00BADB1D /* SearchEnginePreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEnginePreferencesViewController.swift; sourceTree = "<group>"; };
+		423C627420DAA31C00BADB1D /* ContextPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextPreferencesViewController.swift; sourceTree = "<group>"; };
+		4243C3DA20DB071200925FE7 /* stackoverflow.com.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = stackoverflow.com.xml; path = opensearch/stackoverflow.com.xml; sourceTree = SOURCE_ROOT; };
+		4243C3DB20DB071200925FE7 /* duckduckgo.com.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = duckduckgo.com.xml; path = opensearch/duckduckgo.com.xml; sourceTree = SOURCE_ROOT; };
+		4243C3DC20DB071200925FE7 /* google.com.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = google.com.xml; path = opensearch/google.com.xml; sourceTree = SOURCE_ROOT; };
+		4243C3E020DB071D00925FE7 /* OpenSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSearch.swift; sourceTree = "<group>"; };
+		4243C3E620DB077000925FE7 /* BlotchyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlotchyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4243C3EA20DB077100925FE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4243C3F020DB078D00925FE7 /* BlotchyTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BlotchyTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		4243C3F120DB078E00925FE7 /* OpenSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSearchTests.swift; sourceTree = "<group>"; };
+		4243C3F520DB07D700925FE7 /* sample.detailed.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sample.detailed.xml; sourceTree = "<group>"; };
+		4243C3F620DB07D700925FE7 /* sample.simple.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sample.simple.xml; sourceTree = "<group>"; };
+		4243C3FA20DB088B00925FE7 /* SearchEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEngine.swift; sourceTree = "<group>"; };
+		4243C3FD20DB0A0E00925FE7 /* SearchEngineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEngineService.swift; sourceTree = "<group>"; };
+		4243C3FF20DB0E6300925FE7 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		4243C40120DB0EDF00925FE7 /* ContextService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextService.swift; sourceTree = "<group>"; };
 		426BC34020D0512D004AA062 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = sparkle/dsa_pub.pem; sourceTree = SOURCE_ROOT; };
 		4272AF0420C686BB00F15834 /* Blotchy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blotchy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4272AF0720C686BB00F15834 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +76,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4243C3E320DB077000925FE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4272AF0120C686BB00F15834 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -56,10 +102,85 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		423C627120DA870B00BADB1D /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				423C627220DAA30D00BADB1D /* SearchEnginePreferencesViewController.swift */,
+				423C627420DAA31C00BADB1D /* ContextPreferencesViewController.swift */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		4243C3D820DB06F300925FE7 /* OpenSearch */ = {
+			isa = PBXGroup;
+			children = (
+				4243C3D920DB06FF00925FE7 /* Engines */,
+				4243C3E020DB071D00925FE7 /* OpenSearch.swift */,
+			);
+			name = OpenSearch;
+			sourceTree = "<group>";
+		};
+		4243C3D920DB06FF00925FE7 /* Engines */ = {
+			isa = PBXGroup;
+			children = (
+				4243C3DB20DB071200925FE7 /* duckduckgo.com.xml */,
+				4243C3DC20DB071200925FE7 /* google.com.xml */,
+				4243C3DA20DB071200925FE7 /* stackoverflow.com.xml */,
+			);
+			name = Engines;
+			sourceTree = "<group>";
+		};
+		4243C3E720DB077100925FE7 /* BlotchyTests */ = {
+			isa = PBXGroup;
+			children = (
+				4243C3F320DB07B700925FE7 /* OpenSearch */,
+				4243C3EA20DB077100925FE7 /* Info.plist */,
+				4243C3F020DB078D00925FE7 /* BlotchyTests-Bridging-Header.h */,
+			);
+			path = BlotchyTests;
+			sourceTree = "<group>";
+		};
+		4243C3F320DB07B700925FE7 /* OpenSearch */ = {
+			isa = PBXGroup;
+			children = (
+				4243C3F420DB07C100925FE7 /* Fixtures */,
+				4243C3F120DB078E00925FE7 /* OpenSearchTests.swift */,
+			);
+			name = OpenSearch;
+			sourceTree = "<group>";
+		};
+		4243C3F420DB07C100925FE7 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				4243C3F520DB07D700925FE7 /* sample.detailed.xml */,
+				4243C3F620DB07D700925FE7 /* sample.simple.xml */,
+			);
+			name = Fixtures;
+			sourceTree = "<group>";
+		};
+		4243C3F920DB087300925FE7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4243C3FA20DB088B00925FE7 /* SearchEngine.swift */,
+				4243C3FF20DB0E6300925FE7 /* Context.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4243C3FC20DB09F400925FE7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4243C3FD20DB0A0E00925FE7 /* SearchEngineService.swift */,
+				4243C40120DB0EDF00925FE7 /* ContextService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		4272AEFB20C686BB00F15834 = {
 			isa = PBXGroup;
 			children = (
 				4272AF0620C686BB00F15834 /* Blotchy */,
+				4243C3E720DB077100925FE7 /* BlotchyTests */,
 				4272AF0520C686BB00F15834 /* Products */,
 				DD9EC2E2FC317E44E9F8B327 /* Pods */,
 				20CBA8EB41AE3A3C0B90ABB5 /* Frameworks */,
@@ -70,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				4272AF0420C686BB00F15834 /* Blotchy.app */,
+				4243C3E620DB077000925FE7 /* BlotchyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,6 +199,10 @@
 		4272AF0620C686BB00F15834 /* Blotchy */ = {
 			isa = PBXGroup;
 			children = (
+				4243C3D820DB06F300925FE7 /* OpenSearch */,
+				423C627120DA870B00BADB1D /* Preferences */,
+				4243C3F920DB087300925FE7 /* Models */,
+				4243C3FC20DB09F400925FE7 /* Services */,
 				4272AF0720C686BB00F15834 /* AppDelegate.swift */,
 				4272AF0920C686BB00F15834 /* ViewController.swift */,
 				4272AF1920C6A4DD00F15834 /* SearchWindowController.swift */,
@@ -103,6 +229,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4243C3E520DB077000925FE7 /* BlotchyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4243C3EF20DB077100925FE7 /* Build configuration list for PBXNativeTarget "BlotchyTests" */;
+			buildPhases = (
+				4243C3E220DB077000925FE7 /* Sources */,
+				4243C3E320DB077000925FE7 /* Frameworks */,
+				4243C3E420DB077000925FE7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4243C3EC20DB077100925FE7 /* PBXTargetDependency */,
+			);
+			name = BlotchyTests;
+			productName = BlotchyTests;
+			productReference = 4243C3E620DB077000925FE7 /* BlotchyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4272AF0320C686BB00F15834 /* Blotchy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4272AF1420C686BD00F15834 /* Build configuration list for PBXNativeTarget "Blotchy" */;
@@ -128,10 +272,16 @@
 		4272AEFC20C686BB00F15834 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				DefaultBuildSystemTypeForWorkspace = Original;
 				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Joshua May";
 				TargetAttributes = {
+					4243C3E520DB077000925FE7 = {
+						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
+						TestTargetID = 4272AF0320C686BB00F15834;
+					};
 					4272AF0320C686BB00F15834 = {
 						CreatedOnToolsVersion = 10.0;
 						SystemCapabilities = {
@@ -156,18 +306,31 @@
 			projectRoot = "";
 			targets = (
 				4272AF0320C686BB00F15834 /* Blotchy */,
+				4243C3E520DB077000925FE7 /* BlotchyTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4243C3E420DB077000925FE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4243C3F820DB07D700925FE7 /* sample.simple.xml in Resources */,
+				4243C3F720DB07D700925FE7 /* sample.detailed.xml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4272AF0220C686BB00F15834 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				42F82E2F20C95EF300385465 /* Credits.rtfd in Resources */,
 				426BC34120D0512D004AA062 /* dsa_pub.pem in Resources */,
+				4243C3DD20DB071200925FE7 /* stackoverflow.com.xml in Resources */,
 				4272AF0C20C686BD00F15834 /* Assets.xcassets in Resources */,
+				4243C3DF20DB071200925FE7 /* google.com.xml in Resources */,
+				4243C3DE20DB071200925FE7 /* duckduckgo.com.xml in Resources */,
 				4272AF0F20C686BD00F15834 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,6 +365,8 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Blotchy/Pods-Blotchy-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AXSwift/AXSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/HighlightedWebView/HighlightedWebView.framework",
+				"${BUILT_PRODUCTS_DIR}/MASPreferences/MASPreferences.framework",
+				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
 			);
@@ -209,6 +374,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AXSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HighlightedWebView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MASPreferences.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
 			);
@@ -220,19 +387,42 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4243C3E220DB077000925FE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4243C3F220DB078E00925FE7 /* OpenSearchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4272AF0020C686BB00F15834 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				422676B520C804AF0007C006 /* CursorGestureTracker.swift in Sources */,
+				4243C40220DB0EDF00925FE7 /* ContextService.swift in Sources */,
+				4243C3FE20DB0A0E00925FE7 /* SearchEngineService.swift in Sources */,
 				4272AF1A20C6A4DD00F15834 /* SearchWindowController.swift in Sources */,
 				4272AF0A20C686BB00F15834 /* ViewController.swift in Sources */,
+				4243C40020DB0E6300925FE7 /* Context.swift in Sources */,
+				4243C3E120DB071D00925FE7 /* OpenSearch.swift in Sources */,
 				4272AF0820C686BB00F15834 /* AppDelegate.swift in Sources */,
+				423C627320DAA30D00BADB1D /* SearchEnginePreferencesViewController.swift in Sources */,
+				4243C3FB20DB088B00925FE7 /* SearchEngine.swift in Sources */,
+				423C627620DAA31C00BADB1D /* ContextPreferencesViewController.swift in Sources */,
 				422676B320C7EF710007C006 /* SelectedTextGrabber.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4243C3EC20DB077100925FE7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4272AF0320C686BB00F15834 /* Blotchy */;
+			targetProxy = 4243C3EB20DB077100925FE7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4272AF0D20C686BD00F15834 /* Main.storyboard */ = {
@@ -246,6 +436,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4243C3ED20DB077100925FE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = BlotchyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.notjosh.BlotchyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "BlotchyTests/BlotchyTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blotchy.app/Contents/MacOS/Blotchy";
+			};
+			name = Debug;
+		};
+		4243C3EE20DB077100925FE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = BlotchyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.notjosh.BlotchyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "BlotchyTests/BlotchyTests-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blotchy.app/Contents/MacOS/Blotchy";
+			};
+			name = Release;
+		};
 		4272AF1220C686BD00F15834 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -411,6 +649,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4243C3EF20DB077100925FE7 /* Build configuration list for PBXNativeTarget "BlotchyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4243C3ED20DB077100925FE7 /* Debug */,
+				4243C3EE20DB077100925FE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4272AEFF20C686BB00F15834 /* Build configuration list for PBXProject "Blotchy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
