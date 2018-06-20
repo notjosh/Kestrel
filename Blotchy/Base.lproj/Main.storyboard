@@ -959,27 +959,54 @@
             <objects>
                 <viewController storyboardIdentifier="SearchEnginePreferencesViewController" id="qU2-fT-FHy" customClass="SearchEnginePreferencesViewController" customModule="Blotchy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="OML-E0-chh">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TUR-3w-QmQ">
-                                <rect key="frame" x="191" y="127" width="98" height="17"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Search Engines" id="UuQ-VR-ZmM">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8DO-7h-qy8">
+                                <rect key="frame" x="18" y="47" width="445" height="26"/>
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="7wO-Yq-CnR" id="jkf-ZU-BNf">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="B02-xM-mY2">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" id="7wO-Yq-CnR"/>
+                                            <menuItem title="Item 2" id="AYc-HC-GFC"/>
+                                            <menuItem title="Item 3" id="gQG-zX-rNg"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="updateWithSender:" target="qU2-fT-FHy" id="q9q-kd-19e"/>
+                                </connections>
+                            </popUpButton>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uEt-E7-RbN">
+                                <rect key="frame" x="20" y="20" width="440" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="qBR-hR-0Wp">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="TUR-3w-QmQ" firstAttribute="centerX" secondItem="OML-E0-chh" secondAttribute="centerX" id="WOH-jN-29O"/>
-                            <constraint firstItem="TUR-3w-QmQ" firstAttribute="centerY" secondItem="OML-E0-chh" secondAttribute="centerY" id="wOW-uD-SnL"/>
+                            <constraint firstItem="8DO-7h-qy8" firstAttribute="leading" secondItem="OML-E0-chh" secondAttribute="leading" constant="20" id="8U9-KX-8mP"/>
+                            <constraint firstItem="uEt-E7-RbN" firstAttribute="leading" secondItem="OML-E0-chh" secondAttribute="leading" constant="20" id="T9L-Ih-bRE"/>
+                            <constraint firstAttribute="bottom" secondItem="uEt-E7-RbN" secondAttribute="bottom" constant="20" id="V5x-x8-Iwc"/>
+                            <constraint firstItem="8DO-7h-qy8" firstAttribute="top" secondItem="OML-E0-chh" secondAttribute="top" constant="20" id="XBO-jp-4yX"/>
+                            <constraint firstAttribute="trailing" secondItem="uEt-E7-RbN" secondAttribute="trailing" constant="20" id="qZT-hh-GRK"/>
+                            <constraint firstItem="uEt-E7-RbN" firstAttribute="top" secondItem="8DO-7h-qy8" secondAttribute="bottom" constant="8" id="v6W-NH-lZW"/>
+                            <constraint firstAttribute="trailing" secondItem="8DO-7h-qy8" secondAttribute="trailing" constant="20" id="vhQ-g5-q1M"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchEnginesPopUpButton" destination="8DO-7h-qy8" id="iaT-Xg-KfV"/>
+                        <outlet property="templateTextField" destination="uEt-E7-RbN" id="HFW-WQ-cgb"/>
+                    </connections>
                 </viewController>
                 <customObject id="7WJ-Jb-mrf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="lK2-6I-AjV"/>
             </objects>
-            <point key="canvasLocation" x="1202" y="202"/>
+            <point key="canvasLocation" x="1284" y="115.5"/>
         </scene>
         <!--Context Preferences View Controller-->
         <scene sceneID="Ltn-St-IuX">
