@@ -768,22 +768,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="506" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <popUpButton hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UUg-zP-iKj">
-                                <rect key="frame" x="18" y="179" width="471" height="26"/>
-                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="fM5-RT-1rN" id="B2p-lQ-sT5">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="Hm8-nv-FqH">
-                                        <items>
-                                            <menuItem title="Item 1" state="on" id="fM5-RT-1rN"/>
-                                            <menuItem title="Item 2" id="cAu-qo-2dM"/>
-                                            <menuItem title="Item 3" id="shQ-bf-qry"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                            </popUpButton>
                             <webView canDrawConcurrently="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jyJ-be-vEi" customClass="DHWebView">
-                                <rect key="frame" x="0.0" y="0.0" width="506" height="174"/>
+                                <rect key="frame" x="0.0" y="0.0" width="506" height="177"/>
                                 <webPreferences key="preferences" defaultFontSize="16" defaultFixedFontSize="13" minimumFontSize="0">
                                     <nil key="identifier"/>
                                 </webPreferences>
@@ -792,7 +778,7 @@
                                 </connections>
                             </webView>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E30-5o-Etm">
-                                <rect key="frame" x="20" y="211" width="338" height="22"/>
+                                <rect key="frame" x="180" y="184" width="306" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" title="Cocoa Swift" placeholderString="Cocoa Mac" drawsBackground="YES" id="c9M-JR-KMm">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -803,10 +789,10 @@
                                     <outlet property="nextKeyView" destination="jyJ-be-vEi" id="QHM-Rb-Ec1"/>
                                 </connections>
                             </textField>
-                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D35-bm-Mtk">
-                                <rect key="frame" x="364" y="209" width="125" height="26"/>
+                            <popUpButton horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="D35-bm-Mtk">
+                                <rect key="frame" x="18" y="182" width="157" height="26"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="nPF-xE-F2w"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="nPF-xE-F2w"/>
                                 </constraints>
                                 <popUpButtonCell key="cell" type="push" title="Google" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="WcN-XF-QGB" id="TcF-5J-vx0">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -825,7 +811,10 @@
                                 </connections>
                             </popUpButton>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZwP-63-ulU">
-                                <rect key="frame" x="20" y="243" width="466" height="22"/>
+                                <rect key="frame" x="20" y="240" width="466" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="FW2-cu-Tff"/>
+                                </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="SearchTerm" drawsBackground="YES" id="Tsf-Ro-BsK">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -836,29 +825,45 @@
                                     <outlet property="nextKeyView" destination="jyJ-be-vEi" id="B1B-Wg-Myf"/>
                                 </connections>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LNs-K8-IKV">
+                                <rect key="frame" x="18" y="215" width="35" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Sets:" id="K3A-D9-uy5">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="wJk-N9-lcn">
+                                <rect key="frame" x="59" y="214" width="427" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Hnu-HV-bav"/>
+                                </constraints>
+                            </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="jyJ-be-vEi" secondAttribute="bottom" id="0Qe-WO-uhV"/>
-                            <constraint firstItem="ZwP-63-ulU" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" constant="20" symbolic="YES" id="7QI-Fd-yQr"/>
-                            <constraint firstItem="ZwP-63-ulU" firstAttribute="top" secondItem="0wk-HE-ntR" secondAttribute="top" constant="5" id="DIt-H4-2I0"/>
-                            <constraint firstItem="E30-5o-Etm" firstAttribute="top" secondItem="ZwP-63-ulU" secondAttribute="bottom" constant="10" symbolic="YES" id="KPf-Rr-j62"/>
-                            <constraint firstItem="ZwP-63-ulU" firstAttribute="leading" secondItem="UUg-zP-iKj" secondAttribute="leading" id="XZI-VR-lJH"/>
-                            <constraint firstItem="E30-5o-Etm" firstAttribute="top" secondItem="D35-bm-Mtk" secondAttribute="top" id="e9V-KU-WEU"/>
-                            <constraint firstItem="UUg-zP-iKj" firstAttribute="top" secondItem="E30-5o-Etm" secondAttribute="bottom" constant="8" id="eLJ-8H-lm8"/>
-                            <constraint firstAttribute="trailing" secondItem="ZwP-63-ulU" secondAttribute="trailing" constant="20" symbolic="YES" id="hLt-1Z-Hpa"/>
-                            <constraint firstItem="jyJ-be-vEi" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" id="iib-0R-Fxo"/>
-                            <constraint firstItem="ZwP-63-ulU" firstAttribute="centerX" secondItem="jyJ-be-vEi" secondAttribute="centerX" id="jot-RM-Ug0"/>
-                            <constraint firstItem="ZwP-63-ulU" firstAttribute="leading" secondItem="E30-5o-Etm" secondAttribute="leading" id="mPU-t4-Pkb"/>
-                            <constraint firstItem="jyJ-be-vEi" firstAttribute="top" secondItem="UUg-zP-iKj" secondAttribute="bottom" constant="8" id="r05-Qz-SRy"/>
-                            <constraint firstItem="D35-bm-Mtk" firstAttribute="leading" secondItem="E30-5o-Etm" secondAttribute="trailing" constant="8" symbolic="YES" id="r8K-tp-axf"/>
-                            <constraint firstItem="ZwP-63-ulU" firstAttribute="trailing" secondItem="UUg-zP-iKj" secondAttribute="trailing" id="t9W-wh-ANT"/>
-                            <constraint firstItem="ZwP-63-ulU" firstAttribute="trailing" secondItem="D35-bm-Mtk" secondAttribute="trailing" id="yik-Qb-OGg"/>
+                            <constraint firstItem="D35-bm-Mtk" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" constant="20" id="2I1-8E-pro"/>
+                            <constraint firstItem="E30-5o-Etm" firstAttribute="leading" secondItem="D35-bm-Mtk" secondAttribute="trailing" constant="8" id="2PH-xa-bGB"/>
+                            <constraint firstItem="LNs-K8-IKV" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" constant="20" id="3T7-fP-p8Y"/>
+                            <constraint firstItem="wJk-N9-lcn" firstAttribute="centerY" secondItem="LNs-K8-IKV" secondAttribute="centerY" id="818-fw-xNx"/>
+                            <constraint firstItem="LNs-K8-IKV" firstAttribute="top" secondItem="ZwP-63-ulU" secondAttribute="bottom" constant="8" id="Azn-Np-5DV"/>
+                            <constraint firstItem="wJk-N9-lcn" firstAttribute="leading" secondItem="LNs-K8-IKV" secondAttribute="trailing" constant="8" id="Omc-vZ-ra8"/>
+                            <constraint firstItem="ZwP-63-ulU" firstAttribute="top" secondItem="0wk-HE-ntR" secondAttribute="top" constant="8" id="Q5d-vu-Hcn"/>
+                            <constraint firstItem="E30-5o-Etm" firstAttribute="centerY" secondItem="D35-bm-Mtk" secondAttribute="centerY" id="Uiz-70-85Q"/>
+                            <constraint firstAttribute="trailing" secondItem="E30-5o-Etm" secondAttribute="trailing" constant="20" id="aSW-62-bNS"/>
+                            <constraint firstAttribute="trailing" secondItem="ZwP-63-ulU" secondAttribute="trailing" constant="20" id="aUg-Wm-vjf"/>
+                            <constraint firstAttribute="bottom" secondItem="jyJ-be-vEi" secondAttribute="bottom" id="b3Z-9W-JzC"/>
+                            <constraint firstAttribute="trailing" secondItem="jyJ-be-vEi" secondAttribute="trailing" id="dJm-Wj-RBq"/>
+                            <constraint firstItem="D35-bm-Mtk" firstAttribute="top" secondItem="wJk-N9-lcn" secondAttribute="bottom" constant="8" id="iMP-Kh-TfA"/>
+                            <constraint firstItem="ZwP-63-ulU" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" constant="20" id="jk3-ZG-ETJ"/>
+                            <constraint firstItem="jyJ-be-vEi" firstAttribute="top" secondItem="D35-bm-Mtk" secondAttribute="bottom" constant="8" id="mPn-QM-bzH"/>
+                            <constraint firstItem="jyJ-be-vEi" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" id="qgP-dY-6ai"/>
+                            <constraint firstAttribute="trailing" secondItem="wJk-N9-lcn" secondAttribute="trailing" constant="20" id="soZ-cs-ie3"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="contextField" destination="E30-5o-Etm" id="4zd-iQ-nFP"/>
+                        <outlet property="contextsContainer" destination="wJk-N9-lcn" id="Nro-AI-fCN"/>
                         <outlet property="searchEnginesPopUpButton" destination="D35-bm-Mtk" id="B4G-fI-bOZ"/>
-                        <outlet property="searchResultsPopUpButton" destination="UUg-zP-iKj" id="axf-eL-pH7"/>
                         <outlet property="searchTermField" destination="ZwP-63-ulU" id="wYI-SV-Mc7"/>
                         <outlet property="webView" destination="jyJ-be-vEi" id="k3C-fA-OUG"/>
                     </connections>

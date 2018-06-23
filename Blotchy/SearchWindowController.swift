@@ -64,10 +64,13 @@ protocol SearchViewControllerDataSource {
 
 class SearchViewController: NSViewController {
     @IBOutlet var searchEnginesPopUpButton: NSPopUpButton!
-    @IBOutlet var searchResultsPopUpButton: NSPopUpButton!
+    @IBOutlet var contextsContainer: NSView!
     @IBOutlet var webView: DHWebView!
     @IBOutlet var contextField: NSTextField!
     @IBOutlet var searchTermField: NSTextField!
+
+    let searchEngineService = SearchEngineService.shared
+    let contextService = ContextService.shared
 
     var userEditedSearchField: Bool = false
     var dataSource: SearchViewControllerDataSource?
@@ -76,6 +79,21 @@ class SearchViewController: NSViewController {
         super.viewDidLoad()
 
         webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Safari/605.1.15"
+
+        searchEnginesPopUpButton.removeAllItems()
+        searchEnginesPopUpButton.addItems(withTitles: searchEngineService.searchEngines.map { $0.name })
+
+        for (index, context) in contextService.contexts.enumerated() {
+            let button = NSButton(title: context.name,
+                                  target: self,
+                                  action: #selector(handleContextChosen(sender:)))
+            let width = 100
+            button.frame = NSRect(x: (width + 5) * index,
+                                  y: 0,
+                                  width: width,
+                                  height: 20)
+            contextsContainer.addSubview(button)
+        }
 
         if let context = UserDefaults.standard.string(forKey: "context"),
             context != "" {
@@ -96,6 +114,22 @@ class SearchViewController: NSViewController {
 
     // MARK: Actions
     @IBAction func handleSearchEngineChange(sender: Any) {
+        go()
+    }
+
+    @IBAction func handleContextChosen(sender: Any) {
+        guard
+            let button = sender as? NSButton,
+            let context = contextService.contexts.first(where: { context in
+                return context.name == button.title
+            })
+            else {
+            return
+        }
+
+        contextField.stringValue = context.terms.joined(separator: " ")
+        searchEnginesPopUpButton.selectItem(withTitle: context.searchEngine.name)
+
         go()
     }
 
@@ -139,7 +173,6 @@ class SearchViewController: NSViewController {
 
         let request = URLRequest(url: url)
         webView.mainFrame.load(request)
-
     }
 
     func URLForSearchTerm(searchTerm: String) -> URL? {
