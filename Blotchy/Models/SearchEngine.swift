@@ -22,8 +22,6 @@ struct SearchEngine {
             .replacingOccurrences(of: "{inputEncoding?}", with: "UTF-8")
             .replacingOccurrences(of: "{outputEncoding?}", with: "UTF-8")
 
-        print("Searching via: \(string)")
-
         return URL(string: string)
     }
 }
