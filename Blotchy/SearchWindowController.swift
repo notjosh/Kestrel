@@ -64,12 +64,14 @@ protocol SearchViewControllerDataSource {
 
 class SearchViewController: NSViewController {
     @IBOutlet var searchEnginesPopUpButton: NSPopUpButton!
-    @IBOutlet var searchResultsPopUpButton: NSPopUpButton!
+    @IBOutlet var contextsContainer: NSView!
     @IBOutlet var webView: DHWebView!
     @IBOutlet var contextField: NSTextField!
     @IBOutlet var searchTermField: NSTextField!
 
-    var userEditedSearchField: Bool = false
+    let searchEngineService = SearchEngineService.shared
+    let contextService = ContextService.shared
+
     var dataSource: SearchViewControllerDataSource?
 
     override func viewDidLoad() {
@@ -77,19 +79,32 @@ class SearchViewController: NSViewController {
 
         webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Safari/605.1.15"
 
+        searchEnginesPopUpButton.removeAllItems()
+        searchEnginesPopUpButton.addItems(withTitles: searchEngineService.searchEngines.map { $0.name })
+
+        for (index, context) in contextService.contexts.enumerated() {
+            let button = NSButton(title: context.name,
+                                  target: self,
+                                  action: #selector(handleContextChosen(sender:)))
+            let width = 100
+            button.frame = NSRect(x: (width + 5) * index,
+                                  y: 0,
+                                  width: width,
+                                  height: 20)
+            contextsContainer.addSubview(button)
+        }
+
         if let context = UserDefaults.standard.string(forKey: "context"),
             context != "" {
             contextField.stringValue = context
         }
 
         if let stringToUseInSearchField = UserDefaults.standard.string(forKey: "recentSearch") {
-            self.searchTermField.stringValue = stringToUseInSearchField
+            searchTermField.stringValue = stringToUseInSearchField
             print("String to use is coming from userdefaults!")
         } else {
             searchTermField.stringValue = ""
         }
-
-        userEditedSearchField = false
 
         go()
     }
@@ -99,70 +114,66 @@ class SearchViewController: NSViewController {
         go()
     }
 
+    @IBAction func handleContextChosen(sender: Any) {
+        guard
+            let button = sender as? NSButton,
+            let context = contextService.contexts.first(where: { context in
+                return context.name == button.title
+            })
+            else {
+            return
+        }
+
+        contextField.stringValue = context.terms.joined(separator: " ")
+        searchEnginesPopUpButton.selectItem(withTitle: context.searchEngine.name)
+
+        go()
+    }
+
     @IBAction func handleContextTerm(sender: Any) {
         UserDefaults.standard.set(contextField.stringValue, forKey: "context")
         go()
     }
 
     @IBAction func handleSearchTermChange(sender: Any) {
-        userEditedSearchField = true
         UserDefaults.standard.set(self.searchTermField.stringValue, forKey: "recentSearch")
         print("searchTermField: ", searchTermField.stringValue)
         go()
     }
 
     func reload() {
+        if let term = dataSource?.searchTerm {
+            searchTermField.stringValue = term
+        }
+
         go()
     }
 
     // MARK: Helper
     func go() {
-        //		SearchViewController?.
         guard
-            let searchTerm = dataSource?.searchTerm,
-            var url = URLForSearchTerm(searchTerm: searchTerm)
+            let searchEngine = selectedSearchEngine(),
+            let url = searchEngine.url(for: "\(searchTermField.stringValue) \(contextField.stringValue)")
             else {
                 return
         }
 
-        // ok this is not good but it works
-        if userEditedSearchField == true {
-            print("userEditedSearchField true")
-            url = URLForSearchTerm(searchTerm: self.searchTermField.stringValue)!
-        } else {
-            searchTermField.stringValue = searchTerm
-        }
-
         UserDefaults.standard.set(searchTermField.stringValue, forKey: "recentSearch")
-        userEditedSearchField = false
-
 
         let request = URLRequest(url: url)
         webView.mainFrame.load(request)
-
     }
 
-    func URLForSearchTerm(searchTerm: String) -> URL? {
-        guard let encoded = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            return nil
-        }
-        let escapedString:String = (contextField.stringValue.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed))!
+    func selectedSearchEngine() -> SearchEngine? {
+        let idx = searchEnginesPopUpButton.indexOfSelectedItem
 
-
-        switch searchEnginesPopUpButton.indexOfSelectedItem {
-        case 0: // google
-            return URL(string: "https://www.google.com/search?hl=en&q=\(encoded)" + "%20" + escapedString)
-        case 1: // ddg
-            return URL(string: "https://duckduckgo.com/?q=\(encoded)" + "%20" + escapedString)
-        case 2: // so
-            return URL(string: "https://stackoverflow.com/search?q=\(encoded)" + "%20" + escapedString)
-        case 3: // google I feel lucky
-            let iFeelLuckyString : String = ("https://www.google.com/search?hl=en&q=\(encoded)" + "%20" + escapedString + "%20&btnI")
-            // the '&btnI' is the 'I feel lucky' button. Apparently it won't always work. Works for me.
-            return URL(string: iFeelLuckyString)
-        default:
-            return nil;
+        guard
+            searchEngineService.searchEngines.indices.contains(idx)
+            else {
+                return nil
         }
+
+        return searchEngineService.searchEngines[idx]
     }
 }
 

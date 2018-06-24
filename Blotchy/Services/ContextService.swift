@@ -17,11 +17,11 @@ struct ContextService {
         let searchEngines = SearchEngineService.shared.searchEngines
 
         self.contexts = [
-            Context(name: "context a", searchEngine: searchEngines[0 % searchEngines.count], terms: ["foo", "bar"]),
-            Context(name: "context b", searchEngine: searchEngines[1 % searchEngines.count], terms: ["baz", "qux"]),
-            Context(name: "context c", searchEngine: searchEngines[2 % searchEngines.count], terms: ["milk", "shake", "duck"]),
-            Context(name: "context d", searchEngine: searchEngines[3 % searchEngines.count], terms: []),
-            Context(name: "context e", searchEngine: searchEngines[4 % searchEngines.count], terms: ["oh", "when", "the", "saints"]),
+            Context(name: "Cocoa", searchEngine: searchEngines[0 % searchEngines.count], terms: ["-site:apple.com", "cocoa"]),
+            Context(name: "JavaScript", searchEngine: searchEngines[1 % searchEngines.count], terms: ["javascript"]),
+            Context(name: "CSS via SO", searchEngine: searchEngines[2 % searchEngines.count], terms: ["css"]),
+            Context(name: "(context 4)", searchEngine: searchEngines[3 % searchEngines.count], terms: ["foo", "bar"]),
+            Context(name: "(context 5)", searchEngine: searchEngines[4 % searchEngines.count], terms: ["bar", "baz"]),
         ]
     }
 }
