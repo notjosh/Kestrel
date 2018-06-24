@@ -100,10 +100,10 @@ class SearchViewController: NSViewController {
         }
 
         if let stringToUseInSearchField = UserDefaults.standard.string(forKey: "recentSearch") {
-            self.searchTermField.stringValue = stringToUseInSearchField
+            searchTermField.stringValue = stringToUseInSearchField
             print("String to use is coming from userdefaults!")
         } else {
-            searchTermField.stringValue = dataSource?.searchTerm ?? ""
+            searchTermField.stringValue = ""
         }
 
         go()
@@ -142,6 +142,10 @@ class SearchViewController: NSViewController {
     }
 
     func reload() {
+        if let term = dataSource?.searchTerm {
+            searchTermField.stringValue = term
+        }
+
         go()
     }
 
