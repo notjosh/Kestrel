@@ -68,6 +68,7 @@ class SearchViewController: NSViewController {
     @IBOutlet var webView: DHWebView!
     @IBOutlet var contextField: NSTextField!
     @IBOutlet var searchTermField: NSTextField!
+    @IBOutlet var progressIndicator: NSProgressIndicator!
 
     let searchEngineService = SearchEngineService.shared
     let contextService = ContextService.shared
@@ -107,6 +108,30 @@ class SearchViewController: NSViewController {
         }
 
         go()
+    }
+
+    override func viewWillAppear() {
+        super.viewWillAppear()
+
+        webView.addObserver(self,
+                            forKeyPath: "estimatedProgress",
+                            options: .new,
+                            context: nil)
+    }
+
+    override func viewDidDisappear() {
+        super.viewDidDisappear()
+
+        webView.removeObserver(self, forKeyPath: "estimatedProgress")
+    }
+
+    // MARK: Observing
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "estimatedProgress" {
+            progressIndicator.doubleValue = progressIndicator.maxValue * webView.estimatedProgress
+        } else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
     }
 
     // MARK: Actions
@@ -174,6 +199,16 @@ class SearchViewController: NSViewController {
         }
 
         return searchEngineService.searchEngines[idx]
+    }
+}
+
+extension SearchViewController: WebFrameLoadDelegate {
+    func webView(_ sender: WebView!, didStartProvisionalLoadFor frame: WebFrame!) {
+        progressIndicator.isHidden = false
+    }
+
+    func webView(_ sender: WebView!, didFinishLoadFor frame: WebFrame!) {
+        progressIndicator.isHidden = true
     }
 }
 
