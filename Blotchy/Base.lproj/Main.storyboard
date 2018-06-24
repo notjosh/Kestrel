@@ -769,7 +769,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <webView canDrawConcurrently="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jyJ-be-vEi" customClass="DHWebView">
-                                <rect key="frame" x="0.0" y="0.0" width="506" height="177"/>
+                                <rect key="frame" x="0.0" y="0.0" width="506" height="163"/>
                                 <webPreferences key="preferences" defaultFontSize="16" defaultFixedFontSize="13" minimumFontSize="0">
                                     <nil key="identifier"/>
                                 </webPreferences>
@@ -839,6 +839,9 @@
                                     <constraint firstAttribute="height" constant="20" id="Hnu-HV-bav"/>
                                 </constraints>
                             </customView>
+                            <progressIndicator wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="BG4-qu-mmQ">
+                                <rect key="frame" x="0.0" y="164" width="506" height="20"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstItem="D35-bm-Mtk" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" constant="20" id="2I1-8E-pro"/>
@@ -848,14 +851,17 @@
                             <constraint firstItem="LNs-K8-IKV" firstAttribute="top" secondItem="ZwP-63-ulU" secondAttribute="bottom" constant="8" id="Azn-Np-5DV"/>
                             <constraint firstItem="wJk-N9-lcn" firstAttribute="leading" secondItem="LNs-K8-IKV" secondAttribute="trailing" constant="8" id="Omc-vZ-ra8"/>
                             <constraint firstItem="ZwP-63-ulU" firstAttribute="top" secondItem="0wk-HE-ntR" secondAttribute="top" constant="8" id="Q5d-vu-Hcn"/>
+                            <constraint firstItem="BG4-qu-mmQ" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" id="RH3-be-p38"/>
                             <constraint firstItem="E30-5o-Etm" firstAttribute="centerY" secondItem="D35-bm-Mtk" secondAttribute="centerY" id="Uiz-70-85Q"/>
+                            <constraint firstItem="BG4-qu-mmQ" firstAttribute="top" secondItem="D35-bm-Mtk" secondAttribute="bottom" constant="2" id="YYW-mP-qon"/>
                             <constraint firstAttribute="trailing" secondItem="E30-5o-Etm" secondAttribute="trailing" constant="20" id="aSW-62-bNS"/>
                             <constraint firstAttribute="trailing" secondItem="ZwP-63-ulU" secondAttribute="trailing" constant="20" id="aUg-Wm-vjf"/>
                             <constraint firstAttribute="bottom" secondItem="jyJ-be-vEi" secondAttribute="bottom" id="b3Z-9W-JzC"/>
                             <constraint firstAttribute="trailing" secondItem="jyJ-be-vEi" secondAttribute="trailing" id="dJm-Wj-RBq"/>
+                            <constraint firstAttribute="trailing" secondItem="BG4-qu-mmQ" secondAttribute="trailing" id="e4c-bI-eNi"/>
                             <constraint firstItem="D35-bm-Mtk" firstAttribute="top" secondItem="wJk-N9-lcn" secondAttribute="bottom" constant="8" id="iMP-Kh-TfA"/>
                             <constraint firstItem="ZwP-63-ulU" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" constant="20" id="jk3-ZG-ETJ"/>
-                            <constraint firstItem="jyJ-be-vEi" firstAttribute="top" secondItem="D35-bm-Mtk" secondAttribute="bottom" constant="8" id="mPn-QM-bzH"/>
+                            <constraint firstItem="jyJ-be-vEi" firstAttribute="top" secondItem="BG4-qu-mmQ" secondAttribute="bottom" constant="2" id="pYT-sZ-cHe"/>
                             <constraint firstItem="jyJ-be-vEi" firstAttribute="leading" secondItem="0wk-HE-ntR" secondAttribute="leading" id="qgP-dY-6ai"/>
                             <constraint firstAttribute="trailing" secondItem="wJk-N9-lcn" secondAttribute="trailing" constant="20" id="soZ-cs-ie3"/>
                         </constraints>
@@ -863,6 +869,7 @@
                     <connections>
                         <outlet property="contextField" destination="E30-5o-Etm" id="4zd-iQ-nFP"/>
                         <outlet property="contextsContainer" destination="wJk-N9-lcn" id="Nro-AI-fCN"/>
+                        <outlet property="progressIndicator" destination="BG4-qu-mmQ" id="mkM-9p-AyF"/>
                         <outlet property="searchEnginesPopUpButton" destination="D35-bm-Mtk" id="B4G-fI-bOZ"/>
                         <outlet property="searchTermField" destination="ZwP-63-ulU" id="wYI-SV-Mc7"/>
                         <outlet property="webView" destination="jyJ-be-vEi" id="k3C-fA-OUG"/>
