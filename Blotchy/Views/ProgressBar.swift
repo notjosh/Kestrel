@@ -61,7 +61,7 @@ class ProgressBar: NSView {
     }
 
     func setProgress(_ progress: Double, animated: Bool) {
-        progressValue = (0.0 ... ProgressBarMaximum).clamp(progress)
+        progressValue = progress.clamped(to: 0.0...ProgressBarMaximum)
 
         update(animated)
     }
