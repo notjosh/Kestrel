@@ -17,7 +17,8 @@ struct ContextService {
         let searchEngines = SearchEngineService.shared.searchEngines
 
         self.contexts = [
-            Context(name: "Cocoa", searchEngine: searchEngines[0 % searchEngines.count], terms: ["-site:apple.com", "cocoa"]),
+            Context(name: "Swift", searchEngine: searchEngines[1 % searchEngines.count], terms: ["-site:apple.com", "swift"]),
+            Context(name: "objc", searchEngine: searchEngines[1 % searchEngines.count], terms: ["-site:apple.com", "objective-c"]),
             Context(name: "JavaScript", searchEngine: searchEngines[1 % searchEngines.count], terms: ["javascript"]),
             Context(name: "CSS via SO", searchEngine: searchEngines[2 % searchEngines.count], terms: ["css"]),
             Context(name: "(context 4)", searchEngine: searchEngines[3 % searchEngines.count], terms: ["foo", "bar"]),
