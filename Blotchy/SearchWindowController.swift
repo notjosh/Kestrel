@@ -68,7 +68,7 @@ class SearchViewController: NSViewController {
     @IBOutlet var webView: DHWebView!
     @IBOutlet var contextField: NSTextField!
     @IBOutlet var searchTermField: NSTextField!
-    @IBOutlet var progressIndicator: NSProgressIndicator!
+    @IBOutlet var progressBar: ProgressBar!
 
     let searchEngineService = SearchEngineService.shared
     let contextService = ContextService.shared
@@ -128,7 +128,11 @@ class SearchViewController: NSViewController {
     // MARK: Observing
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "estimatedProgress" {
-            progressIndicator.doubleValue = progressIndicator.maxValue * webView.estimatedProgress
+            let progress = webView.estimatedProgress * 100
+            let isLoading = progress > 0.1
+//            progressBar.progress = progress
+            progressBar.isHidden = !isLoading
+            progressBar.setProgress(progress, animated: isLoading)
         } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
@@ -204,11 +208,19 @@ class SearchViewController: NSViewController {
 
 extension SearchViewController: WebFrameLoadDelegate {
     func webView(_ sender: WebView!, didStartProvisionalLoadFor frame: WebFrame!) {
-        progressIndicator.isHidden = false
+//        progressBar.isHidden = false
+
+        // we only care about the root frame for progress updating
+        guard sender.mainFrame == frame else {
+            return
+        }
+
+        // XXX: is this good logic, or
+        progressBar.setProgress(0.0, animated: false)
     }
 
     func webView(_ sender: WebView!, didFinishLoadFor frame: WebFrame!) {
-        progressIndicator.isHidden = true
+//        progressBar.isHidden = true
     }
 }
 
