@@ -100,11 +100,7 @@ extension AppDelegate: CursorGestureTrackerDelegate {
 
         // show window, without copying, in "search" mode
         if shiftKeyIsPressed {
-            let recentSearch = UserDefaults.standard.string(forKey: "recentSearch") ?? ""
-            print("the preferences I found was \(recentSearch)")
-
-            self.showSearchWindow(with: recentSearch)
-
+            self.showSearchWindow(with: nil)
             return
         }
 
@@ -119,10 +115,12 @@ extension AppDelegate: CursorGestureTrackerDelegate {
         }
     }
 
-	func showSearchWindow(with searchTerm: String) {
+	func showSearchWindow(with searchTerm: String?) {
         // we should only have one of these windows, okay
         if let searchWindowController = searchWindowController {
-            searchWindowController.searchTerm = searchTerm
+            if let searchTerm = searchTerm {
+                searchWindowController.update(searchTerm)
+            }
             return
         }
 
@@ -132,7 +130,9 @@ extension AppDelegate: CursorGestureTrackerDelegate {
             return
         }
 
-        swc.searchTerm = searchTerm
+        if let searchTerm = searchTerm {
+            swc.update(searchTerm)
+        }
 
         swc.window?.level = .floating
         swc.window?.isReleasedWhenClosed = true
