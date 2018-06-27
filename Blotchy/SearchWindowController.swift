@@ -198,7 +198,31 @@ class SearchViewController: NSViewController {
         go()
     }
 
-    @IBAction func handleContextTerm(sender: Any) {
+    @IBAction func handleAddTerm(sender: Any) {
+        // XXX: should probably be a panel separately, but yolo
+        let alert = NSAlert()
+        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: "Cancel")
+        alert.messageText = "New Term"
+        alert.informativeText = "What term would you like to add, friend?"
+
+        let tf = NSTextField(frame: NSRect(x: 0, y: 0, width: 150, height: 20))
+        tf.stringValue = ""
+        alert.accessoryView = tf
+
+        let response = alert.runModal()
+
+        let text = tf.stringValue
+
+        guard response == .alertFirstButtonReturn,
+            text != "",
+            srrrrrch.terms.index(of: text) == nil
+            else {
+                return
+        }
+
+        srrrrrch.terms.append(tf.stringValue)
+        terms()
         go()
     }
 
