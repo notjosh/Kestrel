@@ -15,10 +15,10 @@ class ViewController: NSViewController {
 
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if segue.identifier == PerformSearchSegue {
-            if let wc = segue.destinationController as? SearchWindowController,
-                let string = string {
-                wc.searchTerm = string
-            }
+//            if let wc = segue.destinationController as? SearchWindowController,
+//                let string = string {
+//                wc.searchTerm = string
+//            }
         }
     }
 
