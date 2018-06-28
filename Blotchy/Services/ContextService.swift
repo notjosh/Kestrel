@@ -11,12 +11,16 @@ import Foundation
 struct ContextService {
     static let shared: ContextService = ContextService()
 
-    let contexts: [Context]
+    var contexts: [Context] {
+        return _contexts
+    }
+
+    fileprivate var _contexts: [Context]
 
     init() {
         let searchEngines = SearchEngineService.shared.searchEngines
 
-        self.contexts = [
+        self._contexts = [
             Context(name: "Swift", searchEngine: searchEngines[1 % searchEngines.count], terms: ["-site:apple.com", "swift"]),
             Context(name: "objc", searchEngine: searchEngines[1 % searchEngines.count], terms: ["-site:apple.com", "objective-c"]),
             Context(name: "JavaScript", searchEngine: searchEngines[1 % searchEngines.count], terms: ["javascript"]),
@@ -28,5 +32,9 @@ struct ContextService {
             Context(name: "(context 8)", searchEngine: searchEngines[7 % searchEngines.count], terms: ["foo", "bar"]),
             Context(name: "(context 9)", searchEngine: searchEngines[8 % searchEngines.count], terms: ["bar", "baz"]),
         ]
+    }
+
+    mutating func remove(at index: Int) {
+        _contexts.remove(at: index)
     }
 }

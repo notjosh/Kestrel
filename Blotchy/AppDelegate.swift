@@ -58,6 +58,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // https://thenounproject.com/search/?q=warm&i=1554494
         statusItem.button?.image = NSImage(named: "menu-icon")
         statusItem.menu = statusItemMenu
+
+        #if DEBUG
+//        showSearchWindow(with: nil)
+        openPreferences(sender: self)
+        #endif
 	}
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -100,7 +105,7 @@ extension AppDelegate: CursorGestureTrackerDelegate {
 
         // show window, without copying, in "search" mode
         if shiftKeyIsPressed {
-            self.showSearchWindow(with: nil)
+            showSearchWindow(with: nil)
             return
         }
 

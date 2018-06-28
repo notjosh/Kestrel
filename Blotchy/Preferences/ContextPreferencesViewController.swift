@@ -10,7 +10,51 @@ import Cocoa
 import MASPreferences
 
 class ContextPreferencesViewController: NSViewController {
-    let contextService = ContextService.shared
+    @IBOutlet var tableView: NSTableView!
+
+    var contextService = ContextService.shared
+
+    // MARK:- Actions
+    @IBAction func handleSegmentedControlPressed(sender: Any) {
+        enum Actions: Int {
+            case add
+            case remove
+        }
+
+        guard let segmented = sender as? NSSegmentedControl else {
+            return
+        }
+
+        let segment = segmented.selectedSegment
+        let tag = segmented.tag(forSegment: segment)
+        guard
+            let action = Actions(rawValue: tag)
+            else {
+                return
+        }
+
+        switch action {
+        case .add:
+            handleAddPressed(sender: sender)
+        case .remove:
+            handleRemovePressed(sender: sender)
+        }
+    }
+
+    @IBAction func handleAddPressed(sender: Any) {
+        tableView.reloadData()
+    }
+
+    @IBAction func handleRemovePressed(sender: Any) {
+        let indexSet = tableView.selectedRowIndexes
+
+        tableView.beginUpdates()
+
+        indexSet.forEach { contextService.remove(at: $0) }
+        tableView.removeRows(at: indexSet, withAnimation: .effectFade)
+
+        tableView.endUpdates()
+    }
 }
 
 extension ContextPreferencesViewController: NSTableViewDataSource {
