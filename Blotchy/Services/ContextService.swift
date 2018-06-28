@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ContextService {
+class ContextService {
     static let shared: ContextService = ContextService()
 
     var contexts: [Context] {
@@ -34,7 +34,15 @@ struct ContextService {
         ]
     }
 
-    mutating func remove(at index: Int) {
+    func update(_ context: Context, at index: Int) {
+        guard _contexts.indices.contains(index) else {
+            return
+        }
+
+        _contexts[index] = context
+    }
+
+    func remove(at index: Int) {
         _contexts.remove(at: index)
     }
 }

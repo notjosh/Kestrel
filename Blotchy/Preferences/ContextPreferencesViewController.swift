@@ -15,6 +15,43 @@ class ContextPreferencesViewController: NSViewController {
     var contextService = ContextService.shared
 
     // MARK:- Actions
+    @IBAction func handleTextFieldFinished(sender: Any) {
+        let idx = tableView.selectedRow
+        guard
+            let row = tableView.rowView(atRow: idx, makeIfNecessary: false)
+            else {
+                return
+        }
+
+        guard
+            let titleView = row.view(atColumn: 0) as? NSTableCellView,
+            let termsView = row.view(atColumn: 2) as? NSTableCellView,
+            let title = titleView.objectValue as? String,
+            let termsString = termsView.objectValue as? String
+            else {
+                return
+        }
+
+//        let title = titleView.textField.stringValue
+//        let termsString = termsView.textField.stringValue
+        let terms = termsString.components(separatedBy: ", ")
+
+        let old = contextService.contexts[idx]
+
+        let new = Context(
+            name: title,
+            searchEngine: old.searchEngine,
+            terms: terms
+        )
+
+        contextService.update(new, at: idx)
+
+
+
+        
+        tableView.reloadData()
+    }
+
     @IBAction func handleSegmentedControlPressed(sender: Any) {
         enum Actions: Int {
             case add
