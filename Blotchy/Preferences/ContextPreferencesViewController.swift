@@ -11,46 +11,71 @@ import MASPreferences
 
 class ContextPreferencesViewController: NSViewController {
     @IBOutlet var tableView: NSTableView!
+    @IBOutlet var contextArrayController: NSArrayController!
+    @IBOutlet var searchEngineArrayController: NSArrayController!
+
+//    var detailViewController: ContextDetailPreferencesViewController! {
+//        guard
+//            let vc = children.first(where: { $0 is ContextDetailPreferencesViewController }) as? ContextDetailPreferencesViewController
+//            else {
+//            fatalError("where did your detail view controller (ContextDetailPreferencesViewController) go?")
+//        }
+//
+//        return vc
+//    }
 
     var contextService = ContextService.shared
+    var searchEngineService = SearchEngineService.shared
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        contextArrayController.content = contextService.contexts
+        searchEngineArrayController.content = searchEngineService.searchEngines
+    }
 
     // MARK:- Actions
-    @IBAction func handleTextFieldFinished(sender: Any) {
-        let idx = tableView.selectedRow
-        guard
-            let row = tableView.rowView(atRow: idx, makeIfNecessary: false)
-            else {
-                return
-        }
-
-        guard
-            let titleView = row.view(atColumn: 0) as? NSTableCellView,
-            let termsView = row.view(atColumn: 2) as? NSTableCellView,
-            let title = titleView.objectValue as? String,
-            let termsString = termsView.objectValue as? String
-            else {
-                return
-        }
-
-//        let title = titleView.textField.stringValue
-//        let termsString = termsView.textField.stringValue
-        let terms = termsString.components(separatedBy: ", ")
-
-        let old = contextService.contexts[idx]
-
-        let new = Context(
-            name: title,
-            searchEngine: old.searchEngine,
-            terms: terms
-        )
-
-        contextService.update(new, at: idx)
-
-
-
-        
-        tableView.reloadData()
+    @IBAction func handleTableViewAction(sender: Any) {
+//        let idx = tableView.clickedRow
+//
+//        guard
+//            idx != -1
+//            else {
+//                detailViewController.context = nil
+//                return
+//        }
+//
+//        let context = contextService.contexts[idx]
+//        detailViewController.context = context
     }
+
+//    @IBAction func handleTextFieldFinished(sender: Any) {
+//        let idx = tableView.selectedRow
+//        guard
+//            let row = tableView.rowView(atRow: idx, makeIfNecessary: false)
+//            else {
+//                return
+//        }
+//
+//        guard
+//            let titleView = row.view(atColumn: 0) as? NSTableCellView,
+//            let title = titleView.objectValue as? String
+//            else {
+//                return
+//        }
+//
+//        let old = contextService.contexts[idx]
+//
+//        let new = Context(
+//            name: title,
+//            searchEngine: old.searchEngine,
+//            terms: old.terms
+//        )
+//
+//        contextService.update(new, at: idx)
+//
+//        tableView.reloadData()
+//    }
 
     @IBAction func handleSegmentedControlPressed(sender: Any) {
         enum Actions: Int {
@@ -79,44 +104,43 @@ class ContextPreferencesViewController: NSViewController {
     }
 
     @IBAction func handleAddPressed(sender: Any) {
-        tableView.reloadData()
+        guard let se = searchEngineService.searchEngines.first else {
+            fatalError()
+        }
+
+        let new = Context(name: "New Context",
+                          searchEngine: se,
+                          terms: [],
+                          color: NSColor.red)
+
+        contextArrayController.addObject(new)
     }
 
     @IBAction func handleRemovePressed(sender: Any) {
-        let indexSet = tableView.selectedRowIndexes
-
-        tableView.beginUpdates()
-
-        indexSet.forEach { contextService.remove(at: $0) }
-        tableView.removeRows(at: indexSet, withAnimation: .effectFade)
-
-        tableView.endUpdates()
+        let indexSet = contextArrayController.selectionIndexes
+        contextArrayController.remove(atArrangedObjectIndexes: indexSet)
     }
 }
 
 extension ContextPreferencesViewController: NSTableViewDataSource {
-    func numberOfRows(in tableView: NSTableView) -> Int {
-        return contextService.contexts.count
-    }
-
-    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        guard let tableColumn = tableColumn else {
-            return ""
-        }
-
-        let context = contextService.contexts[row]
-
-        switch tableView.tableColumns.firstIndex(of: tableColumn) {
-        case 0:
-            return context.name
-        case 1:
-            return context.searchEngine.name
-        case 2:
-            return context.terms.joined(separator: ", ")
-        default:
-            return ""
-        }
-    }
+//    func numberOfRows(in tableView: NSTableView) -> Int {
+//        return contextService.contexts.count
+//    }
+//
+//    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+//        guard let tableColumn = tableColumn else {
+//            return ""
+//        }
+//
+//        let context = contextService.contexts[row]
+//
+//        switch tableView.tableColumns.firstIndex(of: tableColumn) {
+//        case 0:
+//            return context.name
+//        default:
+//            return ""
+//        }
+//    }
 }
 
 extension ContextPreferencesViewController: NSTableViewDelegate {

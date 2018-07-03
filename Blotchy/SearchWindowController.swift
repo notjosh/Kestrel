@@ -161,7 +161,7 @@ class SearchViewController: NSViewController {
     @IBAction func handleContextChosen(sender: Any) {
         guard
             let button = sender as? NSButton,
-            let context = contextService.contexts.first(where: { context in
+            let context = contextService.contexts.compactMap({ $0 as? Context }).first(where: { context in
                 return context.name == button.title
             })
             else {
@@ -271,7 +271,7 @@ class SearchViewController: NSViewController {
 
         contextsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
 
-        contextService.contexts.forEach { context in
+        contextService.contexts.compactMap({ $0 as? Context }).forEach { context in
             let button = NSButton(title: context.name,
                                   target: self,
                                   action: #selector(handleContextChosen(sender:)))
