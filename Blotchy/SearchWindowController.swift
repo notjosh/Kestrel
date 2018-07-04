@@ -78,10 +78,13 @@ struct Searchysearceasoea {
         // UserDefaults.standard.set(context, forKey: "context")
     }
 
-    static func restore() -> Searchysearceasoea {
+    static func restore(in moc: NSManagedObjectContext) -> Searchysearceasoea {
+        let fr = NSFetchRequest<SearchEngine>(entityName: SearchEngine.entityName())
+        let searchEngines = (try? moc.fetch(fr)) ?? []
+
         guard
             // todo: persist last search engine by key
-            let searchEngine = SearchEngineService.shared.searchEngines.first
+            let searchEngine = searchEngines.first
             else {
                 fatalError("no search engines, what")
         }
@@ -104,10 +107,12 @@ class SearchViewController: NSViewController {
     @IBOutlet var searchTermField: NSTextField!
     @IBOutlet var progressBar: ProgressBar!
 
-    let searchEngineService = SearchEngineService.shared
-    let contextService = ContextService.shared
+    let dataStack = DataStack.shared
 
-    var srrrrrch = Searchysearceasoea.restore()
+    var searchEngines = [SearchEngine]()
+    var contexts = [Context]()
+
+    var srrrrrch = Searchysearceasoea.restore(in: DataStack.shared.viewContext)
 
     var delegate: SearchViewControllerDelegate?
 
@@ -116,10 +121,16 @@ class SearchViewController: NSViewController {
 
         webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Safari/605.1.15"
 
-        searchEnginesPopUpButton.removeAllItems()
-        searchEnginesPopUpButton.addItems(withTitles: searchEngineService.searchEngines.map { $0.name })
+        let sefr = NSFetchRequest<SearchEngine>(entityName: SearchEngine.entityName())
+        searchEngines = (try? dataStack.viewContext.fetch(sefr)) ?? []
 
-        contexts()
+        let cfr = NSFetchRequest<Context>(entityName: Context.entityName())
+        contexts = (try? dataStack.viewContext.fetch(cfr)) ?? []
+
+        searchEnginesPopUpButton.removeAllItems()
+        searchEnginesPopUpButton.addItems(withTitles: searchEngines.map { $0.name })
+
+        coiiintexts()
         terms()
         searchTermField.stringValue = srrrrrch.searchTerm
 
@@ -161,7 +172,7 @@ class SearchViewController: NSViewController {
     @IBAction func handleContextChosen(sender: Any) {
         guard
             let button = sender as? NSButton,
-            let context = contextService.contexts.compactMap({ $0 as? Context }).first(where: { context in
+            let context = contexts.first(where: { context in
                 return context.name == button.title
             })
             else {
@@ -175,7 +186,7 @@ class SearchViewController: NSViewController {
             .forEach { $0.state = .off }
         button.state = .on
 
-        srrrrrch.terms = context.terms
+        srrrrrch.terms = context.terms.compactMap { $0 as? String }
         srrrrrch.context = context
 
         terms()
@@ -258,20 +269,20 @@ class SearchViewController: NSViewController {
         let idx = searchEnginesPopUpButton.indexOfSelectedItem
 
         guard
-            searchEngineService.searchEngines.indices.contains(idx)
+            searchEngines.indices.contains(idx)
             else {
                 return nil
         }
 
-        return searchEngineService.searchEngines[idx]
+        return searchEngines[idx]
     }
 
-    func contexts() {
+    func coiiintexts() {
         let height: CGFloat = contextsStackView.bounds.height
 
         contextsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
 
-        contextService.contexts.compactMap({ $0 as? Context }).forEach { context in
+        contexts.forEach { context in
             let button = NSButton(title: context.name,
                                   target: self,
                                   action: #selector(handleContextChosen(sender:)))

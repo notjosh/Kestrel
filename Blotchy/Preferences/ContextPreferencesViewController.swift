@@ -14,69 +14,21 @@ class ContextPreferencesViewController: NSViewController {
     @IBOutlet var contextArrayController: NSArrayController!
     @IBOutlet var searchEngineArrayController: NSArrayController!
 
-//    var detailViewController: ContextDetailPreferencesViewController! {
-//        guard
-//            let vc = children.first(where: { $0 is ContextDetailPreferencesViewController }) as? ContextDetailPreferencesViewController
-//            else {
-//            fatalError("where did your detail view controller (ContextDetailPreferencesViewController) go?")
-//        }
-//
-//        return vc
-//    }
-
     var contextService = ContextService.shared
     var searchEngineService = SearchEngineService.shared
+    let dataStack = DataStack.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        contextArrayController.content = contextService.contexts
-        searchEngineArrayController.content = searchEngineService.searchEngines
+        contextArrayController.entityName = Context.entityName()
+        contextArrayController.managedObjectContext = dataStack.viewContext
+
+        searchEngineArrayController.entityName = SearchEngine.entityName()
+        searchEngineArrayController.managedObjectContext = dataStack.viewContext
     }
 
     // MARK:- Actions
-    @IBAction func handleTableViewAction(sender: Any) {
-//        let idx = tableView.clickedRow
-//
-//        guard
-//            idx != -1
-//            else {
-//                detailViewController.context = nil
-//                return
-//        }
-//
-//        let context = contextService.contexts[idx]
-//        detailViewController.context = context
-    }
-
-//    @IBAction func handleTextFieldFinished(sender: Any) {
-//        let idx = tableView.selectedRow
-//        guard
-//            let row = tableView.rowView(atRow: idx, makeIfNecessary: false)
-//            else {
-//                return
-//        }
-//
-//        guard
-//            let titleView = row.view(atColumn: 0) as? NSTableCellView,
-//            let title = titleView.objectValue as? String
-//            else {
-//                return
-//        }
-//
-//        let old = contextService.contexts[idx]
-//
-//        let new = Context(
-//            name: title,
-//            searchEngine: old.searchEngine,
-//            terms: old.terms
-//        )
-//
-//        contextService.update(new, at: idx)
-//
-//        tableView.reloadData()
-//    }
-
     @IBAction func handleSegmentedControlPressed(sender: Any) {
         enum Actions: Int {
             case add
@@ -104,43 +56,28 @@ class ContextPreferencesViewController: NSViewController {
     }
 
     @IBAction func handleAddPressed(sender: Any) {
-        guard let se = searchEngineService.searchEngines.first else {
+        guard let se = searchEngineArrayController.selectedObjects.first as? SearchEngine else {
             fatalError()
         }
 
-        let new = Context(name: "New Context",
-                          searchEngine: se,
-                          terms: [],
-                          color: NSColor.red)
+        guard let moc = contextArrayController.managedObjectContext else {
+            fatalError()
+        }
 
-        contextArrayController.addObject(new)
+        if let new = contextArrayController.newObject() as? Context {
+            new.name = "New Context"
+            new.searchEngine = se
+            new.terms = []
+            new.color = NSColor.red
+
+            try? moc.save()
+        }
     }
 
     @IBAction func handleRemovePressed(sender: Any) {
         let indexSet = contextArrayController.selectionIndexes
         contextArrayController.remove(atArrangedObjectIndexes: indexSet)
     }
-}
-
-extension ContextPreferencesViewController: NSTableViewDataSource {
-//    func numberOfRows(in tableView: NSTableView) -> Int {
-//        return contextService.contexts.count
-//    }
-//
-//    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-//        guard let tableColumn = tableColumn else {
-//            return ""
-//        }
-//
-//        let context = contextService.contexts[row]
-//
-//        switch tableView.tableColumns.firstIndex(of: tableColumn) {
-//        case 0:
-//            return context.name
-//        default:
-//            return ""
-//        }
-//    }
 }
 
 extension ContextPreferencesViewController: NSTableViewDelegate {

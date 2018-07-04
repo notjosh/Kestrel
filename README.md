@@ -10,6 +10,7 @@ Install dependencies:
 
 ```
 bundle install
+brew bundle
 bundle exec pod install
 git submodule update --init --recursive
 ```

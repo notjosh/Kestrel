@@ -60,10 +60,54 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.menu = statusItemMenu
 
         #if DEBUG
+        // reset app if launched with shift key pressed
+        let shiftKeyIsPressed = NSEvent.modifierFlags.contains(.shift)
+        if shiftKeyIsPressed {
+            let ds = DataStack.shared
+            ds.reset()
+            SearchEngineService.seed(moc: ds.viewContext)
+            ContextService.seed(moc: ds.viewContext)
+        }
+
 //        showSearchWindow(with: nil)
         openPreferences(sender: self)
         #endif
 	}
+
+    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
+        var reply: NSApplication.TerminateReply = .terminateNow
+
+        let moc = DataStack.shared.viewContext
+
+        if moc.commitEditing() {
+            do {
+                try moc.save()
+            } catch {
+                print(error)
+
+                let result = NSApp.presentError(error)
+
+                if result == true {
+                    reply = .terminateCancel
+                } else {
+                    let alert = NSAlert()
+                    alert.messageText = "Quit anyway"
+                    alert.informativeText = "Could not save changes while quitting. Quit anyway?"
+                    alert.addButton(withTitle: "Yes")
+                    alert.addButton(withTitle: "No")
+                    let alertValue =  alert.runModal()
+
+                    if alertValue != .alertFirstButtonReturn {
+                        reply = .terminateCancel
+                    }
+                }
+            }
+        } else {
+            reply = .terminateCancel
+        }
+
+        return reply
+    }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         cursorGestureTracker.stop()

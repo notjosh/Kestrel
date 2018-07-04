@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14269.14"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="14269.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14295.6"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="14295.6"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1049,7 +1049,6 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
-                                                <action selector="handleTableViewActionWithSender:" target="9Xr-1a-ksW" id="nJ1-YF-gz2"/>
                                                 <binding destination="fpR-TV-ShM" name="content" keyPath="arrangedObjects" id="HLR-dq-ObE"/>
                                                 <binding destination="fpR-TV-ShM" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="HLR-dq-ObE" id="98y-YL-Kum"/>
                                                 <outlet property="delegate" destination="9Xr-1a-ksW" id="OTK-FH-QjX"/>
@@ -1254,8 +1253,8 @@
                     </connections>
                 </viewController>
                 <customObject id="Hwe-2B-CfE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <arrayController objectClassName="Context" id="fpR-TV-ShM"/>
-                <arrayController objectClassName="SearchEngine" editable="NO" id="X64-Rd-X0l"/>
+                <arrayController mode="entity" entityName="Context" automaticallyPreparesContent="YES" id="fpR-TV-ShM"/>
+                <arrayController mode="entity" entityName="SearchEngine" editable="NO" automaticallyPreparesContent="YES" id="X64-Rd-X0l"/>
             </objects>
             <point key="canvasLocation" x="1847" y="322.5"/>
         </scene>

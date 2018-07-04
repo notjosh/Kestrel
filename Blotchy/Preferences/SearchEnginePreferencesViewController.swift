@@ -13,13 +13,17 @@ class SearchEnginePreferencesViewController: NSViewController {
     @IBOutlet var searchEnginesPopUpButton: NSPopUpButton!
     @IBOutlet var templateTextField: NSTextField!
 
-    let searchEngineService = SearchEngineService.shared
+    let dataStack = DataStack.shared
+    var searchEngines = [SearchEngine]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let fr = NSFetchRequest<SearchEngine>(entityName: SearchEngine.entityName())
+        searchEngines = (try? dataStack.viewContext.fetch(fr)) ?? []
+
         searchEnginesPopUpButton.removeAllItems()
-        searchEnginesPopUpButton.addItems(withTitles: searchEngineService.searchEngines.map { $0.name })
+        searchEnginesPopUpButton.addItems(withTitles: searchEngines.map { $0.name })
 
         update(sender: self)
     }
@@ -27,8 +31,12 @@ class SearchEnginePreferencesViewController: NSViewController {
     @IBAction func update(sender: Any) {
         let idx = searchEnginesPopUpButton.indexOfSelectedItem
 
+        guard idx != -1 else {
+            return
+        }
+
         // todo: bounds checking?
-        let searchEngine = searchEngineService.searchEngines[idx]
+        let searchEngine = searchEngines[idx]
 
         templateTextField.stringValue = searchEngine.template
     }

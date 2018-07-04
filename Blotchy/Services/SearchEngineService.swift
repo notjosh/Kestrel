@@ -6,24 +6,34 @@
 //  Copyright © 2018 Joshua May. All rights reserved.
 //
 
-import Foundation
+import CoreData
 
 struct SearchEngineService {
     static let shared: SearchEngineService = SearchEngineService()
 
-    let searchEngines: [SearchEngine]
-
-    init() {
-        self.init(engines: [
+    static func seed(moc: NSManagedObjectContext) {
+        self.seed(moc: moc, engines: [
             "duckduckgo.com",
             "google.com",
             "stackoverflow.com",
             ])
     }
 
-    init(engines: [String]) {
-        self.searchEngines = engines
+    static func seed(moc: NSManagedObjectContext, engines: [String]) {
+        engines
             .map { OpenSearch.read(named: $0, bundle: nil) }
-            .map { SearchEngine(name: $0.shortName, template: $0.url) }
+            .forEach { osd in
+                if let se = SearchEngine(managedObjectContext: moc) {
+                    se.name = osd.shortName
+                    se.template = osd.url
+                    se.key = osd.shortName.lowercased()
+                }
+        }
+
+        do {
+            try moc.save()
+        } catch {
+            print(error)
+        }
     }
 }
