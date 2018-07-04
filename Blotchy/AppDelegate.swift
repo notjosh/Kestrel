@@ -70,7 +70,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
 //        showSearchWindow(with: nil)
-        openPreferences(sender: self)
+//        openPreferences(sender: self)
         #endif
 	}
 
