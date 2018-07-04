@@ -28,6 +28,20 @@ class ContextPreferencesViewController: NSViewController {
         searchEngineArrayController.managedObjectContext = dataStack.viewContext
     }
 
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+
+        let moc = dataStack.viewContext
+
+        if moc.commitEditing() {
+            do {
+                try moc.save()
+            } catch {
+                print(error)
+            }
+        }
+    }
+
     // MARK:- Actions
     @IBAction func handleSegmentedControlPressed(sender: Any) {
         enum Actions: Int {
