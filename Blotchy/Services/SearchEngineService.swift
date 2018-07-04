@@ -16,6 +16,7 @@ struct SearchEngineService {
             "duckduckgo.com",
             "google.com",
             "stackoverflow.com",
+			"maps.google.com"
             ])
     }
 

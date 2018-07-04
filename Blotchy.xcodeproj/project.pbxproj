@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2BF065A120ECC2D400DCD768 /* maps.google.com.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2BF065A020ECC2D400DCD768 /* maps.google.com.xml */; };
 		422676B320C7EF710007C006 /* SelectedTextGrabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422676B220C7EF710007C006 /* SelectedTextGrabber.swift */; };
 		422676B520C804AF0007C006 /* CursorGestureTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422676B420C804AF0007C006 /* CursorGestureTracker.swift */; };
 		422C1A2520EC3A2400F0A7D1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 422C1A2420EC3A2400F0A7D1 /* CoreData.framework */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2BF065A020ECC2D400DCD768 /* maps.google.com.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = maps.google.com.xml; sourceTree = "<group>"; };
 		422676B220C7EF710007C006 /* SelectedTextGrabber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTextGrabber.swift; sourceTree = "<group>"; };
 		422676B420C804AF0007C006 /* CursorGestureTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorGestureTracker.swift; sourceTree = "<group>"; };
 		422C1A2420EC3A2400F0A7D1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -158,6 +160,7 @@
 		4243C3D920DB06FF00925FE7 /* Engines */ = {
 			isa = PBXGroup;
 			children = (
+				2BF065A020ECC2D400DCD768 /* maps.google.com.xml */,
 				4243C3DB20DB071200925FE7 /* duckduckgo.com.xml */,
 				4243C3DC20DB071200925FE7 /* google.com.xml */,
 				4243C3DA20DB071200925FE7 /* stackoverflow.com.xml */,
@@ -382,6 +385,7 @@
 				42F82E2F20C95EF300385465 /* Credits.rtfd in Resources */,
 				426BC34120D0512D004AA062 /* dsa_pub.pem in Resources */,
 				4243C3DD20DB071200925FE7 /* stackoverflow.com.xml in Resources */,
+				2BF065A120ECC2D400DCD768 /* maps.google.com.xml in Resources */,
 				4272AF0C20C686BD00F15834 /* Assets.xcassets in Resources */,
 				4243C3DF20DB071200925FE7 /* google.com.xml in Resources */,
 				4243C3DE20DB071200925FE7 /* duckduckgo.com.xml in Resources */,
