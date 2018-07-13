@@ -36,10 +36,10 @@ class SearchWindowController: NSWindowController {
             let fraction: CGFloat = 2
             let fractional = screen.visibleFrame.width / fraction
 
-            let tenNinetySix: CGFloat = 1096 // smallest responsive size
+            let elevenOhSix: CGFloat = 1106 // smallest responsive size
 
             let screenWidth: CGFloat = screen.visibleFrame.width
-            let width: CGFloat = min(fractional, tenNinetySix)
+            let width: CGFloat = min(fractional, elevenOhSix)
 
             let frame = NSRect(x: screenWidth - width,
                                y: screen.visibleFrame.minY,
