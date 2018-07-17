@@ -107,6 +107,14 @@ class SearchViewController: NSViewController {
     @IBOutlet var searchTermField: NSTextField!
     @IBOutlet var progressBar: ProgressBar!
 
+	
+	@IBAction func back(sender: AnyObject) {
+		webView.goBack()
+	}
+	
+	
+	
+	
     let dataStack = DataStack.shared
 
     var searchEngines = [SearchEngine]()

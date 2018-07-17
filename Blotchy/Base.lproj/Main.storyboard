@@ -755,7 +755,7 @@
                                 </connections>
                             </webView>
                             <popUpButton horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="D35-bm-Mtk">
-                                <rect key="frame" x="18" y="183" width="157" height="26"/>
+                                <rect key="frame" x="18" y="183" width="156" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="nPF-xE-F2w"/>
                                 </constraints>
@@ -775,8 +775,8 @@
                                     <action selector="handleSearchEngineChangeWithSender:" target="Aln-Pr-Mkk" id="yb0-b3-6g2"/>
                                 </connections>
                             </popUpButton>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZwP-63-ulU">
-                                <rect key="frame" x="20" y="240" width="466" height="22"/>
+                            <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZwP-63-ulU">
+                                <rect key="frame" x="59" y="240" width="427" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="FW2-cu-Tff"/>
                                 </constraints>
@@ -834,19 +834,19 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="wsf-Fk-FrL"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="9de-aF-w4V">
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="9de-aF-w4V">
                                     <rect key="frame" x="-100" y="-100" width="425" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="PGa-7q-2HF">
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="PGa-7q-2HF">
                                     <rect key="frame" x="-100" y="-100" width="16" height="21"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="66b-yr-TLz">
-                                <rect key="frame" x="180" y="185" width="289" height="23"/>
+                                <rect key="frame" x="179" y="185" width="290" height="23"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="TRY-Lb-kQ8">
-                                    <rect key="frame" x="0.0" y="0.0" width="289" height="23"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="290" height="23"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view translatesAutoresizingMaskIntoConstraints="NO" id="3Gq-Rk-0sD">
@@ -874,11 +874,11 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="23" id="0aU-j8-2QO"/>
                                     <constraint firstAttribute="height" constant="23" id="Cbr-aK-GRz"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="vNe-mQ-cM1">
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="vNe-mQ-cM1">
                                     <rect key="frame" x="-100" y="-100" width="425" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="xn5-Qf-TSc">
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="xn5-Qf-TSc">
                                     <rect key="frame" x="-100" y="-100" width="16" height="21"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -891,6 +891,17 @@
                                 </buttonCell>
                                 <connections>
                                     <action selector="handleAddTermWithSender:" target="Aln-Pr-Mkk" id="mY1-Sv-GVb"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RdS-lI-e4a">
+                                <rect key="frame" x="11" y="233" width="49" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="&lt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BeG-I0-PkD">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="backWithSender:" target="Aln-Pr-Mkk" id="3nd-uw-ft2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1059,11 +1070,11 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="170" id="ZTj-b5-Lhx"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="AdL-hl-gUY">
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="AdL-hl-gUY">
                                     <rect key="frame" x="1" y="277" width="535" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="S5E-e5-PEP">
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="S5E-e5-PEP">
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -1084,11 +1095,11 @@
                             <box titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="570-p0-d1c">
                                 <rect key="frame" x="195" y="37" width="416" height="426"/>
                                 <view key="contentView" id="bLJ-oj-lua">
-                                    <rect key="frame" x="3" y="3" width="410" height="420"/>
+                                    <rect key="frame" x="2" y="2" width="412" height="422"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SMs-DZ-AkW">
-                                            <rect key="frame" x="0.0" y="206" width="410" height="214"/>
+                                            <rect key="frame" x="0.0" y="208" width="412" height="214"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dqm-Oc-cbZ">
                                                     <rect key="frame" x="-2" y="197" width="91" height="17"/>
@@ -1137,7 +1148,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ycu-lv-kl1">
-                                                    <rect key="frame" x="0.0" y="58" width="171" height="21"/>
+                                                    <rect key="frame" x="0.0" y="58" width="170" height="21"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cqx-xg-52w">
                                                             <rect key="frame" x="-2" y="4" width="95" height="17"/>
@@ -1148,7 +1159,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bq6-Z9-sdr">
-                                                            <rect key="frame" x="97" y="-3" width="77" height="26"/>
+                                                            <rect key="frame" x="97" y="-3" width="76" height="26"/>
                                                             <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Yg3-9Q-5tc" id="hxo-tl-5h8">
                                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                                 <font key="font" metaFont="menu"/>
