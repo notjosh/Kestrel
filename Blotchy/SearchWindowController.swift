@@ -31,7 +31,7 @@ class SearchWindowController: NSWindowController {
         window?.makeKeyAndOrderFront(self)
 
         searchViewController?.delegate = self
-
+		
         if let screen = window?.screen {
             let fraction: CGFloat = 2
             let fractional = screen.visibleFrame.width / fraction
@@ -47,7 +47,18 @@ class SearchWindowController: NSWindowController {
                                height: screen.visibleFrame.height)
 
             window?.setFrame(frame, display: true)
-        }
+			
+		// adding functionality for text Search
+
+			if let path = Bundle.main.path(forResource: "UIWebViewSearch", ofType: "js"),
+			let jsString = try? String(contentsOfFile: path, encoding: .utf8) {
+			print(jsString)
+		}
+		
+		
+		
+		
+		}
     }
 
     func update(_ searchTerm: String) {
@@ -72,7 +83,7 @@ struct Searchysearceasoea {
     var context: Context? // can be derived??
 
     func save() {
-        // UserDefaults.standard.set(terms, forKey: "context")
+        //UserDefaults.standard.set(terms, forKey: "context")
         UserDefaults.standard.set(searchTerm, forKey: "recentSearch")
         // UserDefaults.standard.set(searchEngine, forKey: "searchEngine")
         // UserDefaults.standard.set(context, forKey: "context")

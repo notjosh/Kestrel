@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B4E32F120FED20D004CA0C1 /* UIWebViewSearch.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B4E32F020FED20D004CA0C1 /* UIWebViewSearch.js */; };
 		2BF065A120ECC2D400DCD768 /* maps.google.com.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2BF065A020ECC2D400DCD768 /* maps.google.com.xml */; };
 		422676B320C7EF710007C006 /* SelectedTextGrabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422676B220C7EF710007C006 /* SelectedTextGrabber.swift */; };
 		422676B520C804AF0007C006 /* CursorGestureTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422676B420C804AF0007C006 /* CursorGestureTracker.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B4E32F020FED20D004CA0C1 /* UIWebViewSearch.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = UIWebViewSearch.js; sourceTree = "<group>"; };
 		2BF065A020ECC2D400DCD768 /* maps.google.com.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = maps.google.com.xml; sourceTree = "<group>"; };
 		422676B220C7EF710007C006 /* SelectedTextGrabber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTextGrabber.swift; sourceTree = "<group>"; };
 		422676B420C804AF0007C006 /* CursorGestureTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorGestureTracker.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				4272AF0720C686BB00F15834 /* AppDelegate.swift */,
 				4272AF0920C686BB00F15834 /* ViewController.swift */,
 				4272AF1920C6A4DD00F15834 /* SearchWindowController.swift */,
+				2B4E32F020FED20D004CA0C1 /* UIWebViewSearch.js */,
 				422676B220C7EF710007C006 /* SelectedTextGrabber.swift */,
 				422676B420C804AF0007C006 /* CursorGestureTracker.swift */,
 				4272AF0B20C686BD00F15834 /* Assets.xcassets */,
@@ -384,6 +387,7 @@
 			files = (
 				42F82E2F20C95EF300385465 /* Credits.rtfd in Resources */,
 				426BC34120D0512D004AA062 /* dsa_pub.pem in Resources */,
+				2B4E32F120FED20D004CA0C1 /* UIWebViewSearch.js in Resources */,
 				4243C3DD20DB071200925FE7 /* stackoverflow.com.xml in Resources */,
 				2BF065A120ECC2D400DCD768 /* maps.google.com.xml in Resources */,
 				4272AF0C20C686BD00F15834 /* Assets.xcassets in Resources */,
