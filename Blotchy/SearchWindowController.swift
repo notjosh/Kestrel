@@ -134,6 +134,38 @@ struct Searchysearceasoea {
 }
 
 class SearchViewController: NSViewController {
+    enum DrawerHeight: CGFloat {
+        case open = 79
+        case closed = 49
+
+        var opposite: DrawerHeight {
+            get {
+                switch self {
+                case .open: return .closed
+                case .closed: return .open
+                }
+            }
+        }
+
+        var title: String {
+            get {
+                switch self {
+                case .open: return "⬇️"
+                case .closed: return "⬆️"
+                }
+            }
+        }
+
+        var alpha: CGFloat {
+            get {
+                switch self {
+                case .open: return 1
+                case .closed: return 0
+                }
+            }
+        }
+    }
+
     @IBOutlet var searchEnginesPopUpButton: NSPopUpButton!
     @IBOutlet var contextsStackView: NSStackView!
     @IBOutlet var termsStackView: NSStackView!
@@ -141,6 +173,12 @@ class SearchViewController: NSViewController {
     @IBOutlet var searchTermField: NSTextField!
     @IBOutlet var progressBar: ProgressBar!
 
+    @IBOutlet var drawer: NSView!
+    @IBOutlet var drawerButton: NSButton!
+    @IBOutlet var currentContextContainer: NSView!
+    @IBOutlet var drawerHeightConstraint: NSLayoutConstraint!
+
+    var drawerState: DrawerHeight = .open
 	
 	@IBAction func back(sender: AnyObject) {
 		webView.goBack()
@@ -175,6 +213,9 @@ class SearchViewController: NSViewController {
         coiiintexts()
         terms()
         searchTermField.stringValue = srrrrrch.searchTerm
+
+        drawerHeightConstraint.constant = drawerState.rawValue
+        drawerButton.title = drawerState.title
 
         go()
     }
@@ -283,6 +324,22 @@ class SearchViewController: NSViewController {
         update(searchTermField.stringValue)
     }
 
+    @IBAction func handleToggleDrawer(sender: Any) {
+        drawerState = drawerState.opposite
+
+        drawerHeightConstraint.constant = drawerState.rawValue
+        drawerButton.title = drawerState.title
+
+        NSAnimationContext.runAnimationGroup { context in
+            context.duration = 0.25
+            context.allowsImplicitAnimation = true
+
+            currentContextContainer.alphaValue = drawerState.alpha
+
+            view.layoutSubtreeIfNeeded()
+        }
+    }
+
     // MARK: Helper
     func update(_ searchTerm: String) {
         srrrrrch.searchTerm = searchTerm
@@ -332,6 +389,9 @@ class SearchViewController: NSViewController {
 			//button.bezelColor = NSColor.systemBlue
             button.setButtonType(.toggle)
 
+            button.wantsLayer = true
+            button.layer?.backgroundColor = context.color.cgColor
+
             button.frame = NSRect(x: 0,
                                   y: 0,
                                   width: 0,
@@ -352,6 +412,18 @@ class SearchViewController: NSViewController {
                                   action: #selector(handleTermChosen(sender:)))
             button.bezelStyle = .recessed
             button.setButtonType(.toggle)
+
+            button.wantsLayer = true
+            // light blue-ish colour
+            button.layer?.backgroundColor = NSColor(red: 210/255,
+                                                    green: 231/255,
+                                                    blue: 252/255,
+                                                    alpha: 1).cgColor
+
+            button.attributedTitle = NSAttributedString(string: button.title,
+                                                        attributes: [
+                                                            .foregroundColor: NSColor.darkGray,
+                                                            ])
 
             button.frame = NSRect(x: 0,
                                   y: 0,
