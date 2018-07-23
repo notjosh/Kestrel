@@ -24,6 +24,29 @@ class SearchWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
 
+		
+		
+		// putting a hack here to not launch past a certain date.
+
+		let date = Date()
+		let formatter = DateFormatter()
+		formatter.dateFormat = "MM.yyyy"
+		let currentMonthYear = formatter.string(from: date)
+		
+		if ((currentMonthYear == "07.2018") || (currentMonthYear == "08.2018")) {
+			print("Date is good")
+
+			}
+		else {
+			print("Date is not good")
+			NSApplication.shared.terminate(self)
+			
+		}
+		//978307200
+		
+		
+		
+		
         // proooobably shouldn't be here, but we're the only window that matters for now eh
         NSApp.activate(ignoringOtherApps: true)
 
@@ -306,13 +329,14 @@ class SearchViewController: NSViewController {
                                   target: self,
                                   action: #selector(handleContextChosen(sender:)))
             button.bezelStyle = .recessed
+			//button.bezelColor = NSColor.systemBlue
             button.setButtonType(.toggle)
 
             button.frame = NSRect(x: 0,
                                   y: 0,
                                   width: 0,
                                   height: height)
-
+			
             contextsStackView.addArrangedSubview(button)
         }
     }

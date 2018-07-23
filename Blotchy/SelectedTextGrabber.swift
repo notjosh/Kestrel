@@ -79,7 +79,7 @@ class AccessibilitySelectedTextGrabber: SelectedTextGrabber {
         }
 
         guard let frontmostApplication = NSWorkspace.shared.frontmostApplication else {
-            print("can't fint application at front, bailing")
+            print("can't find application at front, bailing")
             callback(nil)
             return
         }
