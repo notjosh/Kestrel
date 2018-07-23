@@ -332,6 +332,9 @@ class SearchViewController: NSViewController {
 			//button.bezelColor = NSColor.systemBlue
             button.setButtonType(.toggle)
 
+            button.wantsLayer = true
+            button.layer?.backgroundColor = context.color.cgColor
+
             button.frame = NSRect(x: 0,
                                   y: 0,
                                   width: 0,
@@ -352,6 +355,18 @@ class SearchViewController: NSViewController {
                                   action: #selector(handleTermChosen(sender:)))
             button.bezelStyle = .recessed
             button.setButtonType(.toggle)
+
+            button.wantsLayer = true
+            // light blue-ish colour
+            button.layer?.backgroundColor = NSColor(red: 210/255,
+                                                    green: 231/255,
+                                                    blue: 252/255,
+                                                    alpha: 1).cgColor
+
+            button.attributedTitle = NSAttributedString(string: button.title,
+                                                        attributes: [
+                                                            .foregroundColor: NSColor.darkGray,
+                                                            ])
 
             button.frame = NSRect(x: 0,
                                   y: 0,
