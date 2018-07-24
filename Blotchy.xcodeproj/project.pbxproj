@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2B4E32F120FED20D004CA0C1 /* UIWebViewSearch.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B4E32F020FED20D004CA0C1 /* UIWebViewSearch.js */; };
+		2BE2F06F2106E27A004CE2DB /* discloureTriangleUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BE2F0692106E27A004CE2DB /* discloureTriangleUp@2x.png */; };
+		2BE2F0702106E27A004CE2DB /* discloureTriangleUp@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BE2F06A2106E27A004CE2DB /* discloureTriangleUp@3x.png */; };
+		2BE2F0712106E27A004CE2DB /* disclosureTriangleDown@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BE2F06B2106E27A004CE2DB /* disclosureTriangleDown@1x.png */; };
+		2BE2F0722106E27A004CE2DB /* disclosureTriangleDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BE2F06C2106E27A004CE2DB /* disclosureTriangleDown@2x.png */; };
+		2BE2F0732106E27A004CE2DB /* discloureTriangleUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BE2F06D2106E27A004CE2DB /* discloureTriangleUp.png */; };
+		2BE2F0742106E27A004CE2DB /* disclosureTriangleDown@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BE2F06E2106E27A004CE2DB /* disclosureTriangleDown@3x.png */; };
 		2BF065A120ECC2D400DCD768 /* maps.google.com.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2BF065A020ECC2D400DCD768 /* maps.google.com.xml */; };
 		422676B320C7EF710007C006 /* SelectedTextGrabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422676B220C7EF710007C006 /* SelectedTextGrabber.swift */; };
 		422676B520C804AF0007C006 /* CursorGestureTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422676B420C804AF0007C006 /* CursorGestureTracker.swift */; };
@@ -53,6 +59,12 @@
 
 /* Begin PBXFileReference section */
 		2B4E32F020FED20D004CA0C1 /* UIWebViewSearch.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = UIWebViewSearch.js; sourceTree = "<group>"; };
+		2BE2F0692106E27A004CE2DB /* discloureTriangleUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "discloureTriangleUp@2x.png"; sourceTree = "<group>"; };
+		2BE2F06A2106E27A004CE2DB /* discloureTriangleUp@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "discloureTriangleUp@3x.png"; sourceTree = "<group>"; };
+		2BE2F06B2106E27A004CE2DB /* disclosureTriangleDown@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosureTriangleDown@1x.png"; sourceTree = "<group>"; };
+		2BE2F06C2106E27A004CE2DB /* disclosureTriangleDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosureTriangleDown@2x.png"; sourceTree = "<group>"; };
+		2BE2F06D2106E27A004CE2DB /* discloureTriangleUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = discloureTriangleUp.png; sourceTree = "<group>"; };
+		2BE2F06E2106E27A004CE2DB /* disclosureTriangleDown@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosureTriangleDown@3x.png"; sourceTree = "<group>"; };
 		2BF065A020ECC2D400DCD768 /* maps.google.com.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = maps.google.com.xml; sourceTree = "<group>"; };
 		422676B220C7EF710007C006 /* SelectedTextGrabber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTextGrabber.swift; sourceTree = "<group>"; };
 		422676B420C804AF0007C006 /* CursorGestureTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorGestureTracker.swift; sourceTree = "<group>"; };
@@ -120,6 +132,19 @@
 				960BBAF11BD45921ED9D044A /* Pods_Blotchy.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2BE2F06821062258004CE2DB /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				2BE2F06B2106E27A004CE2DB /* disclosureTriangleDown@1x.png */,
+				2BE2F06C2106E27A004CE2DB /* disclosureTriangleDown@2x.png */,
+				2BE2F06E2106E27A004CE2DB /* disclosureTriangleDown@3x.png */,
+				2BE2F06D2106E27A004CE2DB /* discloureTriangleUp.png */,
+				2BE2F0692106E27A004CE2DB /* discloureTriangleUp@2x.png */,
+				2BE2F06A2106E27A004CE2DB /* discloureTriangleUp@3x.png */,
+			);
+			path = Icons;
 			sourceTree = "<group>";
 		};
 		422C1A2220EC394F00F0A7D1 /* Generated */ = {
@@ -230,6 +255,7 @@
 		4272AF0620C686BB00F15834 /* Blotchy */ = {
 			isa = PBXGroup;
 			children = (
+				2BE2F06821062258004CE2DB /* Icons */,
 				42BE781D20EC34C300A43B1F /* CoreData */,
 				42A3431720E13EFD002BF7B6 /* Extensions */,
 				4243C3D820DB06F300925FE7 /* OpenSearch */,
@@ -389,10 +415,16 @@
 				426BC34120D0512D004AA062 /* dsa_pub.pem in Resources */,
 				2B4E32F120FED20D004CA0C1 /* UIWebViewSearch.js in Resources */,
 				4243C3DD20DB071200925FE7 /* stackoverflow.com.xml in Resources */,
+				2BE2F0702106E27A004CE2DB /* discloureTriangleUp@3x.png in Resources */,
 				2BF065A120ECC2D400DCD768 /* maps.google.com.xml in Resources */,
+				2BE2F0722106E27A004CE2DB /* disclosureTriangleDown@2x.png in Resources */,
+				2BE2F0732106E27A004CE2DB /* discloureTriangleUp.png in Resources */,
 				4272AF0C20C686BD00F15834 /* Assets.xcassets in Resources */,
 				4243C3DF20DB071200925FE7 /* google.com.xml in Resources */,
+				2BE2F0712106E27A004CE2DB /* disclosureTriangleDown@1x.png in Resources */,
 				4243C3DE20DB071200925FE7 /* duckduckgo.com.xml in Resources */,
+				2BE2F06F2106E27A004CE2DB /* discloureTriangleUp@2x.png in Resources */,
+				2BE2F0742106E27A004CE2DB /* disclosureTriangleDown@3x.png in Resources */,
 				4272AF0F20C686BD00F15834 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
