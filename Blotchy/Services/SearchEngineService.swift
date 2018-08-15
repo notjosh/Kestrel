@@ -21,14 +21,15 @@ struct SearchEngineService {
     }
 
     static func seed(moc: NSManagedObjectContext, engines: [String]) {
-        engines
+        let osds = engines
             .map { OpenSearch.read(named: $0, bundle: nil) }
-            .forEach { osd in
-                if let se = SearchEngine(managedObjectContext: moc) {
-                    se.name = osd.shortName
-                    se.template = osd.url
-                    se.key = osd.shortName.lowercased()
-                }
+        for (index, osd) in osds.enumerated() {
+            if let se = SearchEngine(managedObjectContext: moc) {
+                se.name = osd.shortName
+                se.template = osd.url
+                se.key = osd.shortName.lowercased()
+                se.order = Int16(index)
+            }
         }
 
         do {

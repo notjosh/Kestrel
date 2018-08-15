@@ -20,6 +20,9 @@ class SearchEnginePreferencesViewController: NSViewController {
         super.viewDidLoad()
 
         let fr = NSFetchRequest<SearchEngine>(entityName: SearchEngine.entityName())
+        fr.sortDescriptors = [
+            NSSortDescriptor(key: #keyPath(SearchEngine.order), ascending: true)
+        ]
         searchEngines = (try? dataStack.viewContext.fetch(fr)) ?? []
 
         searchEnginesPopUpButton.removeAllItems()

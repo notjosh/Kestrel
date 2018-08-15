@@ -7,6 +7,7 @@ import CoreData
 public enum SearchEngineAttributes: String {
     case key = "key"
     case name = "name"
+    case order = "order"
     case template = "template"
 }
 
@@ -45,6 +46,9 @@ open class _SearchEngine: NSManagedObject {
 
     @NSManaged open
     var name: String!
+
+    @NSManaged open
+    var order: Int16
 
     @NSManaged open
     var template: String!

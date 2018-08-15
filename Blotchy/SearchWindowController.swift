@@ -203,6 +203,9 @@ class SearchViewController: NSViewController {
         webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Safari/605.1.15"
 
         let sefr = NSFetchRequest<SearchEngine>(entityName: SearchEngine.entityName())
+        sefr.sortDescriptors = [
+            NSSortDescriptor(key: #keyPath(SearchEngine.order), ascending: true)
+        ]
         searchEngines = (try? dataStack.viewContext.fetch(sefr)) ?? []
 
         let cfr = NSFetchRequest<Context>(entityName: Context.entityName())
