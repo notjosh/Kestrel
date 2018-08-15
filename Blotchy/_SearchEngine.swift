@@ -7,6 +7,7 @@ import CoreData
 public enum SearchEngineAttributes: String {
     case key = "key"
     case name = "name"
+    case order = "order"
     case template = "template"
 }
 
@@ -20,6 +21,11 @@ open class _SearchEngine: NSManagedObject {
 
     open class func entity(managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
         return NSEntityDescription.entity(forEntityName: self.entityName(), in: managedObjectContext)
+    }
+
+    @nonobjc
+    open class func fetchRequest() -> NSFetchRequest<SearchEngine> {
+        return NSFetchRequest(entityName: self.entityName())
     }
 
     // MARK: - Life cycle methods
@@ -36,13 +42,16 @@ open class _SearchEngine: NSManagedObject {
     // MARK: - Properties
 
     @NSManaged open
-    var key: String
+    var key: String!
 
     @NSManaged open
-    var name: String
+    var name: String!
 
     @NSManaged open
-    var template: String
+    var order: Int16
+
+    @NSManaged open
+    var template: String!
 
     // MARK: - Relationships
 

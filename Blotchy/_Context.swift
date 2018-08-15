@@ -3,10 +3,12 @@
 
 import Foundation
 import CoreData
+import AppKit.NSColor
 
 public enum ContextAttributes: String {
     case colorTransformable = "colorTransformable"
     case name = "name"
+    case order = "order"
     case termsTransformable = "termsTransformable"
 }
 
@@ -26,6 +28,11 @@ open class _Context: NSManagedObject {
         return NSEntityDescription.entity(forEntityName: self.entityName(), in: managedObjectContext)
     }
 
+    @nonobjc
+    open class func fetchRequest() -> NSFetchRequest<Context> {
+        return NSFetchRequest(entityName: self.entityName())
+    }
+
     // MARK: - Life cycle methods
 
     public override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
@@ -40,13 +47,16 @@ open class _Context: NSManagedObject {
     // MARK: - Properties
 
     @NSManaged open
-    var colorTransformable: AnyObject
+    var colorTransformable: NSColor!
 
     @NSManaged open
-    var name: String
+    var name: String!
 
     @NSManaged open
-    var termsTransformable: AnyObject
+    var order: Int16
+
+    @NSManaged open
+    var termsTransformable: AnyObject!
 
     // MARK: - Relationships
 
