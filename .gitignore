@@ -182,7 +182,7 @@ playground.xcworkspace
 ### SwiftPackageManager ###
 Packages
 xcuserdata
-*.xcodeproj
+
 ### Xcode ###
 # Xcode
 #
@@ -191,16 +191,6 @@ xcuserdata
 ## Build generated
 
 ## Various settings
-
-## Other
-
-### Xcode Patch ###
-*.xcodeproj/*
-!*.xcodeproj/project.pbxproj
-!*.xcodeproj/xcshareddata/
-!*.xcworkspace/contents.xcworkspacedata
-/*.gcno
-
 
 # End of https://www.gitignore.io/api/ruby,xcode,swift,macos,objective-c,swiftpackagemanager,cocoapods
 
