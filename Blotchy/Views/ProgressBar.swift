@@ -28,7 +28,7 @@ class ProgressBar: NSView {
 
     var tintColor: NSColor = {
         if #available(OSX 10.14, *) {
-            return .controlAccent
+            return .controlAccentColor
         }
 
         // XXX: is this right for macOS < 10.14?

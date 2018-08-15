@@ -190,7 +190,8 @@ class SearchViewController: NSViewController {
     let dataStack = DataStack.shared
 
     var searchEngines = [SearchEngine]()
-    var contexts = [Context]()
+//    var contexts = [Context]()
+    var contextsFetchedResultsController: NSFetchedResultsController<Context>!
 
     var srrrrrch = Searchysearceasoea.restore(in: DataStack.shared.viewContext)
 
@@ -205,7 +206,19 @@ class SearchViewController: NSViewController {
         searchEngines = (try? dataStack.viewContext.fetch(sefr)) ?? []
 
         let cfr = NSFetchRequest<Context>(entityName: Context.entityName())
-        contexts = (try? dataStack.viewContext.fetch(cfr)) ?? []
+        cfr.sortDescriptors = [
+            NSSortDescriptor(key: #keyPath(Context.order), ascending: true)
+        ]
+
+        contextsFetchedResultsController = NSFetchedResultsController(fetchRequest: cfr,
+                                                                      managedObjectContext: dataStack.viewContext,
+                                                                      sectionNameKeyPath: nil,
+                                                                      cacheName: nil)
+        contextsFetchedResultsController.delegate = self
+
+        try? contextsFetchedResultsController.performFetch()
+
+//        contexts = (try? dataStack.viewContext.fetch(cfr)) ?? []
 
         searchEnginesPopUpButton.removeAllItems()
         searchEnginesPopUpButton.addItems(withTitles: searchEngines.map { $0.name })
@@ -255,6 +268,7 @@ class SearchViewController: NSViewController {
     @IBAction func handleContextChosen(sender: Any) {
         guard
             let button = sender as? NSButton,
+            let contexts = contextsFetchedResultsController.fetchedObjects,
             let context = contexts.first(where: { context in
                 return context.name == button.title
             })
@@ -377,9 +391,15 @@ class SearchViewController: NSViewController {
     }
 
     func coiiintexts() {
-        let height: CGFloat = contextsStackView.bounds.height
-
         contextsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+
+        guard
+            let contexts = contextsFetchedResultsController.fetchedObjects
+            else {
+                return
+        }
+
+        let height: CGFloat = contextsStackView.bounds.height
 
         contexts.forEach { context in
             let button = NSButton(title: context.name,
@@ -431,6 +451,17 @@ class SearchViewController: NSViewController {
                                   height: height)
 
             termsStackView.addArrangedSubview(button)
+        }
+    }
+}
+
+extension SearchViewController: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        switch controller {
+        case contextsFetchedResultsController:
+            coiiintexts()
+        default:
+            break
         }
     }
 }

@@ -43,11 +43,12 @@ class ContextService {
             (name: "(context 9)", searchEngine: searchEngines[8 % searchEngines.count], terms: ["bar", "baz"], color: SomeColors.red.color),
         ]
 
-        contexts.forEach { context in
+        for (index, context) in contexts.enumerated() {
             guard let mo = Context.init(managedObjectContext: moc) else {
                 return
             }
 
+            mo.order = Int16(index)
             mo.name = context.name
             mo.terms = NSMutableArray(array: context.terms)
             mo.color = context.color

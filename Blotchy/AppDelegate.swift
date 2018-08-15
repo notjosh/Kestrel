@@ -70,7 +70,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
 //        showSearchWindow(with: nil)
-//        openPreferences(sender: self)
+        openPreferences(sender: self)
         #endif
 	}
 
@@ -79,7 +79,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let moc = DataStack.shared.viewContext
 
-        if moc.commitEditing() {
+        // XXX: commitEditing not available on MOC in 10.14b6
+        if /*moc.commitEditing()*/ true {
             do {
                 try moc.save()
             } catch {

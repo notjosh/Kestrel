@@ -22,6 +22,11 @@ open class _SearchEngine: NSManagedObject {
         return NSEntityDescription.entity(forEntityName: self.entityName(), in: managedObjectContext)
     }
 
+    @nonobjc
+    open class func fetchRequest() -> NSFetchRequest<SearchEngine> {
+        return NSFetchRequest(entityName: self.entityName())
+    }
+
     // MARK: - Life cycle methods
 
     public override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
@@ -36,13 +41,13 @@ open class _SearchEngine: NSManagedObject {
     // MARK: - Properties
 
     @NSManaged open
-    var key: String
+    var key: String!
 
     @NSManaged open
-    var name: String
+    var name: String!
 
     @NSManaged open
-    var template: String
+    var template: String!
 
     // MARK: - Relationships
 

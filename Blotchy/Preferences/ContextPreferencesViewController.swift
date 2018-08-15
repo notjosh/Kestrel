@@ -23,6 +23,9 @@ class ContextPreferencesViewController: NSViewController {
 
         contextArrayController.entityName = Context.entityName()
         contextArrayController.managedObjectContext = dataStack.viewContext
+        contextArrayController.sortDescriptors = [
+            NSSortDescriptor(key: #keyPath(Context.order), ascending: true),
+        ]
 
         searchEngineArrayController.entityName = SearchEngine.entityName()
         searchEngineArrayController.managedObjectContext = dataStack.viewContext
@@ -33,8 +36,10 @@ class ContextPreferencesViewController: NSViewController {
 
         let moc = dataStack.viewContext
 
-        if moc.commitEditing() {
+        // XXX: commitEditing not available on MOC in 10.14b6
+        if true /* moc.commitEditing() */ {
             do {
+                print("saving contexts")
                 try moc.save()
             } catch {
                 print(error)
@@ -83,6 +88,8 @@ class ContextPreferencesViewController: NSViewController {
             new.searchEngine = se
             new.terms = []
             new.color = NSColor.red
+
+            new.order = Int16(((contextArrayController.arrangedObjects as? [AnyObject]) ?? []).count)
 
             try? moc.save()
         }
