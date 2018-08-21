@@ -199,14 +199,14 @@
 			name = Engines;
 			sourceTree = "<group>";
 		};
-		4243C3E720DB077100925FE7 /* BlotchyTests */ = {
+		4243C3E720DB077100925FE7 /* KestrelTests */ = {
 			isa = PBXGroup;
 			children = (
 				4243C3F320DB07B700925FE7 /* OpenSearch */,
 				4243C3EA20DB077100925FE7 /* Info.plist */,
 				4243C3F020DB078D00925FE7 /* BlotchyTests-Bridging-Header.h */,
 			);
-			path = BlotchyTests;
+			path = KestrelTests;
 			sourceTree = "<group>";
 		};
 		4243C3F320DB07B700925FE7 /* OpenSearch */ = {
@@ -240,7 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				4272AF0620C686BB00F15834 /* Kestrel */,
-				4243C3E720DB077100925FE7 /* BlotchyTests */,
+				4243C3E720DB077100925FE7 /* KestrelTests */,
 				4272AF0520C686BB00F15834 /* Products */,
 				DD9EC2E2FC317E44E9F8B327 /* Pods */,
 				20CBA8EB41AE3A3C0B90ABB5 /* Frameworks */,
@@ -551,16 +551,16 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = BlotchyTests/Info.plist;
+				INFOPLIST_FILE = KestrelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.notjosh.BlotchyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.notjosh.KestrelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "BlotchyTests/BlotchyTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "KestrelTests/KestrelTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kestrel.app/Contents/MacOS/Kestrel";
@@ -575,16 +575,16 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = BlotchyTests/Info.plist;
+				INFOPLIST_FILE = KestrelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.notjosh.BlotchyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.notjosh.KestrelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "BlotchyTests/BlotchyTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "KestrelTests/KestrelTests-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kestrel.app/Contents/MacOS/Kestrel";
 			};
