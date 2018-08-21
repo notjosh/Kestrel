@@ -44,7 +44,7 @@
 		42BE781F20EC353500A43B1F /* DataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BE781E20EC353500A43B1F /* DataStack.swift */; };
 		42BE782220EC35E600A43B1F /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42BE782020EC35E600A43B1F /* DataModel.xcdatamodeld */; };
 		42F82E2F20C95EF300385465 /* Credits.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 42F82E2E20C95EF300385465 /* Credits.rtfd */; };
-		F6FFA44A73269B80ACFA3681 /* Pods_Blotchy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 960BBAF11BD45921ED9D044A /* Pods_Blotchy.framework */; };
+		59D81467FD2E3F8903478854 /* Pods_Kestrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DBE4A14A574BE7E11FAEA5 /* Pods_Kestrel.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,7 +102,10 @@
 		42F82E2E20C95EF300385465 /* Credits.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = Credits.rtfd; sourceTree = "<group>"; };
 		5604E62ADCECD31F55BE08B3 /* Pods-Blotchy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blotchy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blotchy/Pods-Blotchy.release.xcconfig"; sourceTree = "<group>"; };
 		696E8E9F6CF3A28CA09A1744 /* Pods-Blotchy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blotchy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blotchy/Pods-Blotchy.debug.xcconfig"; sourceTree = "<group>"; };
+		86A096C0DAC3FA3786AA75A8 /* Pods-Kestrel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kestrel.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kestrel/Pods-Kestrel.release.xcconfig"; sourceTree = "<group>"; };
 		960BBAF11BD45921ED9D044A /* Pods_Blotchy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blotchy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		994AD2D8CBCE5ABD0AB8ABE2 /* Pods-Kestrel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kestrel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kestrel/Pods-Kestrel.debug.xcconfig"; sourceTree = "<group>"; };
+		F8DBE4A14A574BE7E11FAEA5 /* Pods_Kestrel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kestrel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +121,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				422C1A2520EC3A2400F0A7D1 /* CoreData.framework in Frameworks */,
-				F6FFA44A73269B80ACFA3681 /* Pods_Blotchy.framework in Frameworks */,
+				59D81467FD2E3F8903478854 /* Pods_Kestrel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +133,7 @@
 			children = (
 				422C1A2420EC3A2400F0A7D1 /* CoreData.framework */,
 				960BBAF11BD45921ED9D044A /* Pods_Blotchy.framework */,
+				F8DBE4A14A574BE7E11FAEA5 /* Pods_Kestrel.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -308,6 +312,8 @@
 			children = (
 				696E8E9F6CF3A28CA09A1744 /* Pods-Blotchy.debug.xcconfig */,
 				5604E62ADCECD31F55BE08B3 /* Pods-Blotchy.release.xcconfig */,
+				994AD2D8CBCE5ABD0AB8ABE2 /* Pods-Kestrel.debug.xcconfig */,
+				86A096C0DAC3FA3786AA75A8 /* Pods-Kestrel.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -443,7 +449,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Blotchy-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Kestrel-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -456,7 +462,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Blotchy/Pods-Blotchy-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Kestrel/Pods-Kestrel-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AXSwift/AXSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/HighlightedWebView/HighlightedWebView.framework",
 				"${BUILT_PRODUCTS_DIR}/MASPreferences/MASPreferences.framework",
@@ -475,7 +481,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Blotchy/Pods-Blotchy-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kestrel/Pods-Kestrel-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -699,7 +705,7 @@
 		};
 		4272AF1520C686BD00F15834 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 696E8E9F6CF3A28CA09A1744 /* Pods-Blotchy.debug.xcconfig */;
+			baseConfigurationReference = 994AD2D8CBCE5ABD0AB8ABE2 /* Pods-Kestrel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
@@ -707,7 +713,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = BGLZ7XL6X4;
-				INFOPLIST_FILE = Blotchy/Info.plist;
+				INFOPLIST_FILE = Kestrel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -723,7 +729,7 @@
 		};
 		4272AF1620C686BD00F15834 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5604E62ADCECD31F55BE08B3 /* Pods-Blotchy.release.xcconfig */;
+			baseConfigurationReference = 86A096C0DAC3FA3786AA75A8 /* Pods-Kestrel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
@@ -731,7 +737,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = BGLZ7XL6X4;
-				INFOPLIST_FILE = Blotchy/Info.plist;
+				INFOPLIST_FILE = Kestrel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
