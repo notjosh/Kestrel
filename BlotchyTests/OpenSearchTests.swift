@@ -1,13 +1,13 @@
 //
 //  OpenSearchTests.swift
-//  BlotchyTests
+//  KestrelTests
 //
 //  Created by Joshua May on 21/6/18.
 //  Copyright © 2018 Joshua May. All rights reserved.
 //
 
 import XCTest
-@testable import Blotchy
+@testable import Kestrel
 
 class OpenSearchTests: XCTestCase {
     func testSimple() {

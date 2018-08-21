@@ -1,6 +1,6 @@
 //
 //  ProgressBar.swift
-//  Blotchy
+//  Kestrel
 //
 //  Created by Joshua May on 25/6/18.
 //  Copyright © 2018 Joshua May. All rights reserved.
