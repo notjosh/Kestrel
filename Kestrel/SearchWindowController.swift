@@ -99,11 +99,45 @@ protocol SearchViewControllerDelegate {
     func didUpdate(searchTerm: String)
 }
 
-struct Searchysearceasoea {
+enum DrawerHeight: CGFloat {
+    case open = 79
+    case closed = 49
+
+    var opposite: DrawerHeight {
+        get {
+            switch self {
+            case .open: return .closed
+            case .closed: return .open
+            }
+        }
+    }
+
+    var title: String {
+        get {
+            switch self {
+            case .open: return "⬇️"
+            case .closed: return "⬆️"
+            }
+        }
+    }
+
+    var alpha: CGFloat {
+        get {
+            switch self {
+            case .open: return 1
+            case .closed: return 0
+            }
+        }
+    }
+}
+
+
+struct ContextScreenState {
     var searchEngine: SearchEngine
     var searchTerm: String
     var terms: [String]
     var context: Context? // can be derived??
+    var drawerState: DrawerHeight = .open
 
     func save() {
         //UserDefaults.standard.set(terms, forKey: "context")
@@ -112,7 +146,7 @@ struct Searchysearceasoea {
         // UserDefaults.standard.set(context, forKey: "context")
     }
 
-    static func restore(in moc: NSManagedObjectContext) -> Searchysearceasoea {
+    static func restore(in moc: NSManagedObjectContext) -> ContextScreenState {
         let fr = NSFetchRequest<SearchEngine>(entityName: SearchEngine.entityName())
         let searchEngines = (try? moc.fetch(fr)) ?? []
 
@@ -123,49 +157,18 @@ struct Searchysearceasoea {
                 fatalError("no search engines, what")
         }
 
-        return Searchysearceasoea(
+        return ContextScreenState(
             // todo: fix this singleton bits, non-optional etc
             searchEngine: searchEngine,
             searchTerm: UserDefaults.standard.string(forKey: "recentSearch") ?? "",
             terms: (UserDefaults.standard.string(forKey: "context") ?? "").split(separator: " ").map { String($0) },
-            context: nil
+            context: nil,
+            drawerState: .closed
         )
     }
 }
 
 class SearchViewController: NSViewController {
-    enum DrawerHeight: CGFloat {
-        case open = 79
-        case closed = 49
-
-        var opposite: DrawerHeight {
-            get {
-                switch self {
-                case .open: return .closed
-                case .closed: return .open
-                }
-            }
-        }
-
-        var title: String {
-            get {
-                switch self {
-                case .open: return "⬇️"
-                case .closed: return "⬆️"
-                }
-            }
-        }
-
-        var alpha: CGFloat {
-            get {
-                switch self {
-                case .open: return 1
-                case .closed: return 0
-                }
-            }
-        }
-    }
-
     @IBOutlet var searchEnginesPopUpButton: NSPopUpButton!
     @IBOutlet var contextsStackView: NSStackView!
     @IBOutlet var termsStackView: NSStackView!
@@ -178,22 +181,13 @@ class SearchViewController: NSViewController {
     @IBOutlet var currentContextContainer: NSView!
     @IBOutlet var drawerHeightConstraint: NSLayoutConstraint!
 
-    var drawerState: DrawerHeight = .open
-	
-	@IBAction func back(sender: AnyObject) {
-		webView.goBack()
-	}
-	
-	
-	
-	
     let dataStack = DataStack.shared
 
     var searchEngines = [SearchEngine]()
 //    var contexts = [Context]()
     var contextsFetchedResultsController: NSFetchedResultsController<Context>!
 
-    var srrrrrch = Searchysearceasoea.restore(in: DataStack.shared.viewContext)
+    var srrrrrch = ContextScreenState.restore(in: DataStack.shared.viewContext)
 
     var delegate: SearchViewControllerDelegate?
 
@@ -230,8 +224,8 @@ class SearchViewController: NSViewController {
         terms()
         searchTermField.stringValue = srrrrrch.searchTerm
 
-        drawerHeightConstraint.constant = drawerState.rawValue
-        drawerButton.title = drawerState.title
+        drawerHeightConstraint.constant = srrrrrch.drawerState.rawValue
+        drawerButton.title = srrrrrch.drawerState.title
 
         go()
     }
@@ -264,6 +258,10 @@ class SearchViewController: NSViewController {
     }
 
     // MARK: Actions
+    @IBAction func back(sender: AnyObject) {
+        webView.goBack()
+    }
+
     @IBAction func handleSearchEngineChange(sender: Any) {
         go()
     }
@@ -283,8 +281,13 @@ class SearchViewController: NSViewController {
             .arrangedSubviews
             .compactMap { $0 as? NSButton }
             .filter { $0 != button }
-            .forEach { $0.state = .off }
+            .forEach {
+                $0.state = .off
+                $0.layer?.backgroundColor = nil
+        }
+
         button.state = .on
+        button.layer?.backgroundColor = context.color.cgColor
 
         srrrrrch.terms = context.terms.compactMap { $0 as? String }
         srrrrrch.context = context
@@ -342,16 +345,16 @@ class SearchViewController: NSViewController {
     }
 
     @IBAction func handleToggleDrawer(sender: Any) {
-        drawerState = drawerState.opposite
+        srrrrrch.drawerState = srrrrrch.drawerState.opposite
 
-        drawerHeightConstraint.constant = drawerState.rawValue
-        drawerButton.title = drawerState.title
+        drawerHeightConstraint.constant = srrrrrch.drawerState.rawValue
+        drawerButton.title = srrrrrch.drawerState.title
 
         NSAnimationContext.runAnimationGroup { context in
             context.duration = 0.25
             context.allowsImplicitAnimation = true
 
-            currentContextContainer.alphaValue = drawerState.alpha
+            currentContextContainer.alphaValue = srrrrrch.drawerState.alpha
 
             view.layoutSubtreeIfNeeded()
         }
@@ -411,9 +414,9 @@ class SearchViewController: NSViewController {
             button.bezelStyle = .recessed
 			//button.bezelColor = NSColor.systemBlue
             button.setButtonType(.toggle)
+            button.focusRingType = .none
 
             button.wantsLayer = true
-            button.layer?.backgroundColor = context.color.cgColor
 
             button.frame = NSRect(x: 0,
                                   y: 0,
