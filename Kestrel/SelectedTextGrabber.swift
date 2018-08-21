@@ -1,6 +1,6 @@
 //
 //  SelectedTextGrabber.swift
-//  Blotchy
+//  Kestrel
 //
 //  Created by Joshua May on 6/6/18.
 //  Copyright © 2018 Joshua May and Keith Lang. All rights reserved.

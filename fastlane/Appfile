@@ -1,4 +1,4 @@
-app_identifier "com.notjosh.Blotchy" # The bundle identifier of your app
+app_identifier "com.notjosh.Kestrel" # The bundle identifier of your app
 apple_id "notjosh@gmail.com" # Your Apple email address
 
 team_id "FR4Z9GU3K2"  # Developer Portal Team ID

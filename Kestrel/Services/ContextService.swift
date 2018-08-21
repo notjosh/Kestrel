@@ -1,6 +1,6 @@
 //
 //  ContextService.swift
-//  Blotchy
+//  Kestrel
 //
 //  Created by Joshua May on 21/6/18.
 //  Copyright © 2018 Joshua May. All rights reserved.

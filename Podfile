@@ -1,6 +1,6 @@
 platform :osx, '10.13'
 
-target 'Blotchy' do
+target 'Kestrel' do
   use_frameworks!
 
   pod 'AXSwift', '~> 0.2'

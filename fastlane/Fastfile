@@ -36,8 +36,8 @@ platform :mac do
     git_commit(
       path: [
         'CHANGELOG.md',
-        'Blotchy.xcodeproj/project.pbxproj',
-        'Blotchy/Info.plist',
+        'Kestrel.xcodeproj/project.pbxproj',
+        'Kestrel/Info.plist',
         'sparkle/appcast.xml'
       ],
       message: "Release version #{version_number} (build #{build_number})"
@@ -46,12 +46,12 @@ platform :mac do
 
   desc 'Makes a build'
   lane :build do
-    raise "#{BUILD_PATH}/Blotchy.app exists, build will probably fail" if File.exist?("#{BUILD_PATH}/Blotchy.app")
+    raise "#{BUILD_PATH}/Kestrel.app exists, build will probably fail" if File.exist?("#{BUILD_PATH}/Kestrel.app")
 
     xcode_select '/Applications/Xcode-beta.app'
 
     gym(
-      scheme: 'Blotchy'
+      scheme: 'Kestrel'
     )
   end
 
@@ -61,7 +61,7 @@ platform :mac do
     output_path = versioned_build_path
 
     dmg_assets_path = "#{output_path}-dmg-assets"
-    dmg_output_path = "#{output_path}/Blotchy-#{version}.dmg"
+    dmg_output_path = "#{output_path}/Kestrel-#{version}.dmg"
 
     FileUtils.rm_rf(dmg_assets_path) if Dir.exist?(dmg_assets_path)
     FileUtils.rm(dmg_output_path) if Dir.exist?(dmg_output_path)
@@ -71,8 +71,8 @@ platform :mac do
 
     # collect assets
     FileUtils.cp_r(
-      "#{BUILD_PATH}/Blotchy.app",
-      "#{dmg_assets_path}/Blotchy.app"
+      "#{BUILD_PATH}/Kestrel.app",
+      "#{dmg_assets_path}/Kestrel.app"
     )
 
     # build dmg
@@ -80,12 +80,12 @@ platform :mac do
         # --background 'installer_background.png' \
     sh("
       ../Submodules/create-dmg/create-dmg \
-        --volname 'Blotchy' \
+        --volname 'Kestrel' \
         --window-pos 200 120 \
         --window-size 800 400 \
         --icon-size 100 \
         --icon Application.app 200 190 \
-        --hide-extension Blotchy.app \
+        --hide-extension Kestrel.app \
         --app-drop-link 600 185 \
         #{dmg_output_path} \
         #{dmg_assets_path}/
@@ -108,10 +108,10 @@ platform :mac do
   lane :sparkle do
     version = get_version_number
     output_path = versioned_build_path
-    versioned_app_filename = "Blotchy-#{version}.zip"
+    versioned_app_filename = "Kestrel-#{version}.zip"
 
     output_app_path = "#{output_path}/#{versioned_app_filename}"
-    output_dsym_path = "#{output_path}/Blotchy-#{version}.app.dSYM.zip"
+    output_dsym_path = "#{output_path}/Kestrel-#{version}.app.dSYM.zip"
     output_release_notes_path = "#{output_path}/release_notes.html"
 
     app_download_url = "https://blotchy.notjo.sh/updates/releases/#{version}/#{versioned_app_filename}"
@@ -132,11 +132,11 @@ platform :mac do
 
     # archive
     sh("
-      ditto -c -k --sequesterRsrc --keepParent #{BUILD_PATH}/Blotchy.app #{output_app_path}
+      ditto -c -k --sequesterRsrc --keepParent #{BUILD_PATH}/Kestrel.app #{output_app_path}
     ")
 
     FileUtils.cp(
-      "#{BUILD_PATH}/Blotchy.app.dSYM.zip",
+      "#{BUILD_PATH}/Kestrel.app.dSYM.zip",
       output_dsym_path
     )
 
@@ -158,7 +158,7 @@ platform :mac do
 
     #  - convert release notes to html
     changelog_html = render_github_markdown(
-      context_repository: 'notjosh/blotchy',
+      context_repository: 'notjosh/kestrel',
       api_token: ENV['GITHUB_TOKEN'],
       markdown_contents: changelog
     )
@@ -185,7 +185,7 @@ platform :mac do
   lane :verify do
     version = get_version_number
     output_path = versioned_build_path
-    versioned_dmg_filename = "Blotchy-#{version}.dmg"
+    versioned_dmg_filename = "Kestrel-#{version}.dmg"
 
     output_dmg_path = "#{output_path}/#{versioned_dmg_filename}"
 
@@ -194,9 +194,9 @@ platform :mac do
     # note: we're verifying the build product, not the contents of the zip
 
     # codesign .app
-    sh("codesign --verify -vvvv #{output_path}/../Blotchy.app")
+    sh("codesign --verify -vvvv #{output_path}/../Kestrel.app")
     # spctl .app
-    sh("spctl --verbose=4 --assess #{output_path}/../Blotchy.app")
+    sh("spctl --verbose=4 --assess #{output_path}/../Kestrel.app")
 
     # spctl .dmg
     sh("spctl -a -t open --context context:primary-signature -v #{output_dmg_path}")
@@ -207,9 +207,9 @@ platform :mac do
     version = get_version_number
     output_path = versioned_build_path
 
-    versioned_app_filename = "Blotchy-#{version}.zip"
-    versioned_dmg_filename = "Blotchy-#{version}.dmg"
-    versioned_dsym_filename = "Blotchy-#{version}.app.dSYM.zip"
+    versioned_app_filename = "Kestrel-#{version}.zip"
+    versioned_dmg_filename = "Kestrel-#{version}.dmg"
+    versioned_dsym_filename = "Kestrel-#{version}.app.dSYM.zip"
 
     appcast_path = "#{output_path}/../../sparkle/appcast.xml"
     output_app_path = "#{output_path}/#{versioned_app_filename}"
@@ -231,7 +231,7 @@ platform :mac do
       "updates/releases/#{version}/#{versioned_dmg_filename}" => output_dmg_path,
       "updates/releases/#{version}/#{versioned_dsym_filename}" => output_dsym_path,
       "updates/releases/#{version}/release_notes.html" => output_release_notes_path,
-      'updates/releases/latest/Blotchy.dmg' => output_dmg_path,
+      'updates/releases/latest/Kestrel.dmg' => output_dmg_path,
       'updates/appcast.xml' => appcast_path
     }
       .each { |_, file| raise "Can't upload '#{file}', it doesn't exist" unless File.exist?(file) }

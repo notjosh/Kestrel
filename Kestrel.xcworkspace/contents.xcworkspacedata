@@ -2,9 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Blotchy.xcodeproj">
+      location = "group:/Users/joshua/Desktop/tmp/Kestrel/Kestrel.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Kestrel.xcodeproj">
    </FileRef>
 </Workspace>

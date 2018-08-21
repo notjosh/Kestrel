@@ -1,4 +1,4 @@
-Blotchy
+Kestrel
 =======
 
 Docs, right there. Handy!
@@ -15,7 +15,7 @@ bundle exec pod install
 git submodule update --init --recursive
 ```
 
-Open `Blotchy.xcworkspace`. Enjoy!
+Open `Kestrel.xcworkspace`. Enjoy!
 
 🍪
 

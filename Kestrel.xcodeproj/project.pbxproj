@@ -44,7 +44,7 @@
 		42BE781F20EC353500A43B1F /* DataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BE781E20EC353500A43B1F /* DataStack.swift */; };
 		42BE782220EC35E600A43B1F /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42BE782020EC35E600A43B1F /* DataModel.xcdatamodeld */; };
 		42F82E2F20C95EF300385465 /* Credits.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 42F82E2E20C95EF300385465 /* Credits.rtfd */; };
-		F6FFA44A73269B80ACFA3681 /* Pods_Blotchy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 960BBAF11BD45921ED9D044A /* Pods_Blotchy.framework */; };
+		59D81467FD2E3F8903478854 /* Pods_Kestrel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DBE4A14A574BE7E11FAEA5 /* Pods_Kestrel.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +53,7 @@
 			containerPortal = 4272AEFC20C686BB00F15834 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 4272AF0320C686BB00F15834;
-			remoteInfo = Blotchy;
+			remoteInfo = Kestrel;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -75,9 +75,9 @@
 		4243C3DB20DB071200925FE7 /* duckduckgo.com.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = duckduckgo.com.xml; path = opensearch/duckduckgo.com.xml; sourceTree = SOURCE_ROOT; };
 		4243C3DC20DB071200925FE7 /* google.com.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = google.com.xml; path = opensearch/google.com.xml; sourceTree = SOURCE_ROOT; };
 		4243C3E020DB071D00925FE7 /* OpenSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSearch.swift; sourceTree = "<group>"; };
-		4243C3E620DB077000925FE7 /* BlotchyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlotchyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4243C3E620DB077000925FE7 /* KestrelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KestrelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4243C3EA20DB077100925FE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4243C3F020DB078D00925FE7 /* BlotchyTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BlotchyTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		4243C3F020DB078D00925FE7 /* KestrelTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KestrelTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		4243C3F120DB078E00925FE7 /* OpenSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSearchTests.swift; sourceTree = "<group>"; };
 		4243C3F520DB07D700925FE7 /* sample.detailed.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sample.detailed.xml; sourceTree = "<group>"; };
 		4243C3F620DB07D700925FE7 /* sample.simple.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sample.simple.xml; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		425D3E9A20EC3CE900F5DAE4 /* SearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEngine.swift; sourceTree = "<group>"; };
 		425D3E9B20EC3CE900F5DAE4 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		426BC34020D0512D004AA062 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = sparkle/dsa_pub.pem; sourceTree = SOURCE_ROOT; };
-		4272AF0420C686BB00F15834 /* Blotchy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blotchy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4272AF0420C686BB00F15834 /* Kestrel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kestrel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4272AF0720C686BB00F15834 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4272AF0920C686BB00F15834 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4272AF0B20C686BD00F15834 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,9 +100,9 @@
 		42BE781E20EC353500A43B1F /* DataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStack.swift; sourceTree = "<group>"; };
 		42BE782120EC35E600A43B1F /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		42F82E2E20C95EF300385465 /* Credits.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = Credits.rtfd; sourceTree = "<group>"; };
-		5604E62ADCECD31F55BE08B3 /* Pods-Blotchy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blotchy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blotchy/Pods-Blotchy.release.xcconfig"; sourceTree = "<group>"; };
-		696E8E9F6CF3A28CA09A1744 /* Pods-Blotchy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blotchy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blotchy/Pods-Blotchy.debug.xcconfig"; sourceTree = "<group>"; };
-		960BBAF11BD45921ED9D044A /* Pods_Blotchy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blotchy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86A096C0DAC3FA3786AA75A8 /* Pods-Kestrel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kestrel.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kestrel/Pods-Kestrel.release.xcconfig"; sourceTree = "<group>"; };
+		994AD2D8CBCE5ABD0AB8ABE2 /* Pods-Kestrel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kestrel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kestrel/Pods-Kestrel.debug.xcconfig"; sourceTree = "<group>"; };
+		F8DBE4A14A574BE7E11FAEA5 /* Pods_Kestrel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kestrel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +118,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				422C1A2520EC3A2400F0A7D1 /* CoreData.framework in Frameworks */,
-				F6FFA44A73269B80ACFA3681 /* Pods_Blotchy.framework in Frameworks */,
+				59D81467FD2E3F8903478854 /* Pods_Kestrel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,7 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				422C1A2420EC3A2400F0A7D1 /* CoreData.framework */,
-				960BBAF11BD45921ED9D044A /* Pods_Blotchy.framework */,
+				F8DBE4A14A574BE7E11FAEA5 /* Pods_Kestrel.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -195,14 +195,14 @@
 			name = Engines;
 			sourceTree = "<group>";
 		};
-		4243C3E720DB077100925FE7 /* BlotchyTests */ = {
+		4243C3E720DB077100925FE7 /* KestrelTests */ = {
 			isa = PBXGroup;
 			children = (
 				4243C3F320DB07B700925FE7 /* OpenSearch */,
 				4243C3EA20DB077100925FE7 /* Info.plist */,
-				4243C3F020DB078D00925FE7 /* BlotchyTests-Bridging-Header.h */,
+				4243C3F020DB078D00925FE7 /* KestrelTests-Bridging-Header.h */,
 			);
-			path = BlotchyTests;
+			path = KestrelTests;
 			sourceTree = "<group>";
 		};
 		4243C3F320DB07B700925FE7 /* OpenSearch */ = {
@@ -235,8 +235,8 @@
 		4272AEFB20C686BB00F15834 = {
 			isa = PBXGroup;
 			children = (
-				4272AF0620C686BB00F15834 /* Blotchy */,
-				4243C3E720DB077100925FE7 /* BlotchyTests */,
+				4272AF0620C686BB00F15834 /* Kestrel */,
+				4243C3E720DB077100925FE7 /* KestrelTests */,
 				4272AF0520C686BB00F15834 /* Products */,
 				DD9EC2E2FC317E44E9F8B327 /* Pods */,
 				20CBA8EB41AE3A3C0B90ABB5 /* Frameworks */,
@@ -246,13 +246,13 @@
 		4272AF0520C686BB00F15834 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4272AF0420C686BB00F15834 /* Blotchy.app */,
-				4243C3E620DB077000925FE7 /* BlotchyTests.xctest */,
+				4272AF0420C686BB00F15834 /* Kestrel.app */,
+				4243C3E620DB077000925FE7 /* KestrelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4272AF0620C686BB00F15834 /* Blotchy */ = {
+		4272AF0620C686BB00F15834 /* Kestrel */ = {
 			isa = PBXGroup;
 			children = (
 				2BE2F06821062258004CE2DB /* Icons */,
@@ -275,7 +275,7 @@
 				426BC34020D0512D004AA062 /* dsa_pub.pem */,
 				42BE782020EC35E600A43B1F /* DataModel.xcdatamodeld */,
 			);
-			path = Blotchy;
+			path = Kestrel;
 			sourceTree = "<group>";
 		};
 		42A3431420E13B22002BF7B6 /* Views */ = {
@@ -306,8 +306,8 @@
 		DD9EC2E2FC317E44E9F8B327 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				696E8E9F6CF3A28CA09A1744 /* Pods-Blotchy.debug.xcconfig */,
-				5604E62ADCECD31F55BE08B3 /* Pods-Blotchy.release.xcconfig */,
+				994AD2D8CBCE5ABD0AB8ABE2 /* Pods-Kestrel.debug.xcconfig */,
+				86A096C0DAC3FA3786AA75A8 /* Pods-Kestrel.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -315,9 +315,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4243C3E520DB077000925FE7 /* BlotchyTests */ = {
+		4243C3E520DB077000925FE7 /* KestrelTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4243C3EF20DB077100925FE7 /* Build configuration list for PBXNativeTarget "BlotchyTests" */;
+			buildConfigurationList = 4243C3EF20DB077100925FE7 /* Build configuration list for PBXNativeTarget "KestrelTests" */;
 			buildPhases = (
 				4243C3E220DB077000925FE7 /* Sources */,
 				4243C3E320DB077000925FE7 /* Frameworks */,
@@ -328,14 +328,14 @@
 			dependencies = (
 				4243C3EC20DB077100925FE7 /* PBXTargetDependency */,
 			);
-			name = BlotchyTests;
-			productName = BlotchyTests;
-			productReference = 4243C3E620DB077000925FE7 /* BlotchyTests.xctest */;
+			name = KestrelTests;
+			productName = KestrelTests;
+			productReference = 4243C3E620DB077000925FE7 /* KestrelTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		4272AF0320C686BB00F15834 /* Blotchy */ = {
+		4272AF0320C686BB00F15834 /* Kestrel */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4272AF1420C686BD00F15834 /* Build configuration list for PBXNativeTarget "Blotchy" */;
+			buildConfigurationList = 4272AF1420C686BD00F15834 /* Build configuration list for PBXNativeTarget "Kestrel" */;
 			buildPhases = (
 				5B056ED834E886E313EC8DCD /* [CP] Check Pods Manifest.lock */,
 				4272AF0020C686BB00F15834 /* Sources */,
@@ -347,9 +347,9 @@
 			);
 			dependencies = (
 			);
-			name = Blotchy;
-			productName = Blotchy;
-			productReference = 4272AF0420C686BB00F15834 /* Blotchy.app */;
+			name = Kestrel;
+			productName = Kestrel;
+			productReference = 4272AF0420C686BB00F15834 /* Kestrel.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -378,7 +378,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4272AEFF20C686BB00F15834 /* Build configuration list for PBXProject "Blotchy" */;
+			buildConfigurationList = 4272AEFF20C686BB00F15834 /* Build configuration list for PBXProject "Kestrel" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -391,8 +391,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4272AF0320C686BB00F15834 /* Blotchy */,
-				4243C3E520DB077000925FE7 /* BlotchyTests */,
+				4272AF0320C686BB00F15834 /* Kestrel */,
+				4243C3E520DB077000925FE7 /* KestrelTests */,
 			);
 		};
 /* End PBXProject section */
@@ -443,7 +443,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Blotchy-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Kestrel-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -456,7 +456,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Blotchy/Pods-Blotchy-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Kestrel/Pods-Kestrel-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AXSwift/AXSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/HighlightedWebView/HighlightedWebView.framework",
 				"${BUILT_PRODUCTS_DIR}/MASPreferences/MASPreferences.framework",
@@ -475,7 +475,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Blotchy/Pods-Blotchy-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kestrel/Pods-Kestrel-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -519,7 +519,7 @@
 /* Begin PBXTargetDependency section */
 		4243C3EC20DB077100925FE7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4272AF0320C686BB00F15834 /* Blotchy */;
+			target = 4272AF0320C686BB00F15834 /* Kestrel */;
 			targetProxy = 4243C3EB20DB077100925FE7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -545,19 +545,19 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = BlotchyTests/Info.plist;
+				INFOPLIST_FILE = KestrelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.notjosh.BlotchyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.notjosh.KestrelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "BlotchyTests/BlotchyTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "KestrelTests/KestrelTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blotchy.app/Contents/MacOS/Blotchy";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kestrel.app/Contents/MacOS/Kestrel";
 			};
 			name = Debug;
 		};
@@ -569,18 +569,18 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = BlotchyTests/Info.plist;
+				INFOPLIST_FILE = KestrelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.notjosh.BlotchyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.notjosh.KestrelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "BlotchyTests/BlotchyTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "KestrelTests/KestrelTests-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blotchy.app/Contents/MacOS/Blotchy";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kestrel.app/Contents/MacOS/Kestrel";
 			};
 			name = Release;
 		};
@@ -699,7 +699,7 @@
 		};
 		4272AF1520C686BD00F15834 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 696E8E9F6CF3A28CA09A1744 /* Pods-Blotchy.debug.xcconfig */;
+			baseConfigurationReference = 994AD2D8CBCE5ABD0AB8ABE2 /* Pods-Kestrel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
@@ -707,13 +707,13 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = BGLZ7XL6X4;
-				INFOPLIST_FILE = Blotchy/Info.plist;
+				INFOPLIST_FILE = Kestrel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.notjosh.Blotchy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.notjosh.Kestrel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -723,7 +723,7 @@
 		};
 		4272AF1620C686BD00F15834 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5604E62ADCECD31F55BE08B3 /* Pods-Blotchy.release.xcconfig */;
+			baseConfigurationReference = 86A096C0DAC3FA3786AA75A8 /* Pods-Kestrel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
@@ -731,13 +731,13 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = BGLZ7XL6X4;
-				INFOPLIST_FILE = Blotchy/Info.plist;
+				INFOPLIST_FILE = Kestrel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.notjosh.Blotchy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.notjosh.Kestrel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8e18060d-c309-44a0-b8cf-cfcf6c6a6fec";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -749,7 +749,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4243C3EF20DB077100925FE7 /* Build configuration list for PBXNativeTarget "BlotchyTests" */ = {
+		4243C3EF20DB077100925FE7 /* Build configuration list for PBXNativeTarget "KestrelTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4243C3ED20DB077100925FE7 /* Debug */,
@@ -758,7 +758,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4272AEFF20C686BB00F15834 /* Build configuration list for PBXProject "Blotchy" */ = {
+		4272AEFF20C686BB00F15834 /* Build configuration list for PBXProject "Kestrel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4272AF1220C686BD00F15834 /* Debug */,
@@ -767,7 +767,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4272AF1420C686BD00F15834 /* Build configuration list for PBXNativeTarget "Blotchy" */ = {
+		4272AF1420C686BD00F15834 /* Build configuration list for PBXNativeTarget "Kestrel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4272AF1520C686BD00F15834 /* Debug */,

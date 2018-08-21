@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.13.2"/>
         <plugIn identifier="com.apple.WebKitIBPlugin" version="14313.13.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,11 +12,11 @@
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
-                            <menuItem title="Blotchy" id="1Xt-HY-uBw">
+                            <menuItem title="Kestrel" id="1Xt-HY-uBw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Blotchy" systemMenu="apple" id="uQy-DD-JDr">
+                                <menu key="submenu" title="Kestrel" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About Blotchy" id="5kV-Vb-QxS">
+                                        <menuItem title="About Kestrel" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
@@ -31,7 +30,7 @@
                                             <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                                        <menuItem title="Hide Blotchy" keyEquivalent="h" id="Olw-nP-bQN">
+                                        <menuItem title="Hide Kestrel" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
                                                 <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
                                             </connections>
@@ -49,7 +48,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                                        <menuItem title="Quit Blotchy" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="Quit Kestrel" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -663,7 +662,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="Blotchy Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                        <menuItem title="Kestrel Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
                                             </connections>
@@ -677,7 +676,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Blotchy" customModuleProvider="target">
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Kestrel" customModuleProvider="target">
                     <connections>
                         <outlet property="statusItemMenu" destination="v3T-JD-Ph1" id="aqw-4w-3wR"/>
                     </connections>
@@ -719,7 +718,7 @@
         <!--Window Controller-->
         <scene sceneID="5pZ-Mk-JiZ">
             <objects>
-                <windowController storyboardIdentifier="SearchWindowController" id="ZCa-oD-uy4" customClass="SearchWindowController" customModule="Blotchy" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="SearchWindowController" id="ZCa-oD-uy4" customClass="SearchWindowController" customModule="Kestrel" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Search" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="AJ2-ME-Kn4" customClass="NSPanel">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" nonactivatingPanel="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -740,7 +739,7 @@
         <!--Search View Controller-->
         <scene sceneID="4gW-nr-g2g">
             <objects>
-                <viewController id="Aln-Pr-Mkk" customClass="SearchViewController" customModule="Blotchy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Aln-Pr-Mkk" customClass="SearchViewController" customModule="Kestrel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="0wk-HE-ntR">
                         <rect key="frame" x="0.0" y="0.0" width="506" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -763,7 +762,7 @@
                                                 <rect key="frame" x="39" y="0.0" width="427" height="22"/>
                                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="h4I-Z9-GM8">
                                                     <rect key="frame" x="0.0" y="0.0" width="427" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view translatesAutoresizingMaskIntoConstraints="NO" id="tyk-6l-hG1">
                                                             <rect key="frame" x="0.0" y="0.0" width="0.0" height="22"/>
@@ -888,7 +887,7 @@
                                                 <rect key="frame" x="160" y="0.0" width="285" height="23"/>
                                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="TRY-Lb-kQ8">
                                                     <rect key="frame" x="0.0" y="0.0" width="285" height="23"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view translatesAutoresizingMaskIntoConstraints="NO" id="3Gq-Rk-0sD">
                                                             <rect key="frame" x="0.0" y="0.0" width="0.0" height="23"/>
@@ -971,7 +970,7 @@
                                     <outlet property="frameLoadDelegate" destination="Aln-Pr-Mkk" id="Rze-U3-0gz"/>
                                 </connections>
                             </webView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="JYR-cG-seK" customClass="ProgressBar" customModule="Blotchy" customModuleProvider="target">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="JYR-cG-seK" customClass="ProgressBar" customModule="Kestrel" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="173" width="506" height="2"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="2LT-ln-Ndn"/>
@@ -1011,7 +1010,7 @@
         <!--Search Engine Preferences View Controller-->
         <scene sceneID="kTZ-Mm-KlS">
             <objects>
-                <viewController storyboardIdentifier="SearchEnginePreferencesViewController" id="qU2-fT-FHy" customClass="SearchEnginePreferencesViewController" customModule="Blotchy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchEnginePreferencesViewController" id="qU2-fT-FHy" customClass="SearchEnginePreferencesViewController" customModule="Kestrel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="OML-E0-chh">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1065,7 +1064,7 @@
         <!--Context Preferences View Controller-->
         <scene sceneID="Ltn-St-IuX">
             <objects>
-                <viewController storyboardIdentifier="ContextPreferencesViewController" id="9Xr-1a-ksW" customClass="ContextPreferencesViewController" customModule="Blotchy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContextPreferencesViewController" id="9Xr-1a-ksW" customClass="ContextPreferencesViewController" customModule="Kestrel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="ROd-tM-y40">
                         <rect key="frame" x="0.0" y="0.0" width="628" height="481"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1074,7 +1073,7 @@
                                 <rect key="frame" x="20" y="41" width="170" height="420"/>
                                 <clipView key="contentView" id="9Hx-vz-HIF">
                                     <rect key="frame" x="1" y="1" width="168" height="418"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="0Jb-hT-Rfr">
                                             <rect key="frame" x="0.0" y="0.0" width="168" height="418"/>
@@ -1165,10 +1164,10 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SMs-DZ-AkW">
-                                            <rect key="frame" x="0.0" y="206" width="410" height="214"/>
+                                            <rect key="frame" x="0.0" y="239" width="410" height="181"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dqm-Oc-cbZ">
-                                                    <rect key="frame" x="-2" y="197" width="91" height="17"/>
+                                                    <rect key="frame" x="-2" y="164" width="91" height="17"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Context Name" id="Aac-68-HZo">
                                                         <font key="font" usesAppearanceFont="YES"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1176,7 +1175,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bEN-2z-Tf1">
-                                                    <rect key="frame" x="0.0" y="167" width="410" height="22"/>
+                                                    <rect key="frame" x="0.0" y="134" width="410" height="22"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="B8A-Gl-HZt">
                                                         <font key="font" usesAppearanceFont="YES"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1187,7 +1186,7 @@
                                                     </connections>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qlq-ps-dBR">
-                                                    <rect key="frame" x="-2" y="142" width="80" height="17"/>
+                                                    <rect key="frame" x="-2" y="109" width="80" height="17"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Suffix Terms" id="2sO-xf-PYg">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1195,7 +1194,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <tokenField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gtz-6Z-qVY">
-                                                    <rect key="frame" x="0.0" y="112" width="96" height="22"/>
+                                                    <rect key="frame" x="0.0" y="79" width="410" height="22"/>
                                                     <tokenFieldCell key="cell" selectable="YES" editable="YES" borderStyle="bezel" alignment="left" drawsBackground="YES" allowsEditingTextAttributes="YES" id="TBZ-Zr-5rE">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1206,7 +1205,7 @@
                                                     </connections>
                                                 </tokenField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sfx-EM-Pco">
-                                                    <rect key="frame" x="-2" y="87" width="281" height="17"/>
+                                                    <rect key="frame" x="-2" y="54" width="281" height="17"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="For example: JavaScript, Swift, -example.com" id="iqH-g1-QrJ">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1214,7 +1213,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ycu-lv-kl1">
-                                                    <rect key="frame" x="0.0" y="58" width="171" height="21"/>
+                                                    <rect key="frame" x="0.0" y="25" width="171" height="21"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cqx-xg-52w">
                                                             <rect key="frame" x="-2" y="4" width="95" height="17"/>
@@ -1254,10 +1253,10 @@
                                                     </customSpacing>
                                                 </stackView>
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5RQ-cD-s9l">
-                                                    <rect key="frame" x="0.0" y="0.0" width="139" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="139" height="17"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kVP-UM-zac">
-                                                            <rect key="frame" x="-2" y="33" width="85" height="17"/>
+                                                            <rect key="frame" x="-2" y="0.0" width="85" height="17"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Colour Label:" id="FR7-Oi-NRu">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1265,7 +1264,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="BQZ-Ge-Wpi">
-                                                            <rect key="frame" x="89" y="0.0" width="50" height="50"/>
+                                                            <rect key="frame" x="89" y="0.0" width="50" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="r7B-69-HrI"/>
                                                             </constraints>
