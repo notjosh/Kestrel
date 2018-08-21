@@ -676,7 +676,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Blotchy" customModuleProvider="target">
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Kestrel" customModuleProvider="target">
                     <connections>
                         <outlet property="statusItemMenu" destination="v3T-JD-Ph1" id="aqw-4w-3wR"/>
                     </connections>
@@ -718,7 +718,7 @@
         <!--Window Controller-->
         <scene sceneID="5pZ-Mk-JiZ">
             <objects>
-                <windowController storyboardIdentifier="SearchWindowController" id="ZCa-oD-uy4" customClass="SearchWindowController" customModule="Blotchy" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="SearchWindowController" id="ZCa-oD-uy4" customClass="SearchWindowController" customModule="Kestrel" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Search" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="AJ2-ME-Kn4" customClass="NSPanel">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" nonactivatingPanel="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -739,7 +739,7 @@
         <!--Search View Controller-->
         <scene sceneID="4gW-nr-g2g">
             <objects>
-                <viewController id="Aln-Pr-Mkk" customClass="SearchViewController" customModule="Blotchy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Aln-Pr-Mkk" customClass="SearchViewController" customModule="Kestrel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="0wk-HE-ntR">
                         <rect key="frame" x="0.0" y="0.0" width="506" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -970,7 +970,7 @@
                                     <outlet property="frameLoadDelegate" destination="Aln-Pr-Mkk" id="Rze-U3-0gz"/>
                                 </connections>
                             </webView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="JYR-cG-seK" customClass="ProgressBar" customModule="Blotchy" customModuleProvider="target">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="JYR-cG-seK" customClass="ProgressBar" customModule="Kestrel" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="173" width="506" height="2"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="2LT-ln-Ndn"/>
@@ -1010,7 +1010,7 @@
         <!--Search Engine Preferences View Controller-->
         <scene sceneID="kTZ-Mm-KlS">
             <objects>
-                <viewController storyboardIdentifier="SearchEnginePreferencesViewController" id="qU2-fT-FHy" customClass="SearchEnginePreferencesViewController" customModule="Blotchy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchEnginePreferencesViewController" id="qU2-fT-FHy" customClass="SearchEnginePreferencesViewController" customModule="Kestrel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="OML-E0-chh">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1064,7 +1064,7 @@
         <!--Context Preferences View Controller-->
         <scene sceneID="Ltn-St-IuX">
             <objects>
-                <viewController storyboardIdentifier="ContextPreferencesViewController" id="9Xr-1a-ksW" customClass="ContextPreferencesViewController" customModule="Blotchy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContextPreferencesViewController" id="9Xr-1a-ksW" customClass="ContextPreferencesViewController" customModule="Kestrel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="ROd-tM-y40">
                         <rect key="frame" x="0.0" y="0.0" width="628" height="481"/>
                         <autoresizingMask key="autoresizingMask"/>

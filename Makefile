@@ -1,2 +1,2 @@
 data-model:
-	mogenerator --model ./Blotchy/DataModel.xcdatamodeld --output-dir ./Blotchy/ --swift
+	mogenerator --model ./Kestrel/DataModel.xcdatamodeld --output-dir ./Kestrel/ --swift
