@@ -235,7 +235,7 @@
 		4272AEFB20C686BB00F15834 = {
 			isa = PBXGroup;
 			children = (
-				4272AF0620C686BB00F15834 /* Blotchy */,
+				4272AF0620C686BB00F15834 /* Kestrel */,
 				4243C3E720DB077100925FE7 /* BlotchyTests */,
 				4272AF0520C686BB00F15834 /* Products */,
 				DD9EC2E2FC317E44E9F8B327 /* Pods */,
@@ -252,7 +252,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4272AF0620C686BB00F15834 /* Blotchy */ = {
+		4272AF0620C686BB00F15834 /* Kestrel */ = {
 			isa = PBXGroup;
 			children = (
 				2BE2F06821062258004CE2DB /* Icons */,
@@ -275,7 +275,7 @@
 				426BC34020D0512D004AA062 /* dsa_pub.pem */,
 				42BE782020EC35E600A43B1F /* DataModel.xcdatamodeld */,
 			);
-			path = Blotchy;
+			path = Kestrel;
 			sourceTree = "<group>";
 		};
 		42A3431420E13B22002BF7B6 /* Views */ = {
