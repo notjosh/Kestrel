@@ -99,7 +99,7 @@ protocol SearchViewControllerDelegate {
     func didUpdate(searchTerm: String)
 }
 
-enum DrawerHeight: CGFloat {
+enum DrawerHeight: Float, Codable {
     case open = 79
     case closed = 49
 
@@ -108,6 +108,15 @@ enum DrawerHeight: CGFloat {
             switch self {
             case .open: return .closed
             case .closed: return .open
+            }
+        }
+    }
+
+    var height: CGFloat {
+        get {
+            switch self {
+            case .open: return 79
+            case .closed: return 49
             }
         }
     }
@@ -131,40 +140,44 @@ enum DrawerHeight: CGFloat {
     }
 }
 
-
-struct ContextScreenState {
-    var searchEngine: SearchEngine
+struct ContextScreenState: Codable {
+    var searchEngineKey: String
     var searchTerm: String
     var terms: [String]
-    var context: Context? // can be derived??
-    var drawerState: DrawerHeight = .open
+//    var context: Context? // can be derived??
+    var drawerState: DrawerHeight
+}
+
+var ContextScreenStateKey = "SearchWindowState"
+
+extension ContextScreenState {
 
     func save() {
-        //UserDefaults.standard.set(terms, forKey: "context")
-        UserDefaults.standard.set(searchTerm, forKey: "recentSearch")
-        // UserDefaults.standard.set(searchEngine, forKey: "searchEngine")
-        // UserDefaults.standard.set(context, forKey: "context")
+        do {
+            let encoded = try PropertyListEncoder().encode(self)
+            let defaults = UserDefaults.standard
+
+            defaults.set(encoded, forKey: ContextScreenStateKey)
+        } catch {
+            // XXX: alert? ignore?
+        }
     }
 
-    static func restore(in moc: NSManagedObjectContext) -> ContextScreenState {
-        let fr = NSFetchRequest<SearchEngine>(entityName: SearchEngine.entityName())
-        let searchEngines = (try? moc.fetch(fr)) ?? []
+    static func restore() -> ContextScreenState {
+        let defaults = UserDefaults.standard
 
         guard
-            // todo: persist last search engine by key
-            let searchEngine = searchEngines.first
-            else {
-                fatalError("no search engines, what")
+            let data = defaults.object(forKey: ContextScreenStateKey) as? Data,
+            let state = try? PropertyListDecoder().decode(ContextScreenState.self, from: data)
+        else {
+            // default
+            return ContextScreenState(searchEngineKey: "",
+                                      searchTerm: "",
+                                      terms: [],
+                                      drawerState: .open)
         }
 
-        return ContextScreenState(
-            // todo: fix this singleton bits, non-optional etc
-            searchEngine: searchEngine,
-            searchTerm: UserDefaults.standard.string(forKey: "recentSearch") ?? "",
-            terms: (UserDefaults.standard.string(forKey: "context") ?? "").split(separator: " ").map { String($0) },
-            context: nil,
-            drawerState: .closed
-        )
+        return state
     }
 }
 
@@ -187,7 +200,7 @@ class SearchViewController: NSViewController {
 //    var contexts = [Context]()
     var contextsFetchedResultsController: NSFetchedResultsController<Context>!
 
-    var srrrrrch = ContextScreenState.restore(in: DataStack.shared.viewContext)
+    var srrrrrch = ContextScreenState.restore()
 
     var delegate: SearchViewControllerDelegate?
 
@@ -219,12 +232,17 @@ class SearchViewController: NSViewController {
 
         searchEnginesPopUpButton.removeAllItems()
         searchEnginesPopUpButton.addItems(withTitles: searchEngines.map { $0.name })
+        let idx = searchEngines.firstIndex(where: {
+            $0.key == srrrrrch.searchEngineKey
+        })
+
+        searchEnginesPopUpButton.selectItem(at: idx ?? 0)
 
         coiiintexts()
         terms()
         searchTermField.stringValue = srrrrrch.searchTerm
 
-        drawerHeightConstraint.constant = srrrrrch.drawerState.rawValue
+        drawerHeightConstraint.constant = CGFloat(srrrrrch.drawerState.rawValue)
         drawerButton.title = srrrrrch.drawerState.title
 
         go()
@@ -263,6 +281,10 @@ class SearchViewController: NSViewController {
     }
 
     @IBAction func handleSearchEngineChange(sender: Any) {
+        let idx = searchEnginesPopUpButton.indexOfSelectedItem
+        let searchEngine = searchEngines[idx]
+        srrrrrch.searchEngineKey = searchEngine.key
+
         go()
     }
 
@@ -290,7 +312,8 @@ class SearchViewController: NSViewController {
         button.layer?.backgroundColor = context.color.cgColor
 
         srrrrrch.terms = context.terms.compactMap { $0 as? String }
-        srrrrrch.context = context
+        srrrrrch.searchEngineKey = context.searchEngine.key
+//        srrrrrch.context = context
 
         terms()
 
@@ -347,7 +370,7 @@ class SearchViewController: NSViewController {
     @IBAction func handleToggleDrawer(sender: Any) {
         srrrrrch.drawerState = srrrrrch.drawerState.opposite
 
-        drawerHeightConstraint.constant = srrrrrch.drawerState.rawValue
+        drawerHeightConstraint.constant = CGFloat(srrrrrch.drawerState.rawValue)
         drawerButton.title = srrrrrch.drawerState.title
 
         NSAnimationContext.runAnimationGroup { context in
@@ -358,6 +381,8 @@ class SearchViewController: NSViewController {
 
             view.layoutSubtreeIfNeeded()
         }
+
+        srrrrrch.save()
     }
 
     // MARK: Helper
